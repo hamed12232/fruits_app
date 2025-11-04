@@ -213,6 +213,32 @@ flutter pub get
 - Never write values like `53.h`, `285.w`, or `15.sp` directly in widgets. Use `AppHeight.h53`, `AppWidth.w285`, `AppSizes.sp15` instead.
 - Never hardcode strings like `"Skip"` or `"Fruit Market"`. Use `AppTextStrings.skip` and `AppTextStrings.fruitMarket` instead.
 - Primary brand color used across screens: `AppColors.primaryGreen`.
+- App Theming
+
+app_text_theme.dart
+
+Defines all text styles using GoogleFonts + ScreenUtil for responsive sizing.
+
+Example:
+
+displayLarge: GoogleFonts.notoSans(
+  fontSize: 28.sp,
+  fontWeight: FontWeight.bold,
+  color: AppColors.black,
+),
+
+app_theme.dart
+
+Sets up the global ThemeData for the app:
+
+ThemeData(
+  brightness: Brightness.light,
+  scaffoldBackgroundColor: AppColors.white,
+  textTheme: AppTextTheme.lightTextTheme,
+);
+
+
+Supports light mode now — ready for dark mode and component themes later.
 
 ## Troubleshooting
 - SVG not visible: ensure `flutter_svg` is in `pubspec.yaml` and asset path is correct; some SVGs require `allowDrawingOutsideViewBox: true` or need a proper viewBox.
