@@ -1,13 +1,14 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:fruits_app/core/utils/constant/app_height.dart';
 import 'package:fruits_app/core/utils/constant/app_images_strings.dart';
 import 'package:fruits_app/features/onboarding/presentation/screen/onboarding_screen.dart';
 
 class SpalshScreen extends StatefulWidget {
   const SpalshScreen({super.key});
+  static final String routeName = '/splash';
 
   @override
   State<SpalshScreen> createState() => _SpalshScreenState();
@@ -20,9 +21,7 @@ class _SpalshScreenState extends State<SpalshScreen> {
     super.initState();
     _timer = Timer(const Duration(seconds: 10), () {
       if (!mounted) return;
-      Navigator.of(
-        context,
-      ).pushReplacement(MaterialPageRoute(builder: (_) => const OnboardingScreen()));
+      Navigator.of(context).pushReplacementNamed(OnboardingScreen.routeName);
     });
   }
 
@@ -43,17 +42,16 @@ class _SpalshScreenState extends State<SpalshScreen> {
             child: SvgPicture.asset(AppImagesStrings.backgroundSplashImage),
           ),
           Positioned(
-            top: 221.h,
-            child: Image.asset(AppImagesStrings.fruitMarketImage),
+            top: AppHeight.h221,
+            child: Center(
+              child: Image.asset(AppImagesStrings.fruitMarketImage),
+            ),
           ),
           Positioned(
             bottom: 0,
             left: 0,
             right: 0,
-            child: Image.asset(
-              AppImagesStrings.fruitsImage,
-            fit: BoxFit.fill,
-            ),
+            child: Image.asset(AppImagesStrings.fruitsImage, fit: BoxFit.fill),
           ),
         ],
       ),

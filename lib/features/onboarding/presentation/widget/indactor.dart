@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fruits_app/core/utils/constant/app_sizes.dart';
+import 'package:fruits_app/core/utils/constant/app_width.dart';
 
 class Indicators extends StatelessWidget {
   final int current;
@@ -20,13 +21,13 @@ class Indicators extends StatelessWidget {
         final bool isActive = i == current;
         return AnimatedContainer(
           duration: const Duration(milliseconds: 200),
-          margin: EdgeInsets.symmetric(horizontal: 4.w),
-          height: 12.r,
-          width: 11.r,
+          margin: EdgeInsets.symmetric(horizontal: AppWidth.w10),
+          height: AppSizes.r12,
+          width: AppSizes.r11,
           decoration: BoxDecoration(
             color: isActive ? activeColor : Colors.transparent,
             shape: BoxShape.circle,
-            border: Border.all(color: activeColor, width: 2.r),
+            border: Border.all(color: activeColor, width: AppWidth.w1),
           ),
         );
       }),
