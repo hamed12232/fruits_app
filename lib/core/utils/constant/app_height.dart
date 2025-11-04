@@ -2,10 +2,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppHeight {
   static double h5 = 5.h;
+  static double h7 = 7.h;
+  static double h14 = 14.h;
   static double h17 = 17.h;
   static double h18 = 18.h;
   static double h21 = 21.h;
   static double h24 = 24.h;
+  static double h30 = 30.h;
+  static double h33 = 33.h;
+  static double h41 = 41.h;
+  static double h47 = 47.h;
   static double h51 = 51.h;
   static double h52 = 52.h;
   static double h53 = 53.h;

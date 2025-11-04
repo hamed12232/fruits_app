@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:fruits_app/core/utils/constant/app_colors.dart';
+import 'package:fruits_app/core/utils/theme/custom_theme/text_field_theme.dart';
 import 'package:fruits_app/core/utils/theme/custom_theme/text_theme.dart';
 
 class AppTheme {
@@ -13,7 +14,7 @@ class AppTheme {
     // appBarTheme: AppBarThemes.lighAppBarTheme,
     // elevatedButtonTheme: AppElevatedButtonTheme.lightElevatedButtonTheme,
     // outlinedButtonTheme: OutlinedButtonThemes.lighOutlinedButtonThemes,
-    // inputDecorationTheme: TextFormFieldThemes.lightInputDecorationTheme,
+     inputDecorationTheme: TextFormFieldThemes.lightInputDecorationTheme,
   );
 
   // static ThemeData darkTheme = ThemeData(

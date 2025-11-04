@@ -4,12 +4,12 @@ class AppSizes {
   static double sp14 = 14.sp;
   static double sp15 = 15.sp;
   static double sp16 = 16.sp;
+  static double sp30 = 30.sp;
+  static double sp35 = 35.sp;
   static double sp42 = 42.sp;
   
   // Radius values
-  static double r11 = 11.r;
-  static double r12 = 12.r;
-  static double r28 = 28.r;
+  
   
   // // Padding and margin sizes
   // static const double xs = 4.0;

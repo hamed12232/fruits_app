@@ -7,6 +7,8 @@ import 'package:fruits_app/core/utils/constant/app_images_strings.dart';
 import 'package:fruits_app/core/utils/constant/app_sizes.dart';
 import 'package:fruits_app/core/utils/constant/app_text_strings.dart';
 import 'package:fruits_app/core/utils/constant/app_width.dart';
+import 'package:fruits_app/features/auth/modules/sign_in/presentation/screen/sign_in_screen.dart';
+import 'package:fruits_app/features/auth/modules/verify_number/presentation/screen/verify_number_screen.dart';
 import 'package:fruits_app/features/auth/modules/welcome/presentation/widget/auth_button.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -20,7 +22,7 @@ class WelcomeScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: AppWidth.w24),
+          padding: EdgeInsets.symmetric(horizontal: AppWidth.w24, vertical: AppHeight.h47),
           child: Column(
             children: [
               Align(
@@ -46,7 +48,9 @@ class WelcomeScreen extends StatelessWidget {
                 label: AppTextStrings.signInWithPhoneNumber,
                 isIcon: true,
                 icon: Icons.phone,
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushNamed(VerifyNumberScreen.routeName);
+                },
               ),
               VerticalSpace(height: AppHeight.h21),
               AuthButton(
@@ -80,7 +84,9 @@ class WelcomeScreen extends StatelessWidget {
                           color: AppColors.darkBlue,
                           decoration: TextDecoration.underline,
                         ),
-                        recognizer: TapGestureRecognizer()..onTap = () {},
+                        recognizer: TapGestureRecognizer()..onTap = () {
+                          Navigator.of(context).pushNamed(SignInScreen.routeName);
+                        },
                       ),
                     ],
                   ),

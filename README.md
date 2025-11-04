@@ -1,11 +1,15 @@
 # Fruits App – Splash, Onboarding & Auth Implementation
 
-This document summarizes all changes made to add the Splash screen, three-page Onboarding flow, and Welcome (Sign-in Options) screen, along with setup, assets, and usage instructions.
+This document summarizes all changes made to add the Splash screen, three-page Onboarding flow, and a complete authentication module (Welcome, Sign-in, Sign-up, Phone Verification, OTP), along with setup, assets, and usage instructions.
 
 ## Overview
 - Added a branded Splash screen with layered artwork (background + logo + bottom fruits image).
 - Implemented a 3-step Onboarding flow with `PageView`, page indicators, and actions: Skip, Next, and Get Started.
-- Added Sign-in Options screen with multiple authentication methods.
+- Added a full authentication flow including:
+  - Welcome Screen (Sign-in Options)
+  - Sign-in with Phone Number
+  - Sign-up Screen
+  - OTP Verification Screen
 - Integrated `flutter_screenutil` across screens for responsive sizing.
 - **Organized all hardcoded values** into centralized constant files for better maintainability.
 
@@ -33,9 +37,23 @@ This document summarizes all changes made to add the Splash screen, three-page O
   - Includes terms of service and privacy policy links.
   - All text strings use `AppTextStrings` constants.
 
+- `lib/features/auth/modules/sign_in/presentation/screen/sign_in_screen.dart`
+  - Screen for users to sign in using their phone number.
+  - Uses `CustomPhoneNumberField`.
+- `lib/features/auth/modules/sign_up/presentation/screen/sign_up_screen.dart`
+  - Screen for new user registration.
+  - Includes fields for name, phone number, and password.
+- `lib/features/auth/modules/verify_number/presentation/screen/verify_number_screen.dart`
+  - Asks the user to enter their phone number to receive an OTP.
+- `lib/features/auth/modules/otp_verification/presentation/screen/otp_verification_screen.dart`
+  - Screen for users to enter the OTP they received.
+  - Features a `Pinput` field for the code and a countdown timer.
+  - Includes widgets: `OtpPinField` and `TimerSection`.
+
 ### Modified
 - `lib/main.dart`
   - Starts app within `ScreenUtilInit` and points `home` to your chosen initial screen (`SpalshScreen` currently).
+  - Added routes for new auth screens in `AppRoute`.
 
 - `lib/features/splash/presentation/screen/spalsh_screen.dart`
   - Stack-based layout:
@@ -80,7 +98,7 @@ Contains font sizes (`.sp`) and radius values (`.r`):
 ### `lib/core/utils/constant/app_text_strings.dart`
 Contains all text strings used throughout the app:
 - **Onboarding**: `skip`, `next`, `getStarted`
-- **Auth Screen**: `fruitMarket`, `welcomeToOurApp`, `signInWithPhoneNumber`, `signInWithGoogle`, `signInWithFacebook`, `alreadyMember`, `signIn`, `byContinueYouAgreeToOur`, `termsOfService`, `andOur`, `privacyPolicy`
+- **Auth Screen**: `fruitMarket`, `welcomeToOurApp`, `signInWithPhoneNumber`, `signInWithGoogle`, `signInWithFacebook`, `alreadyMember`, `signIn`, `byContinueYouAgreeToOur`, `termsOfService`, `andOur`, `privacyPolicy`, `enterYourPhoneNumber`, `sendCode`, `enterThe4DigitCode`, `resendCode`, `verify`, `signUp`, `createAccount`, `fullName`, `password`
 
 ### Other Constants
 - `lib/core/utils/constant/app_colors.dart` - Color definitions
@@ -150,32 +168,44 @@ flutter pub get
   - Next: advances to next page; on last page it calls `_finish()`
   - `_finish()`: navigates to `SignInOptionsScreen`
 
-## Auth Screen Details
-- File: `lib/features/auth/presentation/screen/welcome_screen.dart`
-- welcome_screen with:
-  - App title: "Fruit Market" (using `AppTextStrings.fruitMarket`)
-  - Welcome message: "Welcome to Our app" (using `AppTextStrings.welcomeToOurApp`)
-  - Three authentication methods:
-    - Phone number sign-in (using `AuthButton` with icon)
-    - Google sign-in (using `AuthButton` with Google image)
-    - Facebook sign-in (using `AuthButton` with Facebook image and filled style)
-  - "Already member? Sign In" link (using `AppTextStrings.alreadyMember` and `AppTextStrings.signIn`)
-  - Terms of service and Privacy Policy links at the bottom
-- All text strings use `AppTextStrings` constants
-- All spacing and sizing use `AppHeight`, `AppWidth`, and `AppSizes` constants
+## Auth Flow Details
+
+### Welcome Screen
+- File: `lib/features/auth/modules/welcome/presentation/screen/welcome_screen.dart`
+- Serves as the entry point for authentication, offering multiple sign-in methods.
+- Navigates to `SignInScreen` or `SignUpScreen`.
+
+### Sign-up Screen
+- File: `lib/features/auth/modules/sign_up/presentation/screen/sign_up_screen.dart`
+- A form for new users to create an account with their name, phone number, and password.
+- Navigates to `VerifyNumberScreen` upon submission.
+
+### Sign-in Screen
+- File: `lib/features/auth/modules/sign_in/presentation/screen/sign_in_screen.dart`
+- Allows existing users to log in using their phone number.
+- Navigates to `VerifyNumberScreen` to initiate OTP flow.
+
+### Verify Number Screen
+- File: `lib/features/auth/modules/verify_number/presentation/screen/verify_number_screen.dart`
+- Prompts the user to enter their phone number to receive a verification code.
+- Navigates to `OtpVerificationScreen`.
+
+### OTP Verification Screen
+- File: `lib/features/auth/modules/otp_verification/presentation/screen/otp_verification_screen.dart`
+- Users enter the 4-digit code sent to their phone.
+- Features a `Pinput` field for code entry and a timer for resending the code.
+- On successful verification, it should navigate to the `HomeScreen`.
 
 ### Hooking Up Navigation
-- Start at Splash (current): `main.dart` child is `SpalshScreen()`
-- From Splash → Onboarding:
-  - Automatically navigates after 10 seconds timer in `spalsh_screen.dart`
-  - Or manually: `Navigator.of(context).pushReplacementNamed(OnboardingScreen.routeName)`
-- From Onboarding → Sign-in Options:
-  - Skip button: navigates to `SignInOptionsScreen`
-  - Get Started button: navigates to `SignInOptionsScreen`
-  - Both use: `Navigator.of(context).pushNamed(SignInOptionsScreen.routeName)`
-- From Sign-in Options → target screen (e.g., Home):
-  - Currently buttons have empty `onPressed: () {}` callbacks
-  - Replace with actual authentication logic and navigation to your Home screen
+- **From Welcome Screen**:
+  - `Sign in with phone` button navigates to `SignInScreen`.
+  - `Sign Up` link navigates to `SignUpScreen`.
+- **From Sign-up / Sign-in**:
+  - Both screens navigate to `VerifyNumberScreen` to start the phone verification process.
+- **From Verify Number**:
+  - Navigates to `OtpVerificationScreen` after a phone number is submitted.
+- **From OTP Verification**:
+  - On success, navigates to `HomeScreen`.
 
 ## Theming & Sizing
 - `flutter_screenutil` is initialized with `designSize: Size(430, 932)` in `main.dart`.

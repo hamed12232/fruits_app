@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fruits_app/core/utils/constant/app_sizes.dart';
+import 'package:fruits_app/core/utils/constant/app_radius.dart';
 import 'package:fruits_app/core/utils/constant/app_width.dart';
 
 class Indicators extends StatelessWidget {
@@ -22,8 +22,8 @@ class Indicators extends StatelessWidget {
         return AnimatedContainer(
           duration: const Duration(milliseconds: 200),
           margin: EdgeInsets.symmetric(horizontal: AppWidth.w10),
-          height: AppSizes.r12,
-          width: AppSizes.r11,
+          height: AppBorderRadius.r12,
+          width: AppBorderRadius.r11,
           decoration: BoxDecoration(
             color: isActive ? activeColor : Colors.transparent,
             shape: BoxShape.circle,

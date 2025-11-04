@@ -23,4 +23,5 @@ class AppColors {
   static const Color subtitleTextColor = Color(0xFF78787C);
   static const Color grey10 = Color(0xFF88909C);
   static const Color black87 = Color(0xFF242729);
+  static const Color titleOfTextField = Color(0xFF858D9A);
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_app/core/utils/constant/app_colors.dart';
 import 'package:fruits_app/core/utils/constant/app_height.dart';
+import 'package:fruits_app/core/utils/constant/app_radius.dart';
 import 'package:fruits_app/core/utils/constant/app_sizes.dart';
 import 'package:fruits_app/core/utils/constant/app_width.dart';
 
@@ -42,7 +43,7 @@ class AuthButton extends StatelessWidget {
           foregroundColor: foregroundColor ?? AppColors.black87,
           elevation: isFilled ? 0 : 1,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(AppSizes.r28),
+            borderRadius: BorderRadius.circular(AppBorderRadius.r28),
           ),
           side: isFilled
               ? BorderSide.none

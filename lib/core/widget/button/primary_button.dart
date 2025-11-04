@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_app/core/utils/constant/app_colors.dart';
 import 'package:fruits_app/core/utils/constant/app_height.dart';
+import 'package:fruits_app/core/utils/constant/app_radius.dart';
 import 'package:fruits_app/core/utils/constant/app_sizes.dart';
 import 'package:fruits_app/core/utils/constant/app_width.dart';
 
@@ -12,19 +13,22 @@ class PrimaryButton extends StatelessWidget {
     super.key,
     required this.label,
     required this.onPressed,
-    required this.color,
+    this.color = AppColors.primaryGreen,
+    this.width,
+    this.height,
   });
-
+  final double? width;
+  final double? height;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: AppWidth.w177,
-      height: AppHeight.h52,
+      width: width ?? AppWidth.w177,
+      height: height ?? AppHeight.h52,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           backgroundColor: color,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(AppSizes.r28),
+            borderRadius: BorderRadius.circular(AppBorderRadius.r28),
           ),
           elevation: 5,
         ),
