@@ -7,6 +7,7 @@ import 'package:fruits_app/features/auth/modules/welcome/presentation/screen/wel
 import 'package:fruits_app/features/home/presentation/screens/home_screen.dart';
 import 'package:fruits_app/features/home/presentation/screens/main_navigation_screen.dart';
 import 'package:fruits_app/features/onboarding/presentation/screen/onboarding_screen.dart';
+import 'package:fruits_app/features/product/presentation/screen/product_screen.dart';
 import 'package:fruits_app/features/seller/presentation/screen/seller_screen.dart';
 import 'package:fruits_app/features/splash/presentation/screen/spalsh_screen.dart';
 
@@ -34,6 +35,8 @@ class AppRouteManager {
         widget = const HomeScreen();
       case AppRoutesName.seller:
         widget = const SellerScreen();
+      case AppRoutesName.product:
+        widget = const ProductScreen();
       default:
         widget = const Placeholder();
     }
@@ -50,6 +53,7 @@ class AppRoutesName {
   static const String verifyNumber = '/verify-number';
   static const String otpVerification = '/otp-verification';
   static const String seller = '/seller';
+  static const String product = '/product';
   // static const String forgetPassword = '/forgetPassword';
   // static const String otb = "/otp";
   // static const String createNewPassword = '/CreateNewPassword';

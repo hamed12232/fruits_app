@@ -12,7 +12,8 @@ The app includes:
 - ✅ Home Screen with products and categories display
 - ✅ Bottom Navigation Bar
 - ✅ All values organized in centralized constant files
-- ✅ Seller Screen
+- ✅ Seller Screen with categories and products
+- ✅ Product Detail Screen with expandable sections
 
 ## Technologies & Packages
 
@@ -63,6 +64,14 @@ The app includes:
 - `lib/features/seller/presentation/widget/seller_category_item.dart`
 - `lib/features/seller/presentation/widget/seller_products_section.dart`
 - `lib/features/seller/presentation/widget/seller_product_list_item.dart`
+
+#### 5. Product Screen
+- `lib/features/product/presentation/screen/product_screen.dart`
+- `lib/features/product/presentation/widget/product_image_card.dart`
+- `lib/features/product/presentation/widget/product_details_section.dart`
+- `lib/features/product/presentation/widget/product_expandable_section.dart`
+- `lib/features/product/presentation/widget/product_option_radio.dart`
+- `lib/features/product/presentation/widget/product_add_to_cart_button.dart`
 
 ## Centralized Constants
 
@@ -142,6 +151,16 @@ Contains all text strings used in the app:
   - Add to cart functionality
 ✅ Modular widget architecture for maintainability
 
+### Product Screen
+✅ Product detail page with:
+  - Product image card with discount badge
+  - Product information section (category, name, price, description, sell per)
+  - Expandable weight selection section with radio options
+  - Expandable addons selection section with radio options
+  - Add to cart button with shopping basket icon
+✅ Modular widget architecture for maintainability
+✅ State management for selected weight and addons
+
 ## Navigation
 
 ### Routes
@@ -155,6 +174,7 @@ Contains all text strings used in the app:
 - `/home` → `HomeScreen`
 - `/main-navigation` → `MainNavigationScreen`
 - `/seller` → `SellerScreen`
+- `/product` → `ProductScreen`
 
 ### Navigation Flow
 ```
@@ -296,6 +316,57 @@ Edit `main_navigation_screen.dart` to change tabs or add new screens
 
 #### Color Updates
 - Added new color `AppColors.upToTenPercentOff` for discount badges
+
+### Product Screen Implementation & UI Updates
+
+#### Widget Architecture
+- ✅ **Created complete product detail screen** with modular widgets:
+  - `ProductImageCard` - Product image display with discount badge
+  - `ProductDetailsSection` - Product information (category, name, price, description)
+  - `ProductExpandableSection` - Expandable/collapsible sections for weight and addons
+  - `ProductOptionRadio` - Custom radio button for selection options
+  - `ProductAddToCartButton` - Add to cart button with icon
+
+#### UI/UX Updates
+
+**Product Image Card (`product_image_card.dart`)**
+- Removed errorBuilder for cleaner code
+- Light pink background with rounded corners
+- Discount badge positioned in top right corner
+
+**Product Details Section (`product_details_section.dart`)**
+- **Layout Improvements:**
+  - Changed product name and price to horizontal row layout with `MainAxisAlignment.spaceBetween`
+  - Updated alignment to `CrossAxisAlignment.center` for better vertical centering
+  - Removed vertical spacing between category and product name for tighter layout
+- **Typography Updates:**
+  - Increased category name font size from `sp14` to `sp16`
+  - Increased product name font size from `sp19` to `sp24` for better prominence
+  - Changed price column alignment to `CrossAxisAlignment.center`
+- **Color Updates:**
+  - Changed original price strikethrough color from `AppColors.red` to `AppColors.upToTenPercentOff`
+  - Changed "Sell Per" text color to `AppColors.greyTextColor` for consistency
+
+**Product Add to Cart Button (`product_add_to_cart_button.dart`)**
+- **Positioning:**
+  - Changed padding from symmetric to `EdgeInsets.only` with `right: w20` and `bottom: w90`
+  - Removed left padding and top padding for right-aligned positioning
+- **Icon Updates:**
+  - Increased icon size from `w24 x h24` to `w32 x h32`
+  - Added `BoxFit.cover` for better icon display
+  - Removed color filter (commented out)
+
+**Product Screen (`product_screen.dart`)**
+- **AppBar Updates:**
+  - Replaced favorite `IconButton` with `Image.asset` using `AppImagesStrings.favoriteIcon`
+  - Changed favorite icon size to `w32 x h32` with `BoxFit.cover`
+  - Replaced share icon with `CupertinoIcons.share` for iOS-style icon
+  - Added `flutter/cupertino.dart` import
+- **Product Image:**
+  - Changed product image path from `AppImagesStrings.fruitsImage` to `AppImagesStrings.product`
+- **Button Positioning:**
+  - Wrapped `ProductAddToCartButton` in `Align` widget with `Alignment.bottomRight`
+  - Button now positioned at bottom right of screen
 
 ## Next Steps
 
