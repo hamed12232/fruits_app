@@ -8,7 +8,7 @@ import 'package:fruits_app/core/utils/constant/app_text_strings.dart';
 import 'package:fruits_app/core/utils/constant/app_width.dart';
 import 'package:fruits_app/features/home/presentation/widgets/category_section.dart';
 import 'package:fruits_app/features/home/presentation/widgets/filter_dialog.dart';
-import 'package:fruits_app/features/home/presentation/widgets/product_list_view.dart';
+import 'package:fruits_app/features/home/presentation/widgets/seller_list_view.dart';
 import 'package:fruits_app/features/home/presentation/widgets/promo_slider.dart';
 import 'package:fruits_app/features/home/presentation/widgets/top_section_heading.dart';
 
@@ -75,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen>
                   VerticalSpace(height: AppHeight.h16),
                   TopSectionHeading(),
                   VerticalSpace(height: AppHeight.h8),
-                  ProductListView(),
+                  const SellerListView(),
                 ],
               ),
             ),

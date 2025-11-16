@@ -4,8 +4,8 @@ import 'package:fruits_app/core/utils/constant/app_width.dart';
 import 'package:fruits_app/core/utils/constant/dummy_data.dart';
 import 'package:fruits_app/features/home/presentation/widgets/seller_card.dart';
 
-class ProductListView extends StatelessWidget {
-  const ProductListView({
+class SellerListView extends StatelessWidget {
+  const SellerListView({
     super.key,
   });
 

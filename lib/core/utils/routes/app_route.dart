@@ -7,6 +7,7 @@ import 'package:fruits_app/features/auth/modules/welcome/presentation/screen/wel
 import 'package:fruits_app/features/home/presentation/screens/home_screen.dart';
 import 'package:fruits_app/features/home/presentation/screens/main_navigation_screen.dart';
 import 'package:fruits_app/features/onboarding/presentation/screen/onboarding_screen.dart';
+import 'package:fruits_app/features/seller/presentation/screen/seller_screen.dart';
 import 'package:fruits_app/features/splash/presentation/screen/spalsh_screen.dart';
 
 class AppRouteManager {
@@ -15,35 +16,26 @@ class AppRouteManager {
     switch (settings.name) {
       case AppRoutesName.splash:
         widget = const SpalshScreen();
-        break;
-
       case AppRoutesName.onBoarding:
         widget = const OnboardingScreen();
-        break;
       case AppRoutesName.welcome:
         widget = const WelcomeScreen();
-        break;
       case AppRoutesName.signUP:
         widget = const SignUpScreen();
-        break;
       case AppRoutesName.signIN:
         widget = const SignInScreen();
-        break;
       case AppRoutesName.verifyNumber:
         widget = const VerifyNumberScreen();
-        break;
       case AppRoutesName.otpVerification:
         widget = const OtpVerificationScreen();
-        break;
       case AppRoutesName.navigationScreen:
         widget = const MainNavigationScreen();
-        break;
       case AppRoutesName.home:
         widget = const HomeScreen();
-        break;
+      case AppRoutesName.seller:
+        widget = const SellerScreen();
       default:
         widget = const Placeholder();
-        break;
     }
     return MaterialPageRoute(builder: (_) => widget, settings: settings);
   }
@@ -57,6 +49,7 @@ class AppRoutesName {
   static const String signIN = '/sign-in';
   static const String verifyNumber = '/verify-number';
   static const String otpVerification = '/otp-verification';
+  static const String seller = '/seller';
   // static const String forgetPassword = '/forgetPassword';
   // static const String otb = "/otp";
   // static const String createNewPassword = '/CreateNewPassword';

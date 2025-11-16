@@ -12,6 +12,7 @@ The app includes:
 - ✅ Home Screen with products and categories display
 - ✅ Bottom Navigation Bar
 - ✅ All values organized in centralized constant files
+- ✅ Seller Screen
 
 ## Technologies & Packages
 
@@ -54,6 +55,14 @@ The app includes:
 - `lib/features/home/presentation/widgets/product_list_view.dart`
 - `lib/features/home/presentation/widgets/filter_dialog.dart`
 - `lib/features/home/presentation/widgets/top_section_heading.dart`
+
+#### 4. Seller Screen
+- `lib/features/seller/presentation/screen/seller_screen.dart`
+- `lib/features/seller/presentation/widget/seller_info_card.dart`
+- `lib/features/seller/presentation/widget/seller_categories_section.dart`
+- `lib/features/seller/presentation/widget/seller_category_item.dart`
+- `lib/features/seller/presentation/widget/seller_products_section.dart`
+- `lib/features/seller/presentation/widget/seller_product_list_item.dart`
 
 ## Centralized Constants
 
@@ -117,6 +126,22 @@ Contains all text strings used in the app:
 ✅ Search and filter icons in header  
 ✅ Filter dialog
 
+### Seller Screen
+✅ Seller information card with:
+  - Company logo (circular)
+  - Seller name
+  - Delivery time display
+  - Open/Close status indicator
+  - Rating display
+  - Discount badge
+✅ Categories section with 4 category items
+✅ Products section with:
+  - Product list items
+  - Price display (with original price strikethrough)
+  - Discount badges
+  - Add to cart functionality
+✅ Modular widget architecture for maintainability
+
 ## Navigation
 
 ### Routes
@@ -129,6 +154,7 @@ Contains all text strings used in the app:
 - `/otp-verification` → `OtpVerificationScreen`
 - `/home` → `HomeScreen`
 - `/main-navigation` → `MainNavigationScreen`
+- `/seller` → `SellerScreen`
 
 ### Navigation Flow
 ```
@@ -215,6 +241,61 @@ Edit `main_navigation_screen.dart` to change tabs or add new screens
 - **Image not found**: Check case sensitivity and path correctness in `pubspec.yaml`
 - **Layout changes on different devices**: Ensure `ScreenUtilInit` wraps `MaterialApp`
 - **Skipped frames**: Use `RepaintBoundary` and separate heavy widgets
+
+## Recent Changes
+
+### Seller Screen Refactoring & UI Updates
+
+#### Widget Architecture Improvements
+- ✅ **Split seller screen into modular widgets** for better maintainability:
+  - `SellerInfoCard` - Seller information display
+  - `SellerCategoriesSection` - Categories section container
+  - `SellerCategoryItem` - Individual category card
+  - `SellerProductsSection` - Products section container
+  - `SellerProductListItem` - Individual product list item
+
+#### UI/UX Updates
+
+**Seller Category Item (`seller_category_item.dart`)**
+- Changed layout structure from `SizedBox` wrapper to `Column` layout
+- Updated border radius from `r25` to `r15` for more compact appearance
+- Changed image fit from `BoxFit.contain` to `BoxFit.cover` for better image display
+- Changed title font weight from `FontWeight.w600` to `FontWeight.w400` for lighter appearance
+- Improved shadow opacity from `0.05` to `0.1` for better visibility
+- Moved category title outside container with top padding for cleaner layout
+
+**Seller Categories Section (`seller_categories_section.dart`)**
+- Updated Phone category image to use `AppImagesStrings.pets`
+- Updated Pets category image to use `AppImagesStrings.pets`
+
+**Seller Product List Item (`seller_product_list_item.dart`)**
+- **Product Image Styling:**
+  - Replaced `ClipOval` with `DecorationImage` for better control
+  - Added circular border with `AppColors.lightGray` at 40% opacity
+  - Changed background color to `AppColors.white`
+  - Improved image display with `BoxFit.contain` and border styling
+- **Typography Updates:**
+  - Reduced product name font size from `sp19` to `sp16`
+  - Changed product name font weight to `FontWeight.bold`
+  - Updated price font size from `sp16` to `sp14`
+  - Changed price font weight from `w600` to `w400` for consistency
+- **Discount Badge:**
+  - Updated discount badge color to use `AppColors.upToTenPercentOff`
+  - Changed badge text font weight from `w600` to `w400`
+- **Add to Cart Button:**
+  - Increased icon size from `w32 x h32` to `w56 x h52` for better touch target
+
+**Seller Products Section (`seller_products_section.dart`)**
+- Replaced `IconButton` with `Image.asset` for filter icon
+- Changed filter icon from `categoryAppBar` to `format` image
+- Removed unused `app_width.dart` import
+
+**Seller Screen (`seller_screen.dart`)**
+- Removed `BouncingScrollPhysics` from `SingleChildScrollView` for smoother scrolling
+- Cleaned up code comments for better readability
+
+#### Color Updates
+- Added new color `AppColors.upToTenPercentOff` for discount badges
 
 ## Next Steps
 

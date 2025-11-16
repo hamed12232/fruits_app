@@ -17,6 +17,7 @@ class AppColors {
   static const Color grayBlue = Color(0xFF78787C);
   static const Color silver = Color(0xFFB3B3B3);
   static const Color yellow = Color(0xFFFECB32);
+  static const Color upToTenPercentOff = Color(0xFFDF958F);
   //textColor
   static const Color headlineTextColor = Color(0xFF2F2E41);
   static const Color greyTextColor = darkGray;
