@@ -11,6 +11,7 @@ import 'package:fruits_app/core/widget/text_field/custom_attribute_with_text_fie
 import 'package:fruits_app/core/widget/text_field/custom_phone_number_field.dart';
 import 'package:fruits_app/features/auth/modules/sign_up/presentation/screen/sign_up_screen.dart';
 import 'package:fruits_app/features/auth/modules/verify_number/presentation/screen/verify_number_screen.dart';
+import 'package:fruits_app/features/home/presentation/screens/main_navigation_screen.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -103,7 +104,9 @@ class _SignInScreenState extends State<SignInScreen> {
               VerticalSpace(height: AppHeight.h21),
               PrimaryButton(
                 label: AppTextStrings.login,
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, MainNavigationScreen.routeName);
+                },
                 height: AppHeight.h52,
                 width: double.infinity,
               ),

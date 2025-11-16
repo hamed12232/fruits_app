@@ -1,6 +1,7 @@
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppHeight {
+  static double h4 = 4.h;
   static double h5 = 5.h;
   static double h7 = 7.h;
   static double h14 = 14.h;
@@ -18,8 +19,28 @@ class AppHeight {
   static double h58 = 58.h;
   static double h61 = 61.h;
   static double h62 = 62.h;
+  static double h68 = 68.h;
   static double h79 = 79.h;
   static double h87 = 87.h;
   static double h221 = 221.h;
   static double h273 = 273.h;
+  static double h8 = 8.h;
+  static double h10 = 10.h;
+  static double h12 = 12.h;
+  static double h16 = 16.h;
+  static double h20 = 20.h;
+  static double h32 = 32.h;
+  static double h40 = 40.h;
+  static double h48 = 48.h;
+  static double h56 = 56.h;
+  static double h60 = 60.h;
+  static double h80 = 80.h;
+  static double h100 = 100.h;
+  static double h120 = 120.h;
+  static double h140 = 140.h;
+  static double h160 = 160.h;
+  static double h180 = 180.h;
+  static double h23 = 23.h;
+  static double h130 = 130.h;
+  static double h348 = 348.h;
 }

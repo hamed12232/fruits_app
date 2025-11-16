@@ -1,7 +1,6 @@
-
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fruits_app/core/utils/constant/app_colors.dart';
+import 'package:fruits_app/core/utils/constant/app_height.dart';
 import 'package:fruits_app/core/utils/constant/app_width.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
@@ -33,8 +32,8 @@ class OtpPinFields extends StatelessWidget {
         animationType: AnimationType.none,
         pinTheme: PinTheme(
           shape: PinCodeFieldShape.circle,
-          fieldHeight: 48.h,
-          fieldWidth: 48.w,
+          fieldHeight: AppHeight.h48,
+          fieldWidth: AppWidth.w48,
           activeColor: AppColors.lightGray,
           inactiveColor: AppColors.darkGray,
           selectedColor: AppColors.primaryGreen,

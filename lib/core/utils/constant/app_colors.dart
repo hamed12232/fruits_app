@@ -24,4 +24,14 @@ class AppColors {
   static const Color grey10 = Color(0xFF88909C);
   static const Color black87 = Color(0xFF242729);
   static const Color titleOfTextField = Color(0xFF858D9A);
+  static const Color teal = Color(0xFF1AB8A6);
+  static const Color lightTeal = Color(0xFFE8F8F6);
+  static const Color red = Color(0xFFFF4444);
+  static const Color orange = Color(0xFFFF8C00);
+  static const Color green = Color(0xFF4CAF50);
+  static const Color cardBackground = Color(0xFFF8F8F8);
+  static const Color ratingYellow = Color(0xFFFFC107);
+  //background color
+  static const Color homebackground = Color(0xFFfdfcfc);
+  static const Color categoryNameColor = Color(0xFF51949F);
 }

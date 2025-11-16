@@ -20,7 +20,6 @@ class _SpalshScreenState extends State<SpalshScreen> {
   void initState() {
     super.initState();
     _timer = Timer(const Duration(seconds: 10), () {
-      if (!mounted) return;
       Navigator.of(context).pushReplacementNamed(OnboardingScreen.routeName);
     });
   }

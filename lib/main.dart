@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fruits_app/core/utils/routes/app_route.dart';
 import 'package:fruits_app/core/utils/theme/app_theme.dart';
-import 'package:fruits_app/features/splash/presentation/screen/spalsh_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,13 +20,13 @@ class MyApp extends StatelessWidget {
       builder: (_, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          theme: AppTheme.lightTheme,
-          home: child,
+          theme: AppTheme.lightTheme,      
           onGenerateRoute: AppRouteManager.onGenerateRoute,
-          initialRoute: AppRoutesName.splash,
+          home: child,
+
         );
+        
       },
-      child: const SpalshScreen(),
     );
   }
 }

@@ -68,7 +68,12 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
   @override
   void dispose() {
     _timer?.cancel();
-  //  otpController.dispose();
+    
+    try {
+      otpController.dispose();
+    } catch (e) {
+      // Controller already disposed, ignore
+    }
     super.dispose();
   }
 
@@ -114,7 +119,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
               PrimaryButton(
                 label: AppTextStrings.confirm,
                 onPressed: () {
-                  // TODO: Implement OTP verification logic
+                  
                 },
                 height: AppHeight.h52,
                 width: double.infinity,

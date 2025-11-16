@@ -24,11 +24,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   int _currentIndex = 0;
 
   void _onSkip() {
-    _pageController.animateToPage(
-      pages.length - 1,
-      duration: const Duration(milliseconds: 350),
-      curve: Curves.easeOut,
-    );
     Navigator.of(context).pushNamed(WelcomeScreen.routeName);
   }
 
@@ -36,7 +31,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     if (_currentIndex < pages.length - 1) {
       _pageController.nextPage(
         duration: const Duration(milliseconds: 300),
-        curve: Curves.easeOut,
+        curve: Curves.easeInOut,
       );
     } else {
       _finish();
@@ -57,7 +52,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               padding: EdgeInsets.only(top: AppHeight.h18, right: AppWidth.w37),
               child: SkipButton(onPressed: _onSkip),
             ),
-            Expanded(
+            Flexible(
               child: PageView.builder(
                 controller: _pageController,
                 itemCount: pages.length,

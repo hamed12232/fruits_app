@@ -19,3 +19,35 @@ final List<OnboardPageData> pages = const [
     imagePath: AppImagesStrings.onBoardingImage,
   ),
 ];
+   const List<Map<String, dynamic>> sellersData = [
+    {
+      'name': 'Seller name',
+      'charge': '0.5 KD',
+      'category': 'Beverages',
+      'distance': '2.5 KM',
+      'rating': 4.5,
+      'isOpen': true,
+    },
+    {
+      'name': 'Seller name',
+      'charge': '0.5 KD',
+      'category': 'Pizza',
+      'distance': '2.6 KM',
+      'rating': 4.5,
+      'isOpen': false,
+    },
+    {
+      'name': 'Seller name',
+      'charge': 'Free',
+      'category': 'Fried Chicken',
+      'distance': '2.5 KM',
+      'rating': 4.5,
+      'isOpen': true,
+    },
+  ];
+   const List<Map<String, String>> categories = [
+    {'title': 'مطاعم', 'image': AppImagesStrings.restruants},
+    {'title': 'مزرعة', 'image': AppImagesStrings.farm},
+    {'title': 'قهوة', 'image': AppImagesStrings.coffe},
+    {'title': 'صيدلية', 'image': AppImagesStrings.pharmcy},
+  ];
