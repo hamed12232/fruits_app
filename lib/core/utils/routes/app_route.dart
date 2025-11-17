@@ -4,6 +4,7 @@ import 'package:fruits_app/features/auth/modules/sign_in/presentation/screen/sig
 import 'package:fruits_app/features/auth/modules/sign_up/presentation/screen/sign_up_screen.dart';
 import 'package:fruits_app/features/auth/modules/verify_number/presentation/screen/verify_number_screen.dart';
 import 'package:fruits_app/features/auth/modules/welcome/presentation/screen/welcome_screen.dart';
+import 'package:fruits_app/features/basket/presentation/screen/basket_screen.dart';
 import 'package:fruits_app/features/home/presentation/screens/home_screen.dart';
 import 'package:fruits_app/features/home/presentation/screens/main_navigation_screen.dart';
 import 'package:fruits_app/features/onboarding/presentation/screen/onboarding_screen.dart';
@@ -37,6 +38,8 @@ class AppRouteManager {
         widget = const SellerScreen();
       case AppRoutesName.product:
         widget = const ProductScreen();
+      case AppRoutesName.basket:
+        widget = const BasketScreen();
       default:
         widget = const Placeholder();
     }
@@ -54,6 +57,7 @@ class AppRoutesName {
   static const String otpVerification = '/otp-verification';
   static const String seller = '/seller';
   static const String product = '/product';
+  static const String basket = '/basket';
   // static const String forgetPassword = '/forgetPassword';
   // static const String otb = "/otp";
   // static const String createNewPassword = '/CreateNewPassword';

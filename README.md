@@ -15,6 +15,29 @@ The app includes:
 - ✅ Seller Screen with categories and products
 - ✅ Product Detail Screen with expandable sections
 
+## Recent Updates
+
+### Refactored Basket Summary Section (Nov 17, 2025)
+
+Refactored the `BasketSummarySection` widget into smaller, more maintainable components:
+
+#### New Components:
+- `BasketDashedLine` - Reusable dashed line widget for visual separation
+- `BasketCostRow` - Displays cost-related rows (Subtotal, Shipping, Total)
+- `BasketSummaryFooter` - Contains item count and checkout button
+
+#### Benefits:
+- Improved code organization and maintainability
+- Better separation of concerns
+- Easier to test individual components
+- More reusable UI components
+
+#### Location:
+- `lib/features/basket/presentation/widget/basket_summary_section.dart` (refactored)
+- `lib/features/basket/presentation/widget/basket_dashed_line.dart` (new)
+- `lib/features/basket/presentation/widget/basket_cost_row.dart` (new)
+- `lib/features/basket/presentation/widget/basket_summary_footer.dart` (new)
+
 ## Technologies & Packages
 
 ### Core Packages

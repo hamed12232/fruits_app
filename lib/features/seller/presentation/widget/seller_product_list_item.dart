@@ -7,6 +7,7 @@ import 'package:fruits_app/core/utils/constant/app_radius.dart';
 import 'package:fruits_app/core/utils/constant/app_sizes.dart';
 import 'package:fruits_app/core/utils/constant/app_width.dart';
 import 'package:fruits_app/core/utils/theme/custom_theme/text_theme.dart';
+import 'package:fruits_app/features/basket/presentation/widget/counter_widget.dart';
 import 'package:fruits_app/features/product/presentation/screen/product_screen.dart';
 
 class SellerProductListItem extends StatelessWidget {
@@ -15,6 +16,7 @@ class SellerProductListItem extends StatelessWidget {
   final String? originalPrice;
   final String? priceText;
   final bool hasDiscount;
+  final bool isBasket;
 
   const SellerProductListItem({
     super.key,
@@ -22,7 +24,8 @@ class SellerProductListItem extends StatelessWidget {
     this.currentPrice,
     this.originalPrice,
     this.priceText,
-    required this.hasDiscount,
+    required this.hasDiscount, 
+    this.isBasket = false,
   });
 
   @override
@@ -143,6 +146,21 @@ class SellerProductListItem extends StatelessWidget {
               ),
             ),
             // Add to Cart Button
+            if (isBasket)
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                IconButton(
+                  onPressed: () {},
+                  icon: Icon(Icons.delete_forever_rounded, color: AppColors.black, size: 30),
+                ),
+               VerticalSpace(height: AppHeight.h40),
+               
+                CounterWidget()
+               
+              ],
+            )
+            else
             IconButton(
               onPressed: () {},
               icon: Image.asset(

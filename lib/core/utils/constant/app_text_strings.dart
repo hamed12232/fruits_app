@@ -1,5 +1,6 @@
 class AppTextStrings {
   // Onboarding
+  static const String basket = 'Basket';
   static const String skip = 'Skip';
   static const String next = 'Next';
   static const String getStarted = 'Get Started';
