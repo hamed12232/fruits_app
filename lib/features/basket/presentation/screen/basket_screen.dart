@@ -7,6 +7,7 @@ import 'package:fruits_app/core/utils/constant/app_text_strings.dart';
 import 'package:fruits_app/core/utils/constant/app_width.dart';
 import 'package:fruits_app/core/utils/theme/custom_theme/text_theme.dart';
 import 'package:fruits_app/features/basket/presentation/widget/basket_summary_section.dart';
+import 'package:fruits_app/features/checkout/presentation/screen/checkout_screen.dart';
 import 'package:fruits_app/features/seller/presentation/widget/seller_product_list_item.dart';
 
 class BasketScreen extends StatelessWidget {
@@ -82,7 +83,7 @@ class BasketScreen extends StatelessWidget {
             shippingCharges: shippingCharges,
             itemCount: itemCount,
             onCheckout: () {
-              // Handle checkout
+            Navigator.pushNamed(context, CheckoutScreen.routeName);
             },
           ),
         ],

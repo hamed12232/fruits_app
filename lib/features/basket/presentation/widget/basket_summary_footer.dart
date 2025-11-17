@@ -46,9 +46,10 @@ class BasketSummaryFooter extends StatelessWidget {
           ],
         ),
         PrimaryButton(
-          label: 'Checkout',
+          label: 'To Checkout',
           onPressed: onCheckout,
           height: AppHeight.h40,
+          
         ),
       ],
     );

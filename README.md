@@ -14,8 +14,31 @@ The app includes:
 - ✅ All values organized in centralized constant files
 - ✅ Seller Screen with categories and products
 - ✅ Product Detail Screen with expandable sections
+- ✅ Checkout Screen with delivery time selection
+- ✅ Reusable calendar picker component
 
 ## Recent Updates
+
+### Refactored SelectableWidget for Calendar (Nov 17, 2025)
+
+Refactored the `SelectableWidget` into smaller, more maintainable components for better calendar integration:
+
+#### New Components:
+- `SelectableItem` - Base widget for selectable items with consistent styling
+- `CalendarSelector` - Reusable calendar picker component
+- `SelectionIndicator` - Visual indicator for selected state
+
+#### Key Changes:
+- Separated UI concerns into distinct widgets
+- Improved state management for calendar visibility
+- Added support for both "Now" and date selection modes
+- Enhanced reusability across the application
+
+#### Location:
+- `lib/features/checkout/presentation/widget/selectable_widgets/`
+  - `selectable_item.dart` (main widget)
+  - `calendar_selector.dart` (calendar picker)
+  - `selection_indicator.dart` (visual feedback)
 
 ### Refactored Basket Summary Section (Nov 17, 2025)
 

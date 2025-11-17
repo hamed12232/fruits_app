@@ -1,6 +1,6 @@
 class AppTextStrings {
   // Onboarding
-  static const String basket = 'Basket';
+  
   static const String skip = 'Skip';
   static const String next = 'Next';
   static const String getStarted = 'Get Started';
@@ -40,4 +40,7 @@ class AppTextStrings {
   static const String confirm = 'Confirm';
   static const String notReceived = 'Not received?';
   static const String sendAgain = 'Send Again';
+  // Checkout
+  static const String basket = 'Basket';
+  static const String checkout = 'Checkout';
 }

@@ -53,6 +53,7 @@ class BasketSummarySection extends StatelessWidget {
             itemCount: itemCount,
             bagTotal: bagTotal,
             onCheckout: onCheckout,
+            
           ),
         ],
       ),
