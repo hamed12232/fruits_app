@@ -5,6 +5,7 @@ import 'package:fruits_app/features/auth/modules/sign_up/presentation/screen/sig
 import 'package:fruits_app/features/auth/modules/verify_number/presentation/screen/verify_number_screen.dart';
 import 'package:fruits_app/features/auth/modules/welcome/presentation/screen/welcome_screen.dart';
 import 'package:fruits_app/features/basket/presentation/screen/basket_screen.dart';
+import 'package:fruits_app/features/checkout/presentation/screen/checkout_main_screen.dart';
 import 'package:fruits_app/features/checkout/presentation/screen/checkout_screen.dart';
 import 'package:fruits_app/features/home/presentation/screens/home_screen.dart';
 import 'package:fruits_app/features/home/presentation/screens/main_navigation_screen.dart';
@@ -43,6 +44,8 @@ class AppRouteManager {
         widget = const BasketScreen();
       case AppRoutesName.checkout:
         widget = const CheckoutScreen();
+      case AppRoutesName.checkoutMain:
+        widget = const CheckoutMainScreen();
       default:
         widget = const Placeholder();
     }
@@ -62,6 +65,7 @@ class AppRoutesName {
   static const String product = '/product';
   static const String basket = '/basket';
   static const String checkout = '/checkout';
+  static const String checkoutMain = '/checkout_main';
   // static const String forgetPassword = '/forgetPassword';
   // static const String otb = "/otp";
   // static const String createNewPassword = '/CreateNewPassword';

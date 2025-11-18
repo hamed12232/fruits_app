@@ -9,29 +9,28 @@ import 'package:fruits_app/features/product/presentation/widget/product_option_r
 class ProductExpandableSection extends StatefulWidget {
   final String title;
   final List<Map<String, String>> options;
-  final int? selectedIndex;
-  final Function(int) onOptionSelected;
+  final bool isInitiallyExpanded;
 
   const ProductExpandableSection({
     super.key,
     required this.title,
     required this.options,
-    this.selectedIndex,
-    required this.onOptionSelected,
+    this.isInitiallyExpanded = false,
   });
 
   @override
-  State<ProductExpandableSection> createState() => _ProductExpandableSectionState();
+  State<ProductExpandableSection> createState() =>
+      _ProductExpandableSectionState();
 }
 
 class _ProductExpandableSectionState extends State<ProductExpandableSection> {
-  bool _isExpanded = true;
+  late bool _isExpanded;
+  int? _selectedIndex;
 
   @override
   void initState() {
     super.initState();
-    // Default to expanded for "Select Addons", collapsed for "Select weight"
-    _isExpanded = widget.title == 'Select Addons';
+    _isExpanded = widget.isInitiallyExpanded;
   }
 
   @override
@@ -41,6 +40,10 @@ class _ProductExpandableSectionState extends State<ProductExpandableSection> {
       decoration: BoxDecoration(
         color: AppColors.white,
         borderRadius: BorderRadius.circular(AppSizes.r12),
+        border: Border.all(
+          color: AppColors.lightGray.withOpacity(0.4),
+          width: AppWidth.w1,
+        ),
       ),
       child: Column(
         children: [
@@ -68,7 +71,9 @@ class _ProductExpandableSectionState extends State<ProductExpandableSection> {
                     ),
                   ),
                   Icon(
-                    _isExpanded ? Icons.keyboard_arrow_down : Icons.keyboard_arrow_up,
+                    _isExpanded
+                        ? Icons.keyboard_arrow_down
+                        : Icons.keyboard_arrow_up,
                     color: AppColors.black,
                     size: AppWidth.w24,
                   ),
@@ -91,9 +96,11 @@ class _ProductExpandableSectionState extends State<ProductExpandableSection> {
                   return ProductOptionRadio(
                     label: option['label']!,
                     price: option['price']!,
-                    isSelected: widget.selectedIndex == index,
+                    isSelected: _selectedIndex == index,
                     onTap: () {
-                      widget.onOptionSelected(index);
+                      setState(() {
+                        _selectedIndex = index;
+                      });
                     },
                   );
                 }).toList(),
@@ -105,4 +112,3 @@ class _ProductExpandableSectionState extends State<ProductExpandableSection> {
     );
   }
 }
-

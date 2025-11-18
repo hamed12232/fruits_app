@@ -12,23 +12,22 @@ import 'package:fruits_app/features/product/presentation/widget/product_details_
 import 'package:fruits_app/features/product/presentation/widget/product_expandable_section.dart';
 import 'package:fruits_app/features/product/presentation/widget/product_image_card.dart';
 
-class ProductScreen extends StatefulWidget {
+class ProductScreen extends StatelessWidget {
   const ProductScreen({super.key});
   static const String routeName = '/product';
-
-  @override
-  State<ProductScreen> createState() => _ProductScreenState();
-}
-
-class _ProductScreenState extends State<ProductScreen> {
-  int? selectedWeightIndex;
-  int? selectedAddonIndex;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.homebackground,
       appBar: AppBar(
+        bottom: PreferredSize(
+          preferredSize: Size.fromHeight(1),
+          child: Container(
+            height: 1,
+            color: Colors.black.withOpacity(0.1), // خط خفيف تحت الـ AppBar
+          ),
+        ),
         backgroundColor: AppColors.white,
         leading: IconButton(
           onPressed: () => Navigator.pop(context),
@@ -56,7 +55,11 @@ class _ProductScreenState extends State<ProductScreen> {
           ),
           IconButton(
             onPressed: () {},
-            icon: Icon(CupertinoIcons.share, color: AppColors.black, size: AppWidth.w24),
+            icon: Icon(
+              CupertinoIcons.share,
+              color: AppColors.black,
+              size: AppWidth.w24,
+            ),
           ),
         ],
       ),
@@ -94,12 +97,7 @@ class _ProductScreenState extends State<ProductScreen> {
                       {'label': '1 Kg', 'price': '6.25 KD'},
                       {'label': '2 Kg', 'price': '12.00 KD'},
                     ],
-                    selectedIndex: selectedWeightIndex,
-                    onOptionSelected: (index) {
-                      setState(() {
-                        selectedWeightIndex = index;
-                      });
-                    },
+                    isInitiallyExpanded: false,
                   ),
                   VerticalSpace(height: AppHeight.h12),
                   // Select Addons Section
@@ -109,12 +107,7 @@ class _ProductScreenState extends State<ProductScreen> {
                       {'label': '50 Gram', 'price': '4.00 KD'},
                       {'label': '1 Kg', 'price': '6.25 KD'},
                     ],
-                    selectedIndex: selectedAddonIndex,
-                    onOptionSelected: (index) {
-                      setState(() {
-                        selectedAddonIndex = index;
-                      });
-                    },
+                    isInitiallyExpanded: true,
                   ),
                   VerticalSpace(height: AppHeight.h16),
                 ],

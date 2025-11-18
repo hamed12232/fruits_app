@@ -16,8 +16,46 @@ The app includes:
 - ✅ Product Detail Screen with expandable sections
 - ✅ Checkout Screen with delivery time selection
 - ✅ Reusable calendar picker component
+- ✅ Address management with add/edit functionality
 
 ## Recent Updates
+
+### Refactored Address Selector (Nov 18, 2025)
+
+Completely refactored the address selection system with improved UI and state management:
+
+#### New Components:
+- `AddressSelector` - Main widget for address selection
+- `AddressItem` - Displays individual address cards with selection state
+- `AddAddressDialog` - Modal for adding new addresses
+- `AddressForm` - Reusable form for address input
+
+#### Key Changes:
+- Split large components into smaller, focused widgets
+- Improved state management with proper widget lifecycle
+- Enhanced UI with consistent theming using `AppColors`
+- Added validation for address form
+- Improved visual feedback for selected addresses
+
+#### Location:
+- `lib/features/checkout/presentation/widget/addreess_widgets/`
+  - `address_item.dart`
+  - `address_form.dart`
+  - `add_address_dialog.dart`
+
+### UI Improvements (Nov 18, 2025)
+
+#### Address Selector:
+- Updated text styles to use theme for consistency
+- Improved visual hierarchy in address cards
+- Added proper spacing and padding
+- Enhanced visual feedback for interactive elements
+
+#### General:
+- Standardized button styles and colors
+- Improved form validation
+- Better error handling for empty form submissions
+- Consistent use of theme colors and text styles
 
 ### Refactored SelectableWidget for Calendar (Nov 17, 2025)
 
