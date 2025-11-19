@@ -27,16 +27,20 @@ class CheckoutStepper extends StatelessWidget {
       finishedStepBorderColor: AppColors.lightGray,
       unreachedStepBorderColor: AppColors.lightGray,
       activeStepBorderType: BorderType.normal,
-      finishedStepBorderType: BorderType.normal,
+     finishedStepBorderType: BorderType.normal,
       unreachedStepBorderType: BorderType.normal,
-      steppingEnabled: true,
+      finishedStepBackgroundColor: AppColors.homebackground,
+      
       steps: [
         EasyStep(
-          icon: const Icon(
-            Icons.circle,
-            size: 10,
-            color: AppColors.primaryGreen,
-          ),
+          
+        customStep: Center(
+          child: Icon( 
+              Icons.circle,
+              size: 12.sp,
+              color:  AppColors.lightGray,
+            ),
+        ),
           customTitle: Text(
             'Delivery Time',
             style: AppTextTheme.lightTextTheme.bodyMedium?.copyWith(
@@ -47,6 +51,7 @@ class CheckoutStepper extends StatelessWidget {
         ),
         EasyStep(
           icon: const Icon(Icons.circle, size: 10),
+  
           customTitle: Text(
             'Delivery Address',
             style: AppTextTheme.lightTextTheme.bodyMedium?.copyWith(

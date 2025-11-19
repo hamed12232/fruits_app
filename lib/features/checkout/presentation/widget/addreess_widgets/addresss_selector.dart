@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:fruits_app/core/utils/constant/app_colors.dart';
 import 'package:fruits_app/features/checkout/presentation/model/addreess_model.dart';
 
-import 'addreess_widgets/add_address_dialog.dart';
-import 'addreess_widgets/address_item.dart';
+import 'add_address_dialog.dart';
+import 'address_item.dart';
 
 class AddressSelector extends StatefulWidget {
   const AddressSelector({super.key});

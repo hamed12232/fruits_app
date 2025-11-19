@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:fruits_app/core/style/spacing/vertical_space.dart';
 import 'package:fruits_app/core/utils/constant/app_colors.dart';
 import 'package:fruits_app/core/utils/constant/app_height.dart';
-import 'package:fruits_app/features/checkout/presentation/widget/addresss_selector.dart';
-import 'package:fruits_app/features/checkout/presentation/widget/checkout_widget.dart';
+import 'package:fruits_app/features/checkout/presentation/widget/addreess_widgets/addresss_selector.dart';
+import 'package:fruits_app/features/checkout/presentation/widget/checkout_stepper.dart';
 import 'package:fruits_app/features/checkout/presentation/widget/selectable_widgets/selectable_item.dart';
 
 class CheckoutScreen extends StatelessWidget {
@@ -26,7 +26,7 @@ class CheckoutScreen extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 22.0),
         child: Column(
           children: [
-            VerticalSpace(height: AppHeight.h16),
+            VerticalSpace(height: AppHeight.h14),
             CheckoutStepper(activeStep: index),
             VerticalSpace(height: AppHeight.h16),
             if (isDeliveryTime && !isDeliveryAddress)

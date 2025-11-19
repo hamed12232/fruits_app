@@ -5,6 +5,7 @@ import 'package:fruits_app/core/utils/constant/app_text_strings.dart';
 import 'package:fruits_app/core/utils/constant/app_width.dart';
 import 'package:fruits_app/core/utils/theme/custom_theme/text_theme.dart';
 import 'package:fruits_app/core/widget/button/primary_button.dart';
+import 'package:fruits_app/features/checkout/presentation/screen/checkout_payment_screen.dart';
 import 'package:fruits_app/features/checkout/presentation/screen/checkout_screen.dart';
 
 class CheckoutMainScreen extends StatefulWidget {
@@ -19,11 +20,15 @@ class _CheckoutMainScreenState extends State<CheckoutMainScreen> {
   final PageController _pageController = PageController();
   int currentIndex = 0;
 
-  List<Widget> steps = [CheckoutScreen(), CheckoutScreen(
-    isDeliveryAddress: true,
-    isDeliveryTime: false,
-    index: 1,
-  )];
+  List<Widget> steps = [
+    const CheckoutScreen(),
+    const CheckoutScreen(
+      isDeliveryAddress: true,
+      isDeliveryTime: false,
+      index: 1,
+    ),
+    const CheckoutPaymentScreen(index: 2),
+  ];
 
   void goNext() {
     if (currentIndex < steps.length - 1) {

@@ -17,6 +17,8 @@ The app includes:
 - ✅ Checkout Screen with delivery time selection
 - ✅ Reusable calendar picker component
 - ✅ Address management with add/edit functionality
+ - ✅ Checkout Payment Screen (coupon, order details, payment options, stepper)
+ - ✅ Address selector UI with add dialog and selection state
 
 ## Recent Updates
 
@@ -113,88 +115,6 @@ Refactored the `BasketSummarySection` widget into smaller, more maintainable com
 
 ## Project Structure
 
-### Features
-
-#### 1. Splash & Onboarding
-- `lib/features/splash/presentation/screen/spalsh_screen.dart`
-- `lib/features/onboarding/presentation/screen/onboarding_screen.dart`
-- `lib/features/onboarding/presentation/widget/skip_button.dart`
-- `lib/features/onboarding/presentation/widget/indactor.dart`
-
-#### 2. Authentication Modules
-- `lib/features/auth/modules/welcome/presentation/screen/welcome_screen.dart`
-- `lib/features/auth/modules/sign_in/presentation/screen/sign_in_screen.dart`
-- `lib/features/auth/modules/sign_up/presentation/screen/sign_up_screen.dart`
-- `lib/features/auth/modules/verify_number/presentation/screen/verify_number_screen.dart`
-- `lib/features/auth/modules/otp_verification/presentation/screen/otp_verification_screen.dart`
-- `lib/features/auth/modules/otp_verification/presentation/widget/otp_pin_field.dart`
-- `lib/features/auth/modules/otp_verification/presentation/widget/timer_section.dart`
-
-#### 3. Home Screen
-- `lib/features/home/presentation/screens/home_screen.dart`
-- `lib/features/home/presentation/screens/main_navigation_screen.dart`
-- `lib/features/home/presentation/widgets/promo_slider.dart`
-- `lib/features/home/presentation/widgets/category_section.dart`
-- `lib/features/home/presentation/widgets/category_item.dart`
-- `lib/features/home/presentation/widgets/seller_card.dart`
-- `lib/features/home/presentation/widgets/product_list_view.dart`
-- `lib/features/home/presentation/widgets/filter_dialog.dart`
-- `lib/features/home/presentation/widgets/top_section_heading.dart`
-
-#### 4. Seller Screen
-- `lib/features/seller/presentation/screen/seller_screen.dart`
-- `lib/features/seller/presentation/widget/seller_info_card.dart`
-- `lib/features/seller/presentation/widget/seller_categories_section.dart`
-- `lib/features/seller/presentation/widget/seller_category_item.dart`
-- `lib/features/seller/presentation/widget/seller_products_section.dart`
-- `lib/features/seller/presentation/widget/seller_product_list_item.dart`
-
-#### 5. Product Screen
-- `lib/features/product/presentation/screen/product_screen.dart`
-- `lib/features/product/presentation/widget/product_image_card.dart`
-- `lib/features/product/presentation/widget/product_details_section.dart`
-- `lib/features/product/presentation/widget/product_expandable_section.dart`
-- `lib/features/product/presentation/widget/product_option_radio.dart`
-- `lib/features/product/presentation/widget/product_add_to_cart_button.dart`
-
-## Centralized Constants
-
-All hardcoded values have been moved to centralized constant files for easier maintenance:
-
-### `lib/core/utils/constant/app_height.dart`
-Contains all height values:
-```dart
-h4, h5, h7, h8, h10, h12, h14, h16, h17, h18, h20, h21, h23, h24, h30, h32, h33, 
-h40, h41, h47, h48, h51, h52, h53, h56, h58, h60, h61, h62, h68, h79, h80, h87, 
-h100, h120, h130, h140, h160, h180, h221, h273, h348
-```
-
-### `lib/core/utils/constant/app_width.dart`
-Contains all width values:
-```dart
-w1, w4, w5, w6, w7, w8, w10, w11, w12, w13, w14, w16, w20, w24, w25, w29, w31, 
-w32, w37, w40, w42, w48, w56, w60, w64, w70, w80, w90, w100, w177, w285, w354, w400
-```
-
-### `lib/core/utils/constant/app_sizes.dart`
-Contains font sizes (`.sp`) and radius values (`.r`):
-- Font sizes: `sp10, sp12, sp14, sp15, sp16, sp17, sp18, sp19, sp20, sp22, sp24, sp28, sp30, sp35, sp42`
-- Radius values: `r8, r12, r16, r20, r24, r25, r30`
-
-### `lib/core/utils/constant/app_text_strings.dart`
-Contains all text strings used in the app:
-- Onboarding: `skip`, `next`, `getStarted`
-- Auth: `signIn`, `signUp`, `login`, `phoneNumber`, `password`, `forgotPassword`
-- OTP: `enterReceivedOTP`, `confirm`, `notReceived`, `sendAgain`
-- And more...
-
-### Other Constant Files
-- `app_colors.dart` - Color definitions
-- `app_images_strings.dart` - Image asset paths
-- `app_radius.dart` - Radius values (BorderRadius)
-- `dummy_data.dart` - Dummy data
-
-## Implemented Features
 
 ### Authentication Flow
 ✅ Welcome screen with multiple authentication options  
@@ -268,24 +188,6 @@ Splash → Onboarding → Welcome → Sign In/Sign Up
                                     ↓
                               Main Navigation (Home)
 ```
-
-## Setup & Usage
-
-### 1. Install Packages
-```bash
-flutter pub get
-```
-
-### 2. Add Required Images
-Add the following images to `assets/images/png/`:
-- `promo_banner_1.png`, `promo_banner_2.png`, `promo_banner_3.png`
-- `vegetables.png`, `fruits.png`, `beverages.png`, `grocery.png`
-- `company_logo.png`
-- `search_icon.png`, `category_app_bar.png`
-- `home_icon.png`, `category_icon.png`, `cart_icon.png`, `favorite_icon.png`, `more_icon.png`
-
-### 3. Setup Routes
-Make sure all routes are added in `lib/core/utils/routes/app_route.dart`
 
 ## Best Practices
 
@@ -459,6 +361,20 @@ Edit `main_navigation_screen.dart` to change tabs or add new screens
 - [ ] Add State Management (Provider or Bloc)
 - [ ] Add Unit Tests
 - [ ] Improve UX and add more interactions
+
+## Changelog (since last commit - Nov 19, 2025)
+
+- Added Checkout payment UI and supporting widgets:
+  - `lib/features/checkout/presentation/screen/checkout_payment_screen.dart` — Payment step screen (coupon, order details, payment options, stepper).
+  - `lib/features/checkout/presentation/widget/checkout_stepper.dart` — Stepper widget used in checkout flow.
+  - `lib/features/checkout/presentation/widget/checkout_order_details.dart` — Order details summary using `BasketCostRow`.
+  - `lib/features/checkout/presentation/widget/payment_widgets/coupon_card.dart` — Coupon input with "Apply" button.
+  - `lib/features/checkout/presentation/widget/payment_widgets/payment_options.dart` — Selectable payment option cards.
+
+- Added Address selector UI:
+  - `lib/features/checkout/presentation/widget/addreess_widgets/addresss_selector.dart` — Address selection UI with add dialog and selection state.
+
+- Wired `CheckoutPaymentScreen` into the checkout flow (`CheckoutMainScreen` `steps`).
 
 ---
 

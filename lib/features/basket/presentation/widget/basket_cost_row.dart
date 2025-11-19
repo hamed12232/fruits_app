@@ -23,16 +23,16 @@ class BasketCostRow extends StatelessWidget {
         Text(
           label,
           style: AppTextTheme.lightTextTheme.headlineMedium?.copyWith(
-            fontSize: AppSizes.sp14,
-            color: AppColors.black,
+            fontSize: AppSizes.sp16,
+            color: isBold? AppColors.primaryGreen : AppColors.light2Gray,
             fontWeight: isBold ? FontWeight.bold : FontWeight.w400,
           ),
         ),
         Text(
           '${amount.toStringAsFixed(2)} KD',
-          style: AppTextTheme.lightTextTheme.headlineMedium?.copyWith(
-            fontSize: AppSizes.sp14,
-            color: isBold ? AppColors.primaryGreen : AppColors.black,
+          style: AppTextTheme.lightTextTheme.headlineLarge?.copyWith(
+            fontSize: AppSizes.sp16,
+            color: isBold ? AppColors.primaryGreen : AppColors.light2Gray,
             fontWeight: isBold ? FontWeight.bold : FontWeight.w400,
           ),
         ),

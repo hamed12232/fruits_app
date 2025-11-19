@@ -66,4 +66,8 @@ class AppImagesStrings {
   static const String saudiArabia = 'assets/images/png/saudi_arabia.png';
   static const String usa = 'assets/images/png/usa.png';
 
+  //payment
+  static const String creditCard = 'assets/images/svg/credit_card.svg';
+  static const String cashOfDelivery = 'assets/images/svg/cash_of_delivery.svg';
+  static const String knet = 'assets/images/svg/knet.svg';
 }
