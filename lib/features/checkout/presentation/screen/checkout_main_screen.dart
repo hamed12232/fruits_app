@@ -5,6 +5,7 @@ import 'package:fruits_app/core/utils/constant/app_text_strings.dart';
 import 'package:fruits_app/core/utils/constant/app_width.dart';
 import 'package:fruits_app/core/utils/theme/custom_theme/text_theme.dart';
 import 'package:fruits_app/core/widget/button/primary_button.dart';
+import 'package:fruits_app/core/widget/success/success_operation.dart';
 import 'package:fruits_app/features/checkout/presentation/screen/checkout_payment_screen.dart';
 import 'package:fruits_app/features/checkout/presentation/screen/checkout_screen.dart';
 
@@ -99,7 +100,7 @@ class _CheckoutMainScreenState extends State<CheckoutMainScreen> {
           width: double.infinity,
           onPressed: () {
             if (currentIndex == steps.length - 1) {
-              // Place Order
+              Navigator.pushNamed(context, SuccessOperation.routeName);
             } else {
               goNext();
             }

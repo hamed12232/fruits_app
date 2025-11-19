@@ -52,8 +52,8 @@ class AppImagesStrings {
   static const String restruants = 'assets/images/png/restruants.png';
   
   // Status icons
-  static const String success = 'assets/images/png/success.png';
-  static const String fail = 'assets/images/png/fail.png';
+  static const String success = 'assets/images/svg/success.svg';
+  static const String fail = 'assets/images/svg/faliure.svg';
   
   // Other
   static const String fesba = 'assets/images/png/fesba.png';

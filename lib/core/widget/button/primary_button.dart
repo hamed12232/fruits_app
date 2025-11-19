@@ -9,6 +9,8 @@ class PrimaryButton extends StatelessWidget {
   final String label;
   final VoidCallback onPressed;
   final Color color;
+  final Color textColor;
+  final Color borderColor;
   const PrimaryButton({
     super.key,
     required this.label,
@@ -16,6 +18,8 @@ class PrimaryButton extends StatelessWidget {
     this.color = AppColors.primaryGreen,
     this.width,
     this.height,
+    this.textColor = AppColors.white,
+    this.borderColor = Colors.transparent,
   });
   final double? width;
   final double? height;
@@ -29,6 +33,7 @@ class PrimaryButton extends StatelessWidget {
           backgroundColor: color,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(AppBorderRadius.r28),
+            side: BorderSide(color: borderColor),
           ),
           elevation: 5,
         ),
@@ -36,7 +41,7 @@ class PrimaryButton extends StatelessWidget {
         child: Text(
           label,
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-            color: AppColors.white,
+            color: textColor,
             fontSize: AppSizes.sp16,
             fontWeight: FontWeight.w600,
           ),

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:fruits_app/core/widget/failure/failure.dart';
+import 'package:fruits_app/core/widget/success/success_operation.dart';
 import 'package:fruits_app/features/auth/modules/otp_verification/presentation/screen/otp_verification_screen.dart';
 import 'package:fruits_app/features/auth/modules/sign_in/presentation/screen/sign_in_screen.dart';
 import 'package:fruits_app/features/auth/modules/sign_up/presentation/screen/sign_up_screen.dart';
@@ -46,6 +48,11 @@ class AppRouteManager {
         widget = const CheckoutScreen();
       case AppRoutesName.checkoutMain:
         widget = const CheckoutMainScreen();
+      case AppRoutesName.success:
+        widget = const SuccessOperation();
+      case AppRoutesName.failure:
+        widget = const FailureOperation();
+
       default:
         widget = const Placeholder();
     }
@@ -66,6 +73,10 @@ class AppRoutesName {
   static const String basket = '/basket';
   static const String checkout = '/checkout';
   static const String checkoutMain = '/checkout_main';
+  static const String success = '/success_operation';
+  static const String failure = '/failure_operation';
+
+
   // static const String forgetPassword = '/forgetPassword';
   // static const String otb = "/otp";
   // static const String createNewPassword = '/CreateNewPassword';
