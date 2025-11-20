@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:fruits_app/core/style/spacing/vertical_space.dart';
 import 'package:fruits_app/core/utils/constant/app_colors.dart';
 import 'package:fruits_app/core/utils/constant/app_height.dart';
-import 'package:fruits_app/core/utils/constant/app_sizes.dart';
 import 'package:fruits_app/core/utils/constant/app_text_strings.dart';
 import 'package:fruits_app/core/utils/constant/app_width.dart';
-import 'package:fruits_app/core/utils/theme/custom_theme/text_theme.dart';
+import 'package:fruits_app/core/widget/common/custom_app_bar.dart';
 import 'package:fruits_app/features/basket/presentation/widget/basket_summary_section.dart';
 import 'package:fruits_app/features/checkout/presentation/screen/checkout_main_screen.dart';
 import 'package:fruits_app/features/seller/presentation/widget/seller_product_list_item.dart';
@@ -23,22 +22,7 @@ class BasketScreen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: AppColors.homebackground,
-      appBar: AppBar(
-        bottom: PreferredSize(
-          preferredSize: Size.fromHeight(1),
-          child: Container(
-            height: 1,
-            color: Colors.black.withOpacity(0.1), // خط خفيف تحت الـ AppBar
-          ),
-        ),
-        backgroundColor: AppColors.white,
-        leading: IconButton(
-          onPressed: () => Navigator.pop(context),
-          icon: Icon(Icons.arrow_back_ios_new, color: AppColors.black, size: AppWidth.w24),
-        ),
-        centerTitle: true,
-        title: Text(AppTextStrings.basket, style: AppTextTheme.lightTextTheme.headlineLarge?.copyWith(color: AppColors.primaryGreen, fontSize: AppSizes.sp24)),
-      ),
+      appBar: const CustomAppBar(title: AppTextStrings.basket),
       body: Column(
         children: [
           Expanded(
@@ -90,7 +74,7 @@ class BasketScreen extends StatelessWidget {
             shippingCharges: shippingCharges,
             itemCount: itemCount,
             onCheckout: () {
-            Navigator.pushNamed(context, CheckoutMainScreen.routeName);
+              Navigator.pushNamed(context, CheckoutMainScreen.routeName);
             },
           ),
         ],

@@ -20,6 +20,7 @@ class AppColors {
   static const Color yellow = Color(0xFFFECB32);
   static const Color upToTenPercentOff = Color(0xFFDF958F);
   static const Color failureColor = Color(0xFFFF4A4A);
+  static const Color trackingSuccessColor = Color(0xFF00BB1A);
   //textColor
   static const Color headlineTextColor = Color(0xFF2F2E41);
   static const Color greyTextColor = darkGray;

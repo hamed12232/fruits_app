@@ -1,10 +1,10 @@
 class AppTextStrings {
   // Onboarding
-  
+
   static const String skip = 'Skip';
   static const String next = 'Next';
   static const String getStarted = 'Get Started';
-  
+
   // Auth Screen
   static const String fruitMarket = 'Fruit Market';
   static const String welcomeToOurApp = 'Welcome to Our app';
@@ -30,11 +30,11 @@ class AppTextStrings {
   static const String phoneNumberWithWhatsapp = 'Phone Number with Whatsapp';
   static const String fullName = 'Full Name';
   static const String firstAndLastName = 'First and Last Name';
-  
+
   // Verify Number
   static const String enterYourNumber = 'Enter your Number';
   static const String submit = 'Submit';
-  
+
   // OTP Verification
   static const String enterReceivedOTP = 'Enter Received OTP';
   static const String confirm = 'Confirm';
@@ -43,4 +43,16 @@ class AppTextStrings {
   // Checkout
   static const String basket = 'Basket';
   static const String checkout = 'Checkout';
+  static const String myOrders = 'My Orders';
+  static const String orderTracking = 'Order Tracking';
+  static const String yourOrderCode = 'Your Order Code';
+  static const String paymentMethod = 'Payment Method';
+  static const String cash = 'Cash';
+  static const String delivered = 'Delivered';
+  static const String outForDelivery = 'Out for delivery';
+  static const String orderShipped = 'Order shipped';
+  static const String confirmed = 'Confirmed';
+  static const String orderPlaced = 'Order Placed';
+  static const String confirmOrder = 'Confirm';
+  static const String cancelOrder = 'Cancel Order';
 }

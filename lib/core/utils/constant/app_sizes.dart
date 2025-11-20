@@ -13,6 +13,7 @@ class AppSizes {
   static double sp20 = 20.sp;
   static double sp22 = 22.sp;
   static double sp24 = 24.sp;
+  static double sp25 = 25.sp;
   static double sp28 = 28.sp;
   static double sp17 = 17.sp;
   static double sp19 = 19.sp;

@@ -3,13 +3,17 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class AppWidth {
   static double w1 = 1.w;
   static double w10 = 10.w;
+  static double w15 = 15.w;
   static double w24 = 24.w;
   static double w22 = 22.w;
+  static double w23 = 23.w;
   static double w26 = 26.w;
   static double w27 = 27.w;
   static double w31 = 31.w;
   static double w37 = 37.w;
   static double w42 = 42.w;
+  static double w58 = 58.w;
+  static double w66 = 66.w;
   static double w177 = 177.w;
   static double w285 = 285.w;
   static double w144 = 144.w;

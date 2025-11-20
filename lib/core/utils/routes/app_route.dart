@@ -12,6 +12,8 @@ import 'package:fruits_app/features/checkout/presentation/screen/checkout_screen
 import 'package:fruits_app/features/home/presentation/screens/home_screen.dart';
 import 'package:fruits_app/features/home/presentation/screens/main_navigation_screen.dart';
 import 'package:fruits_app/features/onboarding/presentation/screen/onboarding_screen.dart';
+import 'package:fruits_app/features/orders/presentation/screen/order_tracking_screen.dart';
+import 'package:fruits_app/features/orders/presentation/screen/orders_screen.dart';
 import 'package:fruits_app/features/product/presentation/screen/product_screen.dart';
 import 'package:fruits_app/features/seller/presentation/screen/seller_screen.dart';
 import 'package:fruits_app/features/splash/presentation/screen/spalsh_screen.dart';
@@ -22,37 +24,58 @@ class AppRouteManager {
     switch (settings.name) {
       case AppRoutesName.splash:
         widget = const SpalshScreen();
+        break;
       case AppRoutesName.onBoarding:
         widget = const OnboardingScreen();
+        break;
       case AppRoutesName.welcome:
         widget = const WelcomeScreen();
+        break;
       case AppRoutesName.signUP:
         widget = const SignUpScreen();
+        break;
       case AppRoutesName.signIN:
         widget = const SignInScreen();
+        break;
       case AppRoutesName.verifyNumber:
         widget = const VerifyNumberScreen();
+        break;
       case AppRoutesName.otpVerification:
         widget = const OtpVerificationScreen();
+        break;
       case AppRoutesName.navigationScreen:
         widget = const MainNavigationScreen();
+        break;
       case AppRoutesName.home:
         widget = const HomeScreen();
+        break;
       case AppRoutesName.seller:
         widget = const SellerScreen();
+        break;
       case AppRoutesName.product:
         widget = const ProductScreen();
+        break;
       case AppRoutesName.basket:
         widget = const BasketScreen();
+        break;
       case AppRoutesName.checkout:
         widget = const CheckoutScreen();
+        break;
       case AppRoutesName.checkoutMain:
         widget = const CheckoutMainScreen();
+        break;
       case AppRoutesName.success:
         widget = const SuccessOperation();
+        break;
       case AppRoutesName.failure:
         widget = const FailureOperation();
-
+        break;
+      case AppRoutesName.orders:
+        widget = const OrdersScreen();
+        break;
+      case AppRoutesName.orderTracking:
+        widget = const OrderTrackingScreen();
+        break;
       default:
         widget = const Placeholder();
     }
@@ -75,15 +98,8 @@ class AppRoutesName {
   static const String checkoutMain = '/checkout_main';
   static const String success = '/success_operation';
   static const String failure = '/failure_operation';
-
-
-  // static const String forgetPassword = '/forgetPassword';
-  // static const String otb = "/otp";
-  // static const String createNewPassword = '/CreateNewPassword';
-  // static const String mainPage = '/main';
+  static const String orders = '/orders-screen';
+  static const String orderTracking = '/order-tracking';
   static const String navigationScreen = '/main-navigation';
   static const String home = '/home';
-  // static const String category = '/category';
-  // static const String animal = '/animal';
-  // static const String search = '/search';
 }
