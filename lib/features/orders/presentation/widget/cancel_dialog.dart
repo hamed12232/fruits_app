@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:fruits_app/core/style/spacing/vertical_space.dart';
 import 'package:fruits_app/core/utils/constant/app_colors.dart';
 import 'package:fruits_app/core/utils/constant/app_height.dart';
-import 'package:fruits_app/core/utils/constant/app_images_strings.dart';
 import 'package:fruits_app/core/utils/constant/app_radius.dart';
 import 'package:fruits_app/core/utils/constant/app_sizes.dart';
 import 'package:fruits_app/core/utils/constant/app_width.dart';
 import 'package:fruits_app/core/widget/button/primary_button.dart';
 import 'package:fruits_app/core/widget/drop_menu/drop_menu.dart';
-import 'package:fruits_app/core/widget/radio_button/radio_button.dart';
+import 'package:fruits_app/core/widget/text_field/custom_text_fiels.dart';
 
-Future filterDialogPortreit(context) async {
+Future cancelDialogPortreit(context) async {
   String? selectedValue;
+  TextEditingController controller = TextEditingController();
   return showDialog(
     context: context,
     builder: (context) => StatefulBuilder(
@@ -20,31 +20,30 @@ Future filterDialogPortreit(context) async {
         child: AlertDialog(
           backgroundColor: Colors.white,
           shape: RoundedRectangleBorder(borderRadius: AppBorderRadius.r25),
-          title: Text(
-            "Filter by",
-            style: Theme.of(context).textTheme.labelMedium,
+          title: Center(
+            child: Text(
+              "Cancel Order",
+              style: Theme.of(context).textTheme.labelMedium,
+            ),
           ),
 
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Row(
-                children: [
-                  Text(
-                    "Delivered To",
-                    style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                      color: AppColors.titleOfTextField,
-                      fontSize: AppSizes.sp14,
-                      fontWeight: FontWeight.w400,
-                    ),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "Reason",
+                  style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                    color: AppColors.greyTextColor,
+                    fontSize: AppSizes.sp16,
+                    fontWeight: FontWeight.w400,
                   ),
-                  SizedBox(width: AppWidth.w13),
-                  Image.asset(AppImagesStrings.fesba),
-                ],
+                ),
               ),
               DropMenu(
                 items: const ['Option 1', 'Option 2', 'Option 3'],
-                hint: 'All Areas',
+                hint: 'Please select reason',
                 value: selectedValue,
                 onChanged: (value) {
                   setState(() {
@@ -52,10 +51,27 @@ Future filterDialogPortreit(context) async {
                   });
                 },
               ),
-              const RadioButton(),
               VerticalSpace(height: AppHeight.h16),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "Notes",
+                  style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                    color: AppColors.greyTextColor,
+                    fontSize: AppSizes.sp16,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+              ),
+              VerticalSpace(height: AppHeight.h16),
+
+              CustomInputField(
+                hintText: "",
+                controller: controller,
+                heigh: AppHeight.h79,
+              ),
               PrimaryButton(
-                label: "Apply Filter",
+                label: "Confirm Cancelation",
                 onPressed: () {},
                 width: AppWidth.w354,
               ),

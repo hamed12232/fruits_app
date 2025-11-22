@@ -7,6 +7,7 @@ class CustomInputField extends StatelessWidget {
   final TextEditingController? controller;
   final String? Function(String?)? validator;
   final double heigh;
+  final int? maxLines;
 
   const CustomInputField({
     super.key,
@@ -15,6 +16,7 @@ class CustomInputField extends StatelessWidget {
     this.controller,
     this.validator,
     required this.heigh,
+    this.maxLines = 1,
   });
 
   @override
@@ -22,17 +24,21 @@ class CustomInputField extends StatelessWidget {
     return SizedBox(
       height: heigh,
       child: TextFormField(
+        maxLines: maxLines,
         obscureText: isPassword,
         controller: controller,
         validator: validator,
+
         autovalidateMode: AutovalidateMode.onUserInteraction,
         onTapOutside: (event) => FocusManager.instance.primaryFocus
             ?.unfocus(), //to disapear keyboard when tap outside
         decoration: InputDecoration(
           hintText: hintText,
-          hintStyle: Theme.of(
-            context,
-          ).textTheme.bodyMedium?.copyWith(fontSize: AppSizes.sp14,fontWeight: FontWeight.w500),
+          isDense: true,
+          hintStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
+            fontSize: AppSizes.sp14,
+            fontWeight: FontWeight.w500,
+          ),
 
           // prefixIcon: isPrefixIconNotExist
           //     ? Padding(

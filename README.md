@@ -31,6 +31,13 @@ The Fruits App provides a seamless shopping experience with a focus on usability
 - **Order Tracking**: Real-time vertical timeline tracking for active orders.
 - **Status Updates**: Visual indicators for Delivered, Out for Delivery, Shipped, etc.
 
+### 👤 Profile & Support (New!)
+
+- **Profile Management**: Edit personal details and password.
+- **Language Support**: Switch between Arabic and English.
+- **Support Center**: Contact support via form or social media.
+- **Legal**: View Terms & Conditions and other policies.
+
 ---
 
 ## 🛠️ Technology Stack
@@ -69,6 +76,24 @@ graph LR
 ---
 
 ## 🚀 Recent Updates & Changelog
+
+### 📅 November 22, 2025 - Profile & Support Features
+
+**New Features:**
+
+- **Profile Screen**: "More" menu with navigation to Profile, Orders, Favorites, Language, Support, etc.
+- **Edit Profile**: Screen to update user details (Name, Phone, Password).
+- **Language Dialog**: Dialog to switch between Arabic and English.
+- **Contact Us**: Support screen with message form and social media links.
+- **Terms & Conditions**: Screen displaying legal terms.
+
+**Technical Updates:**
+
+- **Named Routes**: Implemented named routes for all Profile-related screens in `AppRoute`.
+- **Refactoring**:
+  - `DropMenu`: Made reusable with external parameters.
+  - `CustomInputField`: Added `maxLines` support for multiline input.
+- **Resources**: Updated `AppTextStrings` and `AppImagesStrings` with new assets.
 
 ### 📅 November 20, 2025 - Order Tracking Feature
 

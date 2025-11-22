@@ -5,6 +5,7 @@ import 'package:fruits_app/core/utils/constant/app_text_strings.dart';
 import 'package:fruits_app/core/utils/constant/app_width.dart';
 import 'package:fruits_app/core/widget/button/primary_button.dart';
 import 'package:fruits_app/core/widget/common/custom_app_bar.dart';
+import 'package:fruits_app/features/orders/presentation/widget/cancel_dialog.dart';
 import 'package:fruits_app/features/orders/presentation/widget/order_info_section.dart';
 import 'package:fruits_app/features/orders/presentation/widget/order_timeline.dart';
 
@@ -35,21 +36,21 @@ class OrderTrackingScreen extends StatelessWidget {
             const OrderTimeline(),
             SizedBox(height: AppHeight.h37),
             Padding(
-              padding:  EdgeInsets.only(
-                left: AppWidth.w14,
-              ),
+              padding: EdgeInsets.only(left: AppWidth.w14),
               child: PrimaryButton(
                 label: AppTextStrings.confirmOrder,
-                onPressed: () {},
+                onPressed: () {
+                  cancelDialogPortreit(
+                    context,
+                  );
+                },
                 width: double.infinity,
                 color: AppColors.primaryGreen,
               ),
             ),
             SizedBox(height: AppHeight.h22),
             Padding(
-              padding:  EdgeInsets.only(
-                left: AppWidth.w14,
-              ),
+              padding: EdgeInsets.only(left: AppWidth.w14),
               child: PrimaryButton(
                 label: AppTextStrings.cancelOrder,
                 onPressed: () {},

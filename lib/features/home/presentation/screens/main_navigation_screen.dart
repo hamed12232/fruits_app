@@ -8,6 +8,7 @@ import 'package:fruits_app/core/utils/constant/app_width.dart';
 import 'package:fruits_app/features/basket/presentation/screen/basket_screen.dart';
 import 'package:fruits_app/features/home/presentation/screens/home_screen.dart';
 import 'package:fruits_app/features/orders/presentation/screen/orders_screen.dart';
+import 'package:fruits_app/features/profile/presentation/screens/profile_screen.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
 class MainNavigationScreen extends StatefulWidget {
@@ -24,7 +25,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
     OrdersScreen(),
     BasketScreen(),
     HomeScreen(),
-    HomeScreen(),
+    ProfileScreen(),
   ];
 
   @override

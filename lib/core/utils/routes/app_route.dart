@@ -15,6 +15,10 @@ import 'package:fruits_app/features/onboarding/presentation/screen/onboarding_sc
 import 'package:fruits_app/features/orders/presentation/screen/order_tracking_screen.dart';
 import 'package:fruits_app/features/orders/presentation/screen/orders_screen.dart';
 import 'package:fruits_app/features/product/presentation/screen/product_screen.dart';
+import 'package:fruits_app/features/profile/presentation/screens/contact_us_screen.dart';
+import 'package:fruits_app/features/profile/presentation/screens/edit_profile_screen.dart';
+import 'package:fruits_app/features/profile/presentation/screens/profile_screen.dart';
+import 'package:fruits_app/features/profile/presentation/screens/terms_and_conditions_screen.dart';
 import 'package:fruits_app/features/seller/presentation/screen/seller_screen.dart';
 import 'package:fruits_app/features/splash/presentation/screen/spalsh_screen.dart';
 
@@ -76,6 +80,18 @@ class AppRouteManager {
       case AppRoutesName.orderTracking:
         widget = const OrderTrackingScreen();
         break;
+      case AppRoutesName.profile:
+        widget = const ProfileScreen();
+        break;
+      case AppRoutesName.editProfile:
+        widget = const EditProfileScreen();
+        break;
+      case AppRoutesName.contactUs:
+        widget = const ContactUsScreen();
+        break;
+      case AppRoutesName.termsAndConditions:
+        widget = const TermsAndConditionsScreen();
+        break;
       default:
         widget = const Placeholder();
     }
@@ -102,4 +118,8 @@ class AppRoutesName {
   static const String orderTracking = '/order-tracking';
   static const String navigationScreen = '/main-navigation';
   static const String home = '/home';
+  static const String profile = '/profile';
+  static const String editProfile = '/edit-profile';
+  static const String contactUs = '/contact-us';
+  static const String termsAndConditions = '/terms-and-conditions';
 }

@@ -7,7 +7,6 @@ class OrdersViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Dummy data for demonstration
 
     return ListView.builder(
       itemCount: orders.length,

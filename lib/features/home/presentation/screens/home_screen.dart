@@ -23,10 +23,10 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen>
     with AutomaticKeepAliveClientMixin {
   @override
-  bool get wantKeepAlive => true; // Keep state when switching tabs
+  bool get wantKeepAlive => true; 
   @override
   Widget build(BuildContext context) {
-    super.build(context); // Required for AutomaticKeepAliveClientMixin
+    super.build(context);
     final TextTheme textTheme = Theme.of(context).textTheme;
     return Scaffold(
       appBar: AppBar(
@@ -58,7 +58,6 @@ class _HomeScreenState extends State<HomeScreen>
       body: SafeArea(
         child: Column(
           children: [
-            // Scrollable content
             Expanded(
               child: ListView(
                 physics: const BouncingScrollPhysics(),

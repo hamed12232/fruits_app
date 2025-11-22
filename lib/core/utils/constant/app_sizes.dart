@@ -17,7 +17,9 @@ class AppSizes {
   static double sp28 = 28.sp;
   static double sp17 = 17.sp;
   static double sp19 = 19.sp;
-  
+  static double sp40 = 40.sp;
+  static double sp100 = 100.sp;
+
   // Radius values
   static double r8 = 8.r;
   static double r12 = 12.r;
@@ -26,8 +28,7 @@ class AppSizes {
   static double r24 = 24.r;
   static double r25 = 25.r;
   static double r30 = 30.r;
-  
-  
+
   // // Padding and margin sizes
   // static const double xs = 4.0;
   // static const double sm = 10.0;
@@ -71,8 +72,6 @@ class AppSizes {
   // // Divider height
   // static const double dividerHeight = 1.0;
 
-  
-
   // // Card sizes
   // static const double cardRadiusLg = 16.0;
   // static const double cardRadiusM = 14.0;
@@ -80,6 +79,4 @@ class AppSizes {
   // static const double cardRadiusSm = 10.0;
   // static const double cardRadiusXs = 6.0;
   // static const double cardElevation = 2.0;
-
-  
 }

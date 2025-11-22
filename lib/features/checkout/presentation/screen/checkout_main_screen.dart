@@ -61,7 +61,7 @@ class _CheckoutMainScreenState extends State<CheckoutMainScreen> {
           preferredSize: Size.fromHeight(1),
           child: Container(
             height: 1,
-            color: Colors.black.withOpacity(0.1), // خط خفيف تحت الـ AppBar
+            color: Colors.black.withOpacity(0.1), 
           ),
         ),
         backgroundColor: AppColors.white,
