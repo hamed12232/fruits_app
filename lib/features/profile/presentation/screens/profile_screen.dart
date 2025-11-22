@@ -82,7 +82,9 @@ class ProfileScreen extends StatelessWidget {
               iconPath: AppImagesStrings.favoriteIcon,
               iconHeight: AppHeight.h30,
               iconWidth: AppWidth.w29,
-              onTap: () {},
+              onTap: () {
+                Navigator.pushNamed(context, AppRoutesName.favorite);
+              },
             ),
             ProfileMenuItem(
               title: AppTextStrings.language,

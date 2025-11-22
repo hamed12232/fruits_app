@@ -37,6 +37,13 @@ The Fruits App provides a seamless shopping experience with a focus on usability
 - **Language Support**: Switch between Arabic and English.
 - **Support Center**: Contact support via form or social media.
 - **Legal**: View Terms & Conditions and other policies.
+- **Favorites**: View and manage favorite products.
+
+### ❤️ Favorites (New!)
+
+- **Favorites List**: View a dedicated list of saved products.
+- **Store Info**: See store names for favorite items.
+- **Management**: Easily remove items from favorites.
 
 ---
 
@@ -86,6 +93,7 @@ graph LR
 - **Language Dialog**: Dialog to switch between Arabic and English.
 - **Contact Us**: Support screen with message form and social media links.
 - **Terms & Conditions**: Screen displaying legal terms.
+- **Favorites**: Screen displaying favorite products with store info.
 
 **Technical Updates:**
 
@@ -93,6 +101,7 @@ graph LR
 - **Refactoring**:
   - `DropMenu`: Made reusable with external parameters.
   - `CustomInputField`: Added `maxLines` support for multiline input.
+  - `SellerProductListItem`: Updated styling (shadows, colors) and added support for "Favorite" mode.
 - **Resources**: Updated `AppTextStrings` and `AppImagesStrings` with new assets.
 
 ### 📅 November 20, 2025 - Order Tracking Feature

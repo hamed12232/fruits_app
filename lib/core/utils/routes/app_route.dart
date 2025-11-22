@@ -17,6 +17,7 @@ import 'package:fruits_app/features/orders/presentation/screen/orders_screen.dar
 import 'package:fruits_app/features/product/presentation/screen/product_screen.dart';
 import 'package:fruits_app/features/profile/presentation/screens/contact_us_screen.dart';
 import 'package:fruits_app/features/profile/presentation/screens/edit_profile_screen.dart';
+import 'package:fruits_app/features/favourite/presentation/screen/favorite_screen.dart';
 import 'package:fruits_app/features/profile/presentation/screens/profile_screen.dart';
 import 'package:fruits_app/features/profile/presentation/screens/terms_and_conditions_screen.dart';
 import 'package:fruits_app/features/seller/presentation/screen/seller_screen.dart';
@@ -92,6 +93,9 @@ class AppRouteManager {
       case AppRoutesName.termsAndConditions:
         widget = const TermsAndConditionsScreen();
         break;
+      case AppRoutesName.favorite:
+        widget = const FavoriteScreen();
+        break;
       default:
         widget = const Placeholder();
     }
@@ -122,4 +126,5 @@ class AppRoutesName {
   static const String editProfile = '/edit-profile';
   static const String contactUs = '/contact-us';
   static const String termsAndConditions = '/terms-and-conditions';
+  static const String favorite = '/favorite';
 }

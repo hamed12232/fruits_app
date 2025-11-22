@@ -6,6 +6,7 @@ import 'package:fruits_app/core/utils/constant/app_radius.dart';
 import 'package:fruits_app/core/utils/constant/app_sizes.dart';
 import 'package:fruits_app/core/utils/constant/app_width.dart';
 import 'package:fruits_app/features/basket/presentation/screen/basket_screen.dart';
+import 'package:fruits_app/features/favourite/presentation/screen/favorite_screen.dart';
 import 'package:fruits_app/features/home/presentation/screens/home_screen.dart';
 import 'package:fruits_app/features/orders/presentation/screen/orders_screen.dart';
 import 'package:fruits_app/features/profile/presentation/screens/profile_screen.dart';
@@ -24,7 +25,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
     HomeScreen(),
     OrdersScreen(),
     BasketScreen(),
-    HomeScreen(),
+    FavoriteScreen(),
     ProfileScreen(),
   ];
 
