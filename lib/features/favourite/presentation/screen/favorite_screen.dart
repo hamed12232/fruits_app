@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:fruits_app/core/style/spacing/vertical_space.dart';
-import 'package:fruits_app/core/utils/constant/app_colors.dart';
-import 'package:fruits_app/core/utils/constant/app_height.dart';
-import 'package:fruits_app/core/utils/constant/app_text_strings.dart';
-import 'package:fruits_app/core/utils/constant/app_width.dart';
-import 'package:fruits_app/core/widget/common/custom_app_bar.dart';
-import 'package:fruits_app/features/seller/presentation/widget/seller_product_list_item.dart';
+import 'package:fruits_app/core/widget/adaptive_layout/adaptive_layout.dart';
+import 'package:fruits_app/features/favourite/presentation/screen/favorite_screen_desktop.dart';
+import 'package:fruits_app/features/favourite/presentation/screen/favorite_screen_mobile.dart';
+import 'package:fruits_app/features/favourite/presentation/screen/favorite_screen_tablet.dart';
 
 class FavoriteScreen extends StatelessWidget {
   const FavoriteScreen({super.key});
@@ -13,35 +10,10 @@ class FavoriteScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.homebackground,
-      appBar: const CustomAppBar(title: AppTextStrings.favorite),
-      body: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(horizontal: AppWidth.w16),
-        child: Column(
-          children: [
-            VerticalSpace(height: AppHeight.h12),
-            SellerProductListItem(
-              productName: 'Product name',
-              currentPrice: '12.00 KD',
-              originalPrice: '14.00 KD',
-              hasDiscount: true,
-              isFavorite: true,
-              storeName: 'Store 1',
-            ),
-            VerticalSpace(height: AppHeight.h16),
-            SellerProductListItem(
-              productName: 'Product name',
-              currentPrice: '12.00 KD',
-              originalPrice: '14.00 KD',
-              hasDiscount: true,
-              isFavorite: true,
-              storeName: 'Store 1',
-            ),
-            VerticalSpace(height: AppHeight.h16),
-          ],
-        ),
-      ),
+    return AdaptiveLayout(
+      mobileLayout: const FavoriteScreenMobile(),
+      tabletLayout: const FavoriteScreenTablet(),
+      desktopLayout: const FavoriteScreenDesktop(),
     );
   }
 }

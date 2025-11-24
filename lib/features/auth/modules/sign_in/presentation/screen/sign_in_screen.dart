@@ -6,6 +6,7 @@ import 'package:fruits_app/core/utils/constant/app_height.dart';
 import 'package:fruits_app/core/utils/constant/app_sizes.dart';
 import 'package:fruits_app/core/utils/constant/app_text_strings.dart';
 import 'package:fruits_app/core/utils/constant/app_width.dart';
+import 'package:fruits_app/core/widget/adaptive_layout/simple_adaptive_screen.dart';
 import 'package:fruits_app/core/widget/button/primary_button.dart';
 import 'package:fruits_app/core/widget/text_field/custom_attribute_with_text_field.dart';
 import 'package:fruits_app/core/widget/text_field/custom_phone_number_field.dart';
@@ -29,114 +30,129 @@ class _SignInScreenState extends State<SignInScreen> {
   Widget build(BuildContext context) {
     final TextTheme textTheme = Theme.of(context).textTheme;
     return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: AppWidth.w42,
-            vertical: AppHeight.h47,
-          ),
-          child: Column(
-            children: [
-              Align(
-                alignment: Alignment.topLeft,
-                child: IconButton(
-                  icon: const Icon(
-                    Icons.arrow_back_ios,
-                    color: AppColors.black,
-                  ),
-                  onPressed: () => Navigator.of(context).pop(),
-                ),
+      body: SimpleAdaptiveScreen(
+        maxWidth: 500,
+        padding: EdgeInsets.zero,
+        child: SingleChildScrollView(
+          child: SafeArea(
+            child: Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: AppWidth.w42,
+                vertical: AppHeight.h47,
               ),
-              VerticalSpace(height: AppHeight.h62),
-              Text(
-                AppTextStrings.fruitMarket,
-                style: textTheme.headlineLarge?.copyWith(
-                  color: AppColors.primaryGreen,
-                  fontSize: AppSizes.sp42,
-                ),
-              ),
-              VerticalSpace(height: AppHeight.h21),
-              Text(AppTextStrings.loginToWikala, style: textTheme.displayLarge),
-              VerticalSpace(height: AppHeight.h30),
-              Align(
-                alignment: Alignment.topLeft,
-                child: Text.rich(
-                  TextSpan(
-                    text: AppTextStrings.phoneNumber,
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      fontSize: AppSizes.sp14,
-                      color: AppColors.titleOfTextField,
-                    ),
-                    children: [
-                      const TextSpan(
-                        text: ' *',
-                        style: TextStyle(color: Colors.red),
+              child: Column(
+                children: [
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: IconButton(
+                      icon: const Icon(
+                        Icons.arrow_back_ios,
+                        color: AppColors.black,
                       ),
-                    ],
+                      onPressed: () => Navigator.of(context).pop(),
+                    ),
                   ),
-                ),
-              ),
-              VerticalSpace(height: AppHeight.h7),
-              CustomPhoneNumber(),
+                  VerticalSpace(height: AppHeight.h62),
+                  Text(
+                    AppTextStrings.fruitMarket,
+                    style: textTheme.headlineLarge?.copyWith(
+                      color: AppColors.primaryGreen,
+                      fontSize: AppSizes.sp42,
+                    ),
+                  ),
+                  VerticalSpace(height: AppHeight.h21),
+                  Text(
+                    AppTextStrings.loginToWikala,
+                    style: textTheme.displayLarge,
+                  ),
+                  VerticalSpace(height: AppHeight.h30),
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: Text.rich(
+                      TextSpan(
+                        text: AppTextStrings.phoneNumber,
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          fontSize: AppSizes.sp14,
+                          color: AppColors.titleOfTextField,
+                        ),
+                        children: [
+                          const TextSpan(
+                            text: ' *',
+                            style: TextStyle(color: Colors.red),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  VerticalSpace(height: AppHeight.h7),
+                  CustomPhoneNumber(),
 
-              CustomAttributeWithTextField(
-                fullNameController: passwordController,
-                attributeName: AppTextStrings.password,
-                hintText: AppTextStrings.password,
-              ),
-              VerticalSpace(height: AppHeight.h21),
-              Align(
-                alignment: Alignment.topRight,
-                child: GestureDetector(
-                  onTap: () {
-                    Navigator.pushNamed(context, VerifyNumberScreen.routeName);
-                  },
-                  child: Text(
-                    AppTextStrings.forgotPassword,
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: AppColors.darkBlue,
-                      decoration: TextDecoration.underline,
-                    ),
+                  CustomAttributeWithTextField(
+                    fullNameController: passwordController,
+                    attributeName: AppTextStrings.password,
+                    hintText: AppTextStrings.password,
                   ),
-                ),
-              ),
-              VerticalSpace(height: AppHeight.h21),
-              PrimaryButton(
-                label: AppTextStrings.login,
-                onPressed: () {
-                  Navigator.pushNamed(context, MainNavigationScreen.routeName);
-                },
-                height: AppHeight.h52,
-                width: double.infinity,
-              ),
-              VerticalSpace(height: AppHeight.h41),
-              Center(
-                child: RichText(
-                  text: TextSpan(
-                    children: [
-                      TextSpan(
-                        text: AppTextStrings.dontHaveAnAccount,
-                        style: Theme.of(context).textTheme.bodyMedium,
-                      ),
-                      TextSpan(
-                        text: AppTextStrings.signUp,
+                  VerticalSpace(height: AppHeight.h21),
+                  Align(
+                    alignment: Alignment.topRight,
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(
+                          context,
+                          VerifyNumberScreen.routeName,
+                        );
+                      },
+                      child: Text(
+                        AppTextStrings.forgotPassword,
                         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                           color: AppColors.darkBlue,
                           decoration: TextDecoration.underline,
                         ),
-                        recognizer: TapGestureRecognizer()
-                          ..onTap = () {
-                            Navigator.of(
-                              context,
-                            ).pushNamed(SignUpScreen.routeName);
-                          },
                       ),
-                    ],
+                    ),
                   ),
-                ),
+                  VerticalSpace(height: AppHeight.h21),
+                  PrimaryButton(
+                    label: AppTextStrings.login,
+                    onPressed: () {
+                      Navigator.pushNamed(
+                        context,
+                        MainNavigationScreen.routeName,
+                      );
+                    },
+                    height: AppHeight.h52,
+                    width: double.infinity,
+                  ),
+                  VerticalSpace(height: AppHeight.h41),
+                  Center(
+                    child: RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: AppTextStrings.dontHaveAnAccount,
+                            style: Theme.of(context).textTheme.bodyMedium,
+                          ),
+                          TextSpan(
+                            text: AppTextStrings.signUp,
+                            style: Theme.of(context).textTheme.bodyMedium
+                                ?.copyWith(
+                                  color: AppColors.darkBlue,
+                                  decoration: TextDecoration.underline,
+                                ),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                Navigator.of(
+                                  context,
+                                ).pushNamed(SignUpScreen.routeName);
+                              },
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
         ),
       ),

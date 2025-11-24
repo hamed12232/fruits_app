@@ -7,6 +7,7 @@ import 'package:fruits_app/core/utils/constant/app_height.dart';
 import 'package:fruits_app/core/utils/constant/app_sizes.dart';
 import 'package:fruits_app/core/utils/constant/app_text_strings.dart';
 import 'package:fruits_app/core/utils/constant/app_width.dart';
+import 'package:fruits_app/core/widget/adaptive_layout/simple_adaptive_screen.dart';
 import 'package:fruits_app/core/widget/button/primary_button.dart';
 import 'package:fruits_app/features/auth/modules/otp_verification/presentation/widget/otp_pin_field.dart';
 import 'package:fruits_app/features/auth/modules/otp_verification/presentation/widget/timer_section.dart';
@@ -68,7 +69,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
   @override
   void dispose() {
     _timer?.cancel();
-    
+
     try {
       otpController.dispose();
     } catch (e) {
@@ -82,57 +83,59 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
     final TextTheme textTheme = Theme.of(context).textTheme;
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: AppWidth.w42,
-            vertical: AppHeight.h47,
-          ),
-          child: Column(
-            children: [
-              Align(
-                alignment: Alignment.topLeft,
-                child: IconButton(
-                  icon: const Icon(
-                    Icons.arrow_back_ios,
-                    color: AppColors.black,
+      body: SimpleAdaptiveScreen(
+        maxWidth: 500,
+        padding: EdgeInsets.zero,
+        child: SafeArea(
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: AppWidth.w42,
+              vertical: AppHeight.h47,
+            ),
+            child: Column(
+              children: [
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: IconButton(
+                    icon: const Icon(
+                      Icons.arrow_back_ios,
+                      color: AppColors.black,
+                    ),
+                    onPressed: () => Navigator.of(context).pop(),
                   ),
-                  onPressed: () => Navigator.of(context).pop(),
                 ),
-              ),
-              VerticalSpace(height: AppHeight.h62),
-              Text(
-                AppTextStrings.fruitMarket,
-                style: textTheme.headlineLarge?.copyWith(
-                  color: AppColors.primaryGreen,
-                  fontSize: AppSizes.sp42,
+                VerticalSpace(height: AppHeight.h62),
+                Text(
+                  AppTextStrings.fruitMarket,
+                  style: textTheme.headlineLarge?.copyWith(
+                    color: AppColors.primaryGreen,
+                    fontSize: AppSizes.sp42,
+                  ),
                 ),
-              ),
-              VerticalSpace(height: AppHeight.h21),
-              Text(
-                AppTextStrings.enterReceivedOTP,
-                style: textTheme.displayLarge,
-              ),
-              VerticalSpace(height: AppHeight.h52),
-              OtpPinFields(otpController: otpController),
-              VerticalSpace(height: AppHeight.h52),
-              PrimaryButton(
-                label: AppTextStrings.confirm,
-                onPressed: () {
-                  
-                },
-                height: AppHeight.h52,
-                width: double.infinity,
-              ),
-              VerticalSpace(height: AppHeight.h41),
-              RepaintBoundary(
-                child: TimerSection(
-                  start: _start,
-                  canResend: _canResend,
-                  onResend: _resendOTP,
+                VerticalSpace(height: AppHeight.h21),
+                Text(
+                  AppTextStrings.enterReceivedOTP,
+                  style: textTheme.displayLarge,
                 ),
-              ),
-            ],
+                VerticalSpace(height: AppHeight.h52),
+                OtpPinFields(otpController: otpController),
+                VerticalSpace(height: AppHeight.h52),
+                PrimaryButton(
+                  label: AppTextStrings.confirm,
+                  onPressed: () {},
+                  height: AppHeight.h52,
+                  width: double.infinity,
+                ),
+                VerticalSpace(height: AppHeight.h41),
+                RepaintBoundary(
+                  child: TimerSection(
+                    start: _start,
+                    canResend: _canResend,
+                    onResend: _resendOTP,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

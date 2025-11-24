@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:fruits_app/core/widget/failure/failure.dart';
 import 'package:fruits_app/core/widget/success/success_operation.dart';
 import 'package:fruits_app/features/auth/modules/otp_verification/presentation/screen/otp_verification_screen.dart';
-import 'package:fruits_app/features/auth/modules/sign_in/presentation/screen/sign_in_screen.dart';
-import 'package:fruits_app/features/auth/modules/sign_up/presentation/screen/sign_up_screen.dart';
+import 'package:fruits_app/features/auth/modules/sign_in/presentation/screen/sign_in_screen_adaptive.dart';
+import 'package:fruits_app/features/auth/modules/sign_up/presentation/screen/sign_up_screen_adaptive.dart';
 import 'package:fruits_app/features/auth/modules/verify_number/presentation/screen/verify_number_screen.dart';
 import 'package:fruits_app/features/auth/modules/welcome/presentation/screen/welcome_screen.dart';
 import 'package:fruits_app/features/basket/presentation/screen/basket_screen.dart';
 import 'package:fruits_app/features/checkout/presentation/screen/checkout_main_screen.dart';
 import 'package:fruits_app/features/checkout/presentation/screen/checkout_screen.dart';
+import 'package:fruits_app/features/favourite/presentation/screen/favorite_screen.dart';
 import 'package:fruits_app/features/home/presentation/screens/home_screen.dart';
 import 'package:fruits_app/features/home/presentation/screens/main_navigation_screen.dart';
 import 'package:fruits_app/features/onboarding/presentation/screen/onboarding_screen.dart';
@@ -17,18 +18,17 @@ import 'package:fruits_app/features/orders/presentation/screen/orders_screen.dar
 import 'package:fruits_app/features/product/presentation/screen/product_screen.dart';
 import 'package:fruits_app/features/profile/presentation/screens/contact_us_screen.dart';
 import 'package:fruits_app/features/profile/presentation/screens/edit_profile_screen.dart';
-import 'package:fruits_app/features/favourite/presentation/screen/favorite_screen.dart';
 import 'package:fruits_app/features/profile/presentation/screens/profile_screen.dart';
 import 'package:fruits_app/features/profile/presentation/screens/terms_and_conditions_screen.dart';
 import 'package:fruits_app/features/seller/presentation/screen/seller_screen.dart';
-import 'package:fruits_app/features/splash/presentation/screen/spalsh_screen.dart';
+import 'package:fruits_app/features/splash/presentation/screen/splash_screen_adaptive.dart';
 
 class AppRouteManager {
   static Route? onGenerateRoute(RouteSettings settings) {
     Widget widget;
     switch (settings.name) {
       case AppRoutesName.splash:
-        widget = const SpalshScreen();
+        widget = const SplashScreenAdaptive();
         break;
       case AppRoutesName.onBoarding:
         widget = const OnboardingScreen();
@@ -37,10 +37,10 @@ class AppRouteManager {
         widget = const WelcomeScreen();
         break;
       case AppRoutesName.signUP:
-        widget = const SignUpScreen();
+        widget = const SignUpScreenAdaptive();
         break;
       case AppRoutesName.signIN:
-        widget = const SignInScreen();
+        widget = const SignInScreenAdaptive();
         break;
       case AppRoutesName.verifyNumber:
         widget = const VerifyNumberScreen();

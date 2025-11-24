@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:fruits_app/core/utils/constant/app_text_strings.dart';
-import 'package:fruits_app/core/widget/common/custom_app_bar.dart';
-import 'package:fruits_app/features/orders/presentation/widget/orders_view_body.dart';
+import 'package:fruits_app/core/widget/adaptive_layout/adaptive_layout.dart';
+import 'package:fruits_app/features/orders/presentation/screen/orders_screen_desktop.dart';
+import 'package:fruits_app/features/orders/presentation/screen/orders_screen_mobile.dart';
 
 class OrdersScreen extends StatelessWidget {
   const OrdersScreen({super.key});
@@ -9,9 +9,9 @@ class OrdersScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const CustomAppBar(title: AppTextStrings.myOrders),
-      body: const OrdersViewBody(),
+    return AdaptiveLayout(
+      mobileLayout: OrdersScreenMobile(),
+      desktopLayout: OrdersScreenDesktop(),
     );
   }
 }

@@ -22,45 +22,45 @@ class CheckoutPaymentScreen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: AppColors.homebackground,
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 22.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            VerticalSpace(height: AppHeight.h14),
-            CheckoutStepper(activeStep: index),
-            VerticalSpace(height: AppHeight.h16),
-            Text(
-              'Coupon Code',
-              style: AppTextTheme.lightTextTheme.bodyMedium?.copyWith(
-                fontWeight: FontWeight.bold,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 22.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              VerticalSpace(height: AppHeight.h14),
+              CheckoutStepper(activeStep: index),
+              VerticalSpace(height: AppHeight.h16),
+              Text(
+                'Coupon Code',
+                style: AppTextTheme.lightTextTheme.bodyMedium?.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
-            VerticalSpace(height: AppHeight.h8),
-            CouponCard(),
-            VerticalSpace(height: AppHeight.h20),
-            Text(
-              'Order Details',
-              style: AppTextTheme.lightTextTheme.bodyMedium?.copyWith(
-                fontWeight: FontWeight.bold,
+              VerticalSpace(height: AppHeight.h8),
+              CouponCard(),
+              VerticalSpace(height: AppHeight.h20),
+              Text(
+                'Order Details',
+                style: AppTextTheme.lightTextTheme.bodyMedium?.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
-            VerticalSpace(height: AppHeight.h8),
-            CheckoutOrdersDetails(
-              items: items,
-              subtotal: subtotal,
-              shipping: shipping,
-            ),
-            VerticalSpace(height: AppHeight.h20),
-            Text(
-              'Payment',
-              style: AppTextTheme.lightTextTheme.bodyMedium?.copyWith(
-                fontWeight: FontWeight.bold,
+              VerticalSpace(height: AppHeight.h8),
+              CheckoutOrdersDetails(
+                items: items,
+                subtotal: subtotal,
+                shipping: shipping,
               ),
-            ),
-            VerticalSpace(height: AppHeight.h8),
-            Expanded(
-              child: ListView(
+              VerticalSpace(height: AppHeight.h20),
+              Text(
+                'Payment',
+                style: AppTextTheme.lightTextTheme.bodyMedium?.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              VerticalSpace(height: AppHeight.h8),
+              Column(
                 children: [
                   PaymentOptions(
                     title: 'Credit Card/Debit card',
@@ -78,8 +78,8 @@ class CheckoutPaymentScreen extends StatelessWidget {
                   ),
                 ],
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
