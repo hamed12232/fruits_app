@@ -20,16 +20,6 @@ class AdaptiveLayout extends StatelessWidget {
     this.desktopLayout,
   });
 
-  // static DeviceType getDeviceType(BuildContext context) {
-  //   final width = MediaQuery.of(context).size.width;
-  //   if (width < Breakpoints.mobile) {
-  //     return DeviceType.mobile;
-  //   } else if (width < Breakpoints.tablet) {
-  //     return DeviceType.tablet;
-  //   } else {
-  //     return DeviceType.desktop;
-  //   }
-  // }
 
   @override
   Widget build(BuildContext context) {

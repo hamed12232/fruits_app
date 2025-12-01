@@ -47,10 +47,15 @@ class _OnboardingScreenMobileState extends State<OnboardingScreenMobile> {
       body: SafeArea(
         child: Column(
           children: [
-            Padding(
-              padding: EdgeInsets.only(top: AppHeight.h18, right: AppWidth.w37),
-              child: SkipButton(onPressed: _onSkip),
-            ),
+            _currentIndex != pages.length - 1
+                ? Padding(
+                    padding: EdgeInsets.only(
+                      top: AppHeight.h18,
+                      right: AppWidth.w37,
+                    ),
+                    child: SkipButton(onPressed: _onSkip),
+                  )
+                : SizedBox(height: AppHeight.h80),
             Expanded(
               child: PageView.builder(
                 controller: _pageController,
@@ -60,7 +65,7 @@ class _OnboardingScreenMobileState extends State<OnboardingScreenMobile> {
                   final p = pages[i];
                   return Column(
                     children: [
-                      VerticalSpace(height: AppHeight.h40),
+                      VerticalSpace(height: AppHeight.h56),
                       SvgPicture.asset(
                         p.imagePath,
                         width: AppWidth.w285,
@@ -85,19 +90,19 @@ class _OnboardingScreenMobileState extends State<OnboardingScreenMobile> {
                         count: pages.length,
                         activeColor: AppColors.primaryGreen,
                       ),
-                      VerticalSpace(height: AppHeight.h80),
-                      PrimaryButton(
-                        label: _currentIndex == pages.length - 1
-                            ? AppTextStrings.getStarted
-                            : AppTextStrings.next,
-                        color: AppColors.primaryGreen,
-                        onPressed: _onNext,
-                      ),
                     ],
                   );
                 },
               ),
             ),
+            PrimaryButton(
+              label: _currentIndex == pages.length - 1
+                  ? AppTextStrings.getStarted
+                  : AppTextStrings.next,
+              color: AppColors.primaryGreen,
+              onPressed: _onNext,
+            ),
+            VerticalSpace(height: AppHeight.h180),
           ],
         ),
       ),

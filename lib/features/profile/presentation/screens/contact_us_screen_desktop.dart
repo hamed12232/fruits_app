@@ -74,6 +74,8 @@ class ContactUsScreenDesktop extends StatelessWidget {
                 VerticalSpace(height: 12),
                 CustomInputField(hintText: '', heigh: 160, maxLines: 5),
                 VerticalSpace(height: 32),
+                PrimaryButton(label: AppTextStrings.submit, onPressed: () {}),
+                VerticalSpace(height: 32),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -96,8 +98,6 @@ class ContactUsScreenDesktop extends StatelessWidget {
                     ),
                   ],
                 ),
-                VerticalSpace(height: 40),
-                PrimaryButton(label: AppTextStrings.submit, onPressed: () {}),
               ],
             ),
           ),

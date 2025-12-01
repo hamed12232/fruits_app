@@ -66,7 +66,10 @@ class ContactUsScreenMobile extends StatelessWidget {
             VerticalSpace(height: AppHeight.h8),
             CustomInputField(hintText: '', heigh: AppHeight.h140, maxLines: 5),
             VerticalSpace(height: AppHeight.h30),
-            Row(
+          
+            PrimaryButton(label: AppTextStrings.submit, onPressed: () {}),
+            VerticalSpace(height: AppHeight.h30),
+              Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset(
@@ -80,9 +83,6 @@ class ContactUsScreenMobile extends StatelessWidget {
                 Image.asset(AppImagesStrings.youtube, width: 40, height: 40),
               ],
             ),
-            VerticalSpace(height: AppHeight.h30),
-            PrimaryButton(label: AppTextStrings.submit, onPressed: () {}),
-            VerticalSpace(height: AppHeight.h30),
           ],
         ),
       ),
