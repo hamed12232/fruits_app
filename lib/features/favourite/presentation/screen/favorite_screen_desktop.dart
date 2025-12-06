@@ -11,7 +11,10 @@ class FavoriteScreenDesktop extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.homebackground,
-      appBar: const CustomAppBar(title: AppTextStrings.favorite),
+      appBar: const CustomAppBar(
+        title: AppTextStrings.favorite,
+        showBackButton: false,
+      ),
       body: Center(
         child: Container(
           constraints: BoxConstraints(maxWidth: 1200),

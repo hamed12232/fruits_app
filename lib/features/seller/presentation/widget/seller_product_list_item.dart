@@ -40,7 +40,7 @@ class SellerProductListItem extends StatelessWidget {
         children: [
           Container(
             padding: EdgeInsets.all(AppWidth.w12),
-            
+
             decoration: BoxDecoration(
               color: AppColors.white,
               borderRadius: AppBorderRadius.r25,
@@ -49,7 +49,7 @@ class SellerProductListItem extends StatelessWidget {
                   color: AppColors.black.withValues(alpha: 0.2),
                   spreadRadius: 1,
                   blurRadius: 3,
-                offset: const Offset(0, 1),
+                  offset: const Offset(0, 1),
                 ),
               ],
             ),
@@ -87,34 +87,38 @@ class SellerProductListItem extends StatelessWidget {
                       Text(
                         productName,
                         style: AppTextTheme.lightTextTheme.labelMedium
-                            ?.copyWith(
-                              fontSize: AppSizes.sp16,
-                            ),
+                            ?.copyWith(fontSize: AppSizes.sp16),
                       ),
                       VerticalSpace(height: AppHeight.h7),
                       if (currentPrice != null)
                         Row(
                           children: [
-                            Text(
-                              currentPrice!,
-                              style: AppTextTheme.lightTextTheme.labelMedium
-                                  ?.copyWith(
-                                    fontSize: AppSizes.sp14,
-                                    color: AppColors.darkGray,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                            ),
-                            if (originalPrice != null) ...[
-                              SizedBox(width: AppWidth.w8),
-                              Text(
-                                originalPrice!,
+                            Flexible(
+                              child: Text(
+                                currentPrice!,
                                 style: AppTextTheme.lightTextTheme.labelMedium
                                     ?.copyWith(
                                       fontSize: AppSizes.sp14,
-                                      color: Color(0xffD1D1D1),
-                                      decoration: TextDecoration.lineThrough,
+                                      color: AppColors.darkGray,
                                       fontWeight: FontWeight.w400,
                                     ),
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                            if (originalPrice != null) ...[
+                              SizedBox(width: AppWidth.w8),
+                              Flexible(
+                                child: Text(
+                                  originalPrice!,
+                                  style: AppTextTheme.lightTextTheme.labelMedium
+                                      ?.copyWith(
+                                        fontSize: AppSizes.sp14,
+                                        color: Color(0xffD1D1D1),
+                                        decoration: TextDecoration.lineThrough,
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                  overflow: TextOverflow.ellipsis,
+                                ),
                               ),
                             ],
                           ],
@@ -146,7 +150,7 @@ class SellerProductListItem extends StatelessWidget {
                                 text: storeName,
                                 style: AppTextTheme.lightTextTheme.labelMedium
                                     ?.copyWith(
-                                    fontSize: AppSizes.sp16,
+                                      fontSize: AppSizes.sp16,
                                       fontWeight: FontWeight.bold,
                                     ),
                               ),

@@ -9,7 +9,9 @@ class OrdersScreenMobile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(title: AppTextStrings.myOrders),
+      appBar: const CustomAppBar(title: AppTextStrings.myOrders,
+      showBackButton: false,
+      ),
       body: const OrdersViewBody(),
     );
   }

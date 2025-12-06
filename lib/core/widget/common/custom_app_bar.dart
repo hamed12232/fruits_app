@@ -26,6 +26,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         child: Container(height: 1, color: Colors.black.withOpacity(0.1)),
       ),
       backgroundColor: AppColors.white,
+      automaticallyImplyLeading: false,
       leading: showBackButton
           ? IconButton(
               onPressed: onBackPressed ?? () => Navigator.pop(context),

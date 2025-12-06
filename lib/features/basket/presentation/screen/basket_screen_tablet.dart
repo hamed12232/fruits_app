@@ -20,7 +20,10 @@ class BasketScreenTablet extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: AppColors.homebackground,
-      appBar: const CustomAppBar(title: AppTextStrings.basket),
+      appBar: const CustomAppBar(
+        title: AppTextStrings.basket,
+        showBackButton: false,
+      ),
       body: Column(
         children: [
           Expanded(

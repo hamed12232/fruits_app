@@ -9,7 +9,10 @@ class OrdersScreenDesktop extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(title: AppTextStrings.myOrders),
+      appBar: const CustomAppBar(
+        title: AppTextStrings.myOrders,
+        showBackButton: false,
+      ),
       body: Center(
         child: Container(
           constraints: BoxConstraints(maxWidth: 1200),

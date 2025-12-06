@@ -18,7 +18,10 @@ class BasketScreenDesktop extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: AppColors.homebackground,
-      appBar: const CustomAppBar(title: AppTextStrings.basket),
+      appBar: const CustomAppBar(
+        title: AppTextStrings.basket,
+        showBackButton: false,
+      ),
       body: Center(
         child: Container(
           constraints: BoxConstraints(maxWidth: 1400),

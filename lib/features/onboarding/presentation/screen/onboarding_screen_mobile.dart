@@ -90,6 +90,7 @@ class _OnboardingScreenMobileState extends State<OnboardingScreenMobile> {
                         count: pages.length,
                         activeColor: AppColors.primaryGreen,
                       ),
+                      VerticalSpace(height: AppHeight.h24),
                     ],
                   );
                 },
@@ -102,7 +103,7 @@ class _OnboardingScreenMobileState extends State<OnboardingScreenMobile> {
               color: AppColors.primaryGreen,
               onPressed: _onNext,
             ),
-            VerticalSpace(height: AppHeight.h180),
+            VerticalSpace(height: AppHeight.h100),
           ],
         ),
       ),

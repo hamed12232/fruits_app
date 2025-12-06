@@ -14,7 +14,10 @@ class FavoriteScreenMobile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.homebackground,
-      appBar: const CustomAppBar(title: AppTextStrings.favorite),
+      appBar: const CustomAppBar(
+        title: AppTextStrings.favorite,
+        showBackButton: false,
+      ),
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(horizontal: AppWidth.w16),
         child: Column(

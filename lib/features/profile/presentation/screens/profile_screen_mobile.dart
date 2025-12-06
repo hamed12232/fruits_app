@@ -19,7 +19,10 @@ class ProfileScreenMobile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: CustomAppBar(title: AppTextStrings.fruitMarket),
+      appBar: const CustomAppBar(
+        title: AppTextStrings.fruitMarket,
+        showBackButton: false,
+      ),
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(horizontal: AppWidth.w20),
         child: Column(
@@ -63,7 +66,11 @@ class ProfileScreenMobile extends StatelessWidget {
               iconHeight: AppHeight.h30,
               iconWidth: AppWidth.w29,
               onTap: () {
-                Navigator.pushNamed(context, AppRoutesName.orders);
+                Navigator.pushNamed(
+                  context,
+                  AppRoutesName.navigationScreen,
+                  arguments: 1,
+                );
               },
             ),
             ProfileMenuItem(
@@ -72,7 +79,11 @@ class ProfileScreenMobile extends StatelessWidget {
               iconHeight: AppHeight.h30,
               iconWidth: AppWidth.w29,
               onTap: () {
-                Navigator.pushNamed(context, AppRoutesName.favorite);
+                Navigator.pushNamed(
+                  context,
+                  AppRoutesName.navigationScreen,
+                  arguments: 3,
+                );
               },
             ),
             ProfileMenuItem(

@@ -49,7 +49,8 @@ class AppRouteManager {
         widget = const OtpVerificationScreen();
         break;
       case AppRoutesName.navigationScreen:
-        widget = const MainNavigationScreen();
+        final initialIndex = settings.arguments as int? ?? 0;
+        widget = MainNavigationScreen(initialIndex: initialIndex);
         break;
       case AppRoutesName.home:
         widget = const HomeScreen();

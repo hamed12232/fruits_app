@@ -19,7 +19,10 @@ class ProfileScreenTablet extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: CustomAppBar(title: AppTextStrings.fruitMarket),
+      appBar: const CustomAppBar(
+        title: AppTextStrings.fruitMarket,
+        showBackButton: false,
+      ),
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(horizontal: AppWidth.w20),
         child: Column(
