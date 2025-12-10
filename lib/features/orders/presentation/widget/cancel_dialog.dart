@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fruits_app/core/style/spacing/vertical_space.dart';
 import 'package:fruits_app/core/utils/constant/app_colors.dart';
 import 'package:fruits_app/core/utils/constant/app_height.dart';
@@ -69,6 +70,7 @@ Future cancelDialogPortreit(context) async {
                 hintText: "",
                 controller: controller,
                 heigh: AppHeight.h79,
+                fontSize: AppSizes.sp12,
               ),
               PrimaryButton(
                 label: "Confirm Cancelation",
@@ -103,4 +105,165 @@ Future cancelDialogPortreit(context) async {
       ),
     ),
   );
+}
+
+Future cancelDialogLandscape(context) async => showDialog(
+  context: context,
+  builder: (context) => StatefulBuilder(
+    builder: (context, setState) => SizedBox(
+      child: SingleChildScrollView(
+        child: AlertDialog(
+          actionsPadding: EdgeInsets.zero,
+
+          backgroundColor: Colors.white,
+          title: Text(
+            "Cancel Order",
+            style: TextStyle(fontSize: 9.sp, fontWeight: FontWeight.bold),
+          ),
+
+          content: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Reason",
+                  style: TextStyle(
+                    fontSize: 9.sp,
+                    fontWeight: FontWeight.normal,
+                    color: const Color(0xff858D9A),
+                  ),
+                ),
+
+                const _LandscapeDropMenu(),
+
+                Text(
+                  "Reason", // Snippet had "Reason" twice? Maybe "Notes"? Portrait had "Notes". I'll use "Notes" based on context or stick to snippet if unsure. Snippet has "Reason" for both label 1 and label 2? Label 2 allows TextField. Usually that's "Notes". I will use "Notes" to be logical compared to portrait.
+                  style: TextStyle(
+                    fontSize: 9.sp,
+                    fontWeight: FontWeight.normal,
+                    color: const Color(0xff858D9A),
+                  ),
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(25.r),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.25),
+                        blurRadius: 4,
+                      ),
+                    ],
+                  ),
+                  child: TextField(
+                    textAlign: TextAlign.start,
+                    maxLines: 3,
+                    decoration: InputDecoration(
+                      // contentPadding: EdgeInsets.all(20),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(25.r),
+                        borderSide: BorderSide.none,
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 10.h),
+                Center(
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width * .3,
+                    child: PrimaryButton(
+                      label: "Confirm Cancelation",
+                      fontSize: 9.sp,
+                      onPressed: () {},
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          actionsAlignment: MainAxisAlignment.center,
+          actions: [
+            TextButton(
+              child: Text(
+                "Close",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 9.sp,
+                  fontWeight: FontWeight.w400,
+                  color: const Color(0xff656565),
+                ),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop(); // Close the dialog
+              },
+            ),
+          ],
+        ),
+      ),
+    ),
+  ),
+);
+
+class _LandscapeDropMenu extends StatefulWidget {
+  const _LandscapeDropMenu();
+
+  @override
+  State<_LandscapeDropMenu> createState() => _LandscapeDropMenuState();
+}
+
+class _LandscapeDropMenuState extends State<_LandscapeDropMenu> {
+  String selectedValue = 'Option 1';
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(top: 20.h, bottom: 12.h),
+      child: Container(
+        padding: EdgeInsets.only(
+          left: 10.w, // Adjusted padding
+          right: 18.w,
+          top: 10.h,
+          bottom: 10.h,
+        ),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(25.r),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.25),
+              spreadRadius: 0,
+              blurRadius: 4,
+            ),
+          ],
+        ),
+        height: 70.h,
+        width:
+            MediaQuery.of(context).size.width *
+            .3, // Match button width? Snippet said .3
+        child: DropdownButton<String>(
+          dropdownColor: Colors.white,
+          underline: const SizedBox(),
+          borderRadius: BorderRadius.circular(25.r),
+          value: selectedValue,
+          items: <String>['Option 1', 'Option 2', 'Option 3'].map((
+            String value,
+          ) {
+            return DropdownMenuItem<String>(
+              value: value,
+              child: Text(
+                value,
+                style: TextStyle(fontSize: 9.sp, fontWeight: FontWeight.w400),
+              ),
+            );
+          }).toList(),
+          onChanged: (String? newValue) {
+            setState(() {
+              selectedValue = newValue!;
+            });
+          },
+        ),
+      ),
+    );
+  }
 }

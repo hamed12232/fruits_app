@@ -10,6 +10,7 @@ class ProductOptionRadio extends StatelessWidget {
   final String price;
   final bool isSelected;
   final VoidCallback onTap;
+  final double? fontSize;
 
   const ProductOptionRadio({
     super.key,
@@ -17,6 +18,7 @@ class ProductOptionRadio extends StatelessWidget {
     required this.price,
     required this.isSelected,
     required this.onTap,
+    this.fontSize,
   });
 
   @override
@@ -63,7 +65,7 @@ class ProductOptionRadio extends StatelessWidget {
               child: Text(
                 label,
                 style: AppTextTheme.lightTextTheme.headlineMedium?.copyWith(
-                  fontSize: AppSizes.sp14,
+                  fontSize:fontSize?? AppSizes.sp14,
                   color: AppColors.black,
                   fontWeight: FontWeight.w400,
                 ),
@@ -72,7 +74,7 @@ class ProductOptionRadio extends StatelessWidget {
             Text(
               price,
               style: AppTextTheme.lightTextTheme.labelMedium?.copyWith(
-                fontSize: AppSizes.sp14,
+                fontSize:fontSize?? AppSizes.sp14,
                 color: AppColors.black,
                 fontWeight: FontWeight.w600,
               ),

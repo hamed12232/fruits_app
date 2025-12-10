@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fruits_app/core/style/spacing/vertical_space.dart';
 import 'package:fruits_app/core/utils/constant/app_colors.dart';
 import 'package:fruits_app/core/utils/constant/app_images_strings.dart';
+import 'package:fruits_app/core/utils/constant/app_sizes.dart';
 import 'package:fruits_app/core/utils/constant/app_text_strings.dart';
 import 'package:fruits_app/core/widget/button/primary_button.dart';
 import 'package:fruits_app/core/widget/common/custom_app_bar.dart';
@@ -44,7 +45,11 @@ class ContactUsScreenDesktop extends StatelessWidget {
                   ),
                 ),
                 VerticalSpace(height: 12),
-                CustomInputField(hintText: '', heigh: 56),
+                CustomInputField(
+                  hintText: '',
+                  heigh: 56,
+                  fontSize: AppSizes.sp14,
+                ),
                 VerticalSpace(height: 24),
                 Align(
                   alignment: Alignment.centerLeft,
@@ -72,7 +77,12 @@ class ContactUsScreenDesktop extends StatelessWidget {
                   ),
                 ),
                 VerticalSpace(height: 12),
-                CustomInputField(hintText: '', heigh: 160, maxLines: 5),
+                CustomInputField(
+                  hintText: '',
+                  heigh: 160,
+                  maxLines: 5,
+                  fontSize: AppSizes.sp14,
+                ),
                 VerticalSpace(height: 32),
                 PrimaryButton(label: AppTextStrings.submit, onPressed: () {}),
                 VerticalSpace(height: 32),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_app/core/widget/adaptive_layout/adaptive_layout.dart';
 import 'package:fruits_app/features/basket/presentation/screen/basket_screen_desktop.dart';
+import 'package:fruits_app/features/basket/presentation/screen/basket_screen_landscape.dart';
 import 'package:fruits_app/features/basket/presentation/screen/basket_screen_mobile.dart';
 import 'package:fruits_app/features/basket/presentation/screen/basket_screen_tablet.dart';
 
@@ -11,8 +12,16 @@ class BasketScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AdaptiveLayout(
-      mobileLayout: const BasketScreenMobile(),
-      tabletLayout: const BasketScreenTablet(),
+      mobileLayout: OrientationBuilder(
+        builder: (context, orientation) => orientation == Orientation.landscape
+            ? const BasketScreenLandscape()
+            : const BasketScreenMobile(),
+      ),
+      tabletLayout: OrientationBuilder(
+        builder: (context, orientation) => orientation == Orientation.landscape
+            ? const BasketScreenLandscape()
+            : const BasketScreenTablet(),
+      ),
       desktopLayout: const BasketScreenDesktop(),
     );
   }

@@ -79,6 +79,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
   }
 
   @override
+  @override
   Widget build(BuildContext context) {
     final TextTheme textTheme = Theme.of(context).textTheme;
     return Scaffold(

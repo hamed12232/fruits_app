@@ -6,10 +6,10 @@ import 'package:fruits_app/core/utils/constant/app_width.dart';
 import 'package:fruits_app/core/utils/theme/custom_theme/text_theme.dart';
 
 class PaymentOptions extends StatefulWidget {
-  const PaymentOptions({super.key, required this.title, required this.leading});
+  const PaymentOptions({super.key, required this.title, required this.leading, this.fontSize});
   final String title;
   final Widget leading;
-
+  final double? fontSize;
   @override
   State<PaymentOptions> createState() => _PaymentOptionsState();
 }
@@ -29,7 +29,7 @@ class _PaymentOptionsState extends State<PaymentOptions> {
         ),
       ),
       child: InkWell(
-        onTap: () => setState(() => isSelected=!isSelected),
+        onTap: () => setState(() => isSelected = !isSelected),
         borderRadius: BorderRadius.circular(12),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
@@ -42,7 +42,7 @@ class _PaymentOptionsState extends State<PaymentOptions> {
                   widget.title,
                   style: AppTextTheme.lightTextTheme.bodyMedium?.copyWith(
                     color: AppColors.black,
-                    fontSize: AppSizes.sp16,
+                    fontSize: widget.fontSize?? AppSizes.sp16,
                     fontWeight: FontWeight.w600,
                   ),
                 ),

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:fruits_app/core/widget/adaptive_layout/adaptive_layout.dart';
 import 'package:fruits_app/features/onboarding/presentation/screen/onboarding_screen.dart';
 import 'package:fruits_app/features/splash/presentation/screen/splash_screen_desktop.dart';
+import 'package:fruits_app/features/splash/presentation/screen/splash_screen_landscape.dart';
 import 'package:fruits_app/features/splash/presentation/screen/splash_screen_mobile.dart';
 import 'package:fruits_app/features/splash/presentation/screen/splash_screen_tablet.dart';
 
@@ -35,7 +36,14 @@ class _SplashScreenAdaptiveState extends State<SplashScreenAdaptive> {
   Widget build(BuildContext context) {
     return AdaptiveLayout(
       mobileLayout: const SplashScreenMobile(),
-      tabletLayout: const SplashScreenTablet(),
+      tabletLayout: OrientationBuilder(
+        builder: (context, orientation) {
+          if (orientation == Orientation.landscape) {
+            return const SplashScreenLandscape();
+          }
+          return const SplashScreenTablet();
+        },
+      ),
       desktopLayout: const SplashScreenDesktop(),
     );
   }

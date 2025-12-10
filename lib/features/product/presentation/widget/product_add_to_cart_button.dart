@@ -9,10 +9,14 @@ import 'package:fruits_app/core/utils/theme/custom_theme/text_theme.dart';
 
 class ProductAddToCartButton extends StatelessWidget {
   final VoidCallback onPressed;
+  final double? height;
+  final double? fontSize;
 
   const ProductAddToCartButton({
     super.key,
     required this.onPressed,
+    this.height,
+    this.fontSize,
   });
 
   @override
@@ -24,7 +28,7 @@ class ProductAddToCartButton extends StatelessWidget {
       ),
       child: SizedBox(
       
-        height: AppHeight.h52,
+        height: height ?? AppHeight.h56,
         child: ElevatedButton.icon(
           onPressed: onPressed,
           style: ElevatedButton.styleFrom(
@@ -36,8 +40,7 @@ class ProductAddToCartButton extends StatelessWidget {
           ),
           icon: Image.asset(
             AppImagesStrings.addToCart,
-            width: AppWidth.w32,
-            height: AppHeight.h32,
+          
             fit: BoxFit.cover,
           //  color: AppColors.primaryGreen,
           ),
@@ -45,7 +48,7 @@ class ProductAddToCartButton extends StatelessWidget {
             'Add to Cart',
             style: AppTextTheme.lightTextTheme.bodyMedium?.copyWith(
               color: AppColors.white,
-              fontSize: AppSizes.sp16,
+              fontSize:fontSize?? AppSizes.sp16,
               fontWeight: FontWeight.w600,
             ),
           ),

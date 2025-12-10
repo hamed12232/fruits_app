@@ -13,6 +13,7 @@ class ProductDetailsSection extends StatelessWidget {
   final String? originalPrice;
   final String description;
   final String sellPer;
+  final double? fontSize;
 
   const ProductDetailsSection({
     super.key,
@@ -22,6 +23,7 @@ class ProductDetailsSection extends StatelessWidget {
     this.originalPrice,
     required this.description,
     required this.sellPer,
+    this.fontSize,
   });
 
   @override
@@ -36,7 +38,7 @@ class ProductDetailsSection extends StatelessWidget {
             categoryName,
             style: AppTextTheme.lightTextTheme.headlineLarge?.copyWith(
               color: AppColors.primaryGreen,
-              fontSize: AppSizes.sp16,
+              fontSize: fontSize ?? AppSizes.sp16,
               fontWeight: FontWeight.w400,
             ),
           ),
@@ -48,7 +50,7 @@ class ProductDetailsSection extends StatelessWidget {
               Text(
                 productName,
                 style: AppTextTheme.lightTextTheme.labelMedium?.copyWith(
-                  fontSize: AppSizes.sp24,
+                  fontSize: fontSize ?? AppSizes.sp24,
                   fontWeight: FontWeight.bold,
                   color: AppColors.black,
                 ),
@@ -60,7 +62,7 @@ class ProductDetailsSection extends StatelessWidget {
                     'Price',
                     style: AppTextTheme.lightTextTheme.headlineMedium?.copyWith(
                       color: AppColors.greyTextColor,
-                      fontSize: AppSizes.sp14,
+                      fontSize:fontSize?? AppSizes.sp14,
                       fontWeight: FontWeight.w400,
                     ),
                   ),
@@ -70,7 +72,7 @@ class ProductDetailsSection extends StatelessWidget {
                       Text(
                         currentPrice,
                         style: AppTextTheme.lightTextTheme.labelMedium?.copyWith(
-                          fontSize: AppSizes.sp16,
+                          fontSize:fontSize?? AppSizes.sp16,
                           fontWeight: FontWeight.bold,
                           color: AppColors.black,
                         ),
@@ -80,7 +82,7 @@ class ProductDetailsSection extends StatelessWidget {
                         Text(
                           originalPrice!,
                           style: AppTextTheme.lightTextTheme.labelMedium?.copyWith(
-                            fontSize: AppSizes.sp14,
+                            fontSize:fontSize?? AppSizes.sp14,
                             color: AppColors.upToTenPercentOff,
                             decoration: TextDecoration.lineThrough,
                             fontWeight: FontWeight.w400,
@@ -98,7 +100,7 @@ class ProductDetailsSection extends StatelessWidget {
           Text(
             description,
             style: AppTextTheme.lightTextTheme.bodyMedium?.copyWith(
-              fontSize: AppSizes.sp14,
+              fontSize: fontSize ?? AppSizes.sp14,
               color: AppColors.greyTextColor,
               fontWeight: FontWeight.w400,
             ),
@@ -108,7 +110,7 @@ class ProductDetailsSection extends StatelessWidget {
           Text(
             'Sell Per : $sellPer',
             style: AppTextTheme.lightTextTheme.headlineMedium?.copyWith(
-              fontSize: AppSizes.sp14,
+              fontSize:fontSize?? AppSizes.sp14,
               color: AppColors.greyTextColor,
               fontWeight: FontWeight.w400,
             ),

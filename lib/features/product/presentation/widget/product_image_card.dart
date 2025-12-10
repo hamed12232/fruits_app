@@ -10,19 +10,21 @@ class ProductImageCard extends StatelessWidget {
   final String imagePath;
   final bool hasDiscount;
   final String discountText;
+  final double? height;
 
   const ProductImageCard({
     super.key,
     required this.imagePath,
     this.hasDiscount = false,
     this.discountText = '10% Off Discount',
+    this.height,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: AppWidth.w16),
-      height: AppHeight.h221,
+      height: height ?? AppHeight.h221,
       decoration: BoxDecoration(
         color: AppColors.lightPink,
         borderRadius: AppBorderRadius.r25,

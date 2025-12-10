@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fruits_app/core/utils/constant/app_sizes.dart';
 
 class CustomInputField extends StatelessWidget {
   final String hintText;
@@ -8,12 +7,14 @@ class CustomInputField extends StatelessWidget {
   final String? Function(String?)? validator;
   final double heigh;
   final int? maxLines;
+  final double fontSize;
 
   const CustomInputField({
     super.key,
     required this.hintText,
     this.isPassword = false,
     this.controller,
+    required this.fontSize,
     this.validator,
     required this.heigh,
     this.maxLines = 1,
@@ -36,7 +37,7 @@ class CustomInputField extends StatelessWidget {
           hintText: hintText,
           isDense: true,
           hintStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
-            fontSize: AppSizes.sp14,
+            fontSize: fontSize,
             fontWeight: FontWeight.w500,
           ),
 

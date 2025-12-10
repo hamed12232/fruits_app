@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_app/core/widget/adaptive_layout/adaptive_layout.dart';
 import 'package:fruits_app/features/orders/presentation/screen/orders_screen_desktop.dart';
+import 'package:fruits_app/features/orders/presentation/screen/orders_screen_landscape.dart';
 import 'package:fruits_app/features/orders/presentation/screen/orders_screen_mobile.dart';
 
 class OrdersScreen extends StatelessWidget {
@@ -10,7 +11,11 @@ class OrdersScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AdaptiveLayout(
-      mobileLayout: OrdersScreenMobile(),
+      mobileLayout: OrientationBuilder(
+        builder: (context, orientation) => orientation == Orientation.landscape
+            ? const OrdersScreenLandscape()
+            : const OrdersScreenMobile(),
+      ),
       desktopLayout: OrdersScreenDesktop(),
     );
   }

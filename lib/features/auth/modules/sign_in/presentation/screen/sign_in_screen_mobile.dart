@@ -26,6 +26,7 @@ class _SignInScreenMobileState extends State<SignInScreenMobile> {
   final TextEditingController passwordController = TextEditingController();
 
   @override
+  @override
   Widget build(BuildContext context) {
     final TextTheme textTheme = Theme.of(context).textTheme;
     return Scaffold(
@@ -65,96 +66,95 @@ class _SignInScreenMobileState extends State<SignInScreenMobile> {
                     style: textTheme.displayLarge,
                   ),
                   VerticalSpace(height: AppHeight.h30),
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: Text.rich(
-                      TextSpan(
-                        text: AppTextStrings.phoneNumber,
-                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          fontSize: AppSizes.sp14,
-                          color: AppColors.titleOfTextField,
-                        ),
-                        children: [
-                          const TextSpan(
-                            text: ' *',
-                            style: TextStyle(color: Colors.red),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  VerticalSpace(height: AppHeight.h7),
-                  CustomPhoneNumber(),
-
-                  CustomAttributeWithTextField(
-                    fullNameController: passwordController,
-                    attributeName: AppTextStrings.password,
-                    hintText: AppTextStrings.password,
-                  ),
-                  VerticalSpace(height: AppHeight.h21),
-                  Align(
-                    alignment: Alignment.topRight,
-                    child: GestureDetector(
-                      onTap: () {
-                        Navigator.pushNamed(
-                          context,
-                          VerifyNumberScreen.routeName,
-                        );
-                      },
-                      child: Text(
-                        AppTextStrings.forgotPassword,
-                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          color: AppColors.darkBlue,
-                          decoration: TextDecoration.underline,
-                        ),
-                      ),
-                    ),
-                  ),
-                  VerticalSpace(height: AppHeight.h21),
-                  PrimaryButton(
-                    label: AppTextStrings.login,
-                    onPressed: () {
-                      Navigator.pushNamed(
-                        context,
-                        MainNavigationScreen.routeName,
-                      );
-                    },
-                    height: AppHeight.h52,
-                    width: double.infinity,
-                  ),
-                  VerticalSpace(height: AppHeight.h41),
-                  Center(
-                    child: RichText(
-                      text: TextSpan(
-                        children: [
-                          TextSpan(
-                            text: AppTextStrings.dontHaveAnAccount,
-                            style: Theme.of(context).textTheme.bodyMedium,
-                          ),
-                          TextSpan(
-                            text: AppTextStrings.signUp,
-                            style: Theme.of(context).textTheme.bodyMedium
-                                ?.copyWith(
-                                  color: AppColors.darkBlue,
-                                  decoration: TextDecoration.underline,
-                                ),
-                            recognizer: TapGestureRecognizer()
-                              ..onTap = () {
-                                Navigator.of(
-                                  context,
-                                ).pushNamed(SignUpScreen.routeName);
-                              },
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
+                  _buildForm(context),
                 ],
               ),
             ),
           ),
         ),
       ),
+    );
+  }
+
+  Widget _buildForm(BuildContext context) {
+    return Column(
+      children: [
+        Align(
+          alignment: Alignment.topLeft,
+          child: Text.rich(
+            TextSpan(
+              text: AppTextStrings.phoneNumber,
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                fontSize: AppSizes.sp14,
+                color: AppColors.titleOfTextField,
+              ),
+              children: [
+                const TextSpan(
+                  text: ' *',
+                  style: TextStyle(color: Colors.red),
+                ),
+              ],
+            ),
+          ),
+        ),
+        VerticalSpace(height: AppHeight.h7),
+        CustomPhoneNumber(),
+
+        CustomAttributeWithTextField(
+          fullNameController: passwordController,
+          attributeName: AppTextStrings.password,
+          hintText: AppTextStrings.password,
+        ),
+        VerticalSpace(height: AppHeight.h21),
+        Align(
+          alignment: Alignment.topRight,
+          child: GestureDetector(
+            onTap: () {
+              Navigator.pushNamed(context, VerifyNumberScreen.routeName);
+            },
+            child: Text(
+              AppTextStrings.forgotPassword,
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                color: AppColors.darkBlue,
+                decoration: TextDecoration.underline,
+              ),
+            ),
+          ),
+        ),
+        VerticalSpace(height: AppHeight.h21),
+        PrimaryButton(
+          label: AppTextStrings.login,
+          onPressed: () {
+            Navigator.pushNamed(context, MainNavigationScreen.routeName);
+          },
+          height: AppHeight.h52,
+          width: double.infinity,
+        ),
+        VerticalSpace(height: AppHeight.h41),
+        Center(
+          child: RichText(
+            text: TextSpan(
+              children: [
+                TextSpan(
+                  text: AppTextStrings.dontHaveAnAccount,
+                  style: Theme.of(context).textTheme.bodyMedium,
+                ),
+                TextSpan(
+                  text: AppTextStrings.signUp,
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color: AppColors.darkBlue,
+                    decoration: TextDecoration.underline,
+                  ),
+                  recognizer: TapGestureRecognizer()
+                    ..onTap = () {
+                      Navigator.of(context).pushNamed(SignUpScreen.routeName);
+                    },
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
     );
   }
 

@@ -7,12 +7,14 @@ class BasketCostRow extends StatelessWidget {
   final String label;
   final double amount;
   final bool isBold;
+  final double? fontSize;
 
   const BasketCostRow({
     super.key,
     required this.label,
     required this.amount,
     required this.isBold,
+    this.fontSize,
   });
 
   @override
@@ -23,7 +25,7 @@ class BasketCostRow extends StatelessWidget {
         Text(
           label,
           style: AppTextTheme.lightTextTheme.headlineMedium?.copyWith(
-            fontSize: AppSizes.sp16,
+            fontSize: fontSize?? AppSizes.sp16,
             color: isBold? AppColors.primaryGreen : AppColors.light2Gray,
             fontWeight: isBold ? FontWeight.bold : FontWeight.w400,
           ),
@@ -31,7 +33,7 @@ class BasketCostRow extends StatelessWidget {
         Text(
           '${amount.toStringAsFixed(2)} KD',
           style: AppTextTheme.lightTextTheme.headlineLarge?.copyWith(
-            fontSize: AppSizes.sp16,
+            fontSize: fontSize?? AppSizes.sp16,
             color: isBold ? AppColors.primaryGreen : AppColors.light2Gray,
             fontWeight: isBold ? FontWeight.bold : FontWeight.w400,
           ),

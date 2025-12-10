@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_app/core/style/spacing/vertical_space.dart';
 import 'package:fruits_app/core/utils/constant/app_colors.dart';
-import 'package:fruits_app/core/utils/constant/app_images_strings.dart';
 import 'package:fruits_app/core/utils/constant/app_text_strings.dart';
 import 'package:fruits_app/core/widget/button/primary_button.dart';
 import 'package:fruits_app/core/widget/text_field/custom_phone_number_field.dart';
@@ -50,9 +49,9 @@ class _EditProfileScreenDesktopState extends State<EditProfileScreenDesktop> {
                         ),
                       ),
                       child: Center(
-                        child: Image.asset(
-                          AppImagesStrings.user,
-                          width: 50,
+                        child: Icon(
+                          Icons.person,
+                          size: 50,
                           color: AppColors.greyTextColor,
                         ),
                       ),
@@ -77,6 +76,7 @@ class _EditProfileScreenDesktopState extends State<EditProfileScreenDesktop> {
                   controller: _fullNameController,
                   hintText: AppTextStrings.fullName,
                   heigh: 56,
+                  fontSize: 14,
                 ),
                 VerticalSpace(height: 24),
                 CustomPhoneNumber(),
@@ -86,6 +86,7 @@ class _EditProfileScreenDesktopState extends State<EditProfileScreenDesktop> {
                   hintText: AppTextStrings.password,
                   heigh: 56,
                   isPassword: true,
+                  fontSize: 14,
                 ),
                 VerticalSpace(height: 48),
                 PrimaryButton(label: AppTextStrings.submit, onPressed: () {}),

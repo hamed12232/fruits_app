@@ -8,6 +8,7 @@ import 'package:fruits_app/core/widget/button/primary_button.dart';
 import 'package:fruits_app/core/widget/success/success_operation.dart';
 import 'package:fruits_app/features/checkout/presentation/screen/checkout_payment_screen.dart';
 import 'package:fruits_app/features/checkout/presentation/screen/checkout_screen.dart';
+import 'package:fruits_app/features/checkout/presentation/widget/successfully_view.dart';
 
 class CheckoutMainScreen extends StatefulWidget {
   const CheckoutMainScreen({super.key});
@@ -55,14 +56,14 @@ class _CheckoutMainScreenState extends State<CheckoutMainScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final isLandscape =
+        MediaQuery.of(context).orientation == Orientation.landscape;
+
     return Scaffold(
       appBar: AppBar(
         bottom: PreferredSize(
           preferredSize: Size.fromHeight(1),
-          child: Container(
-            height: 1,
-            color: Colors.black.withOpacity(0.1), 
-          ),
+          child: Container(height: 1, color: Colors.black.withOpacity(0.1)),
         ),
         backgroundColor: AppColors.white,
         leading: IconButton(
@@ -83,16 +84,7 @@ class _CheckoutMainScreenState extends State<CheckoutMainScreen> {
           ),
         ),
       ),
-
-      body: PageView(
-        controller: _pageController,
-        physics: NeverScrollableScrollPhysics(),
-        children: steps,
-        onPageChanged: (index) {
-          setState(() => currentIndex = index);
-        },
-      ),
-
+      body: isLandscape ? _buildLandscapeBody() : _buildPortraitBody(),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(30.0),
         child: PrimaryButton(
@@ -100,12 +92,39 @@ class _CheckoutMainScreenState extends State<CheckoutMainScreen> {
           width: double.infinity,
           onPressed: () {
             if (currentIndex == steps.length - 1) {
-              Navigator.pushNamed(context, SuccessOperation.routeName);
+              Navigator.pushNamed(context,isLandscape? SuccessfullyView.routeName: SuccessOperation.routeName);
             } else {
               goNext();
             }
           },
         ),
+      ),
+    );
+  }
+
+  Widget _buildPortraitBody() {
+    return PageView(
+      controller: _pageController,
+      physics: NeverScrollableScrollPhysics(),
+      children: steps,
+      onPageChanged: (index) {
+        setState(() => currentIndex = index);
+      },
+    );
+  }
+
+  Widget _buildLandscapeBody() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 30
+      ),
+      child: PageView(
+        controller: _pageController,
+        physics: NeverScrollableScrollPhysics(),
+        children: steps,
+        onPageChanged: (index) {
+          setState(() => currentIndex = index);
+        },
       ),
     );
   }

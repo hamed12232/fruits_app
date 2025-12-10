@@ -16,6 +16,7 @@ class WelcomeScreen extends StatelessWidget {
   static final String routeName = '/welcome';
 
   @override
+  @override
   Widget build(BuildContext context) {
     final TextTheme textTheme = Theme.of(context).textTheme;
 
@@ -50,7 +51,7 @@ class WelcomeScreen extends StatelessWidget {
                   style: textTheme.displayLarge,
                 ),
                 VerticalSpace(height: AppHeight.h52),
-      
+
                 AuthButton(
                   label: AppTextStrings.signInWithPhoneNumber,
                   isIcon: true,
@@ -67,7 +68,7 @@ class WelcomeScreen extends StatelessWidget {
                   image: AppImagesStrings.googleImage,
                   onPressed: () {},
                 ),
-      
+
                 VerticalSpace(height: AppHeight.h21),
                 AuthButton(
                   label: AppTextStrings.signInWithFacebook,
@@ -76,9 +77,9 @@ class WelcomeScreen extends StatelessWidget {
                   filledColor: AppColors.blue,
                   foregroundColor: Colors.white,
                 ),
-      
+
                 VerticalSpace(height: AppHeight.h79),
-      
+
                 Center(
                   child: RichText(
                     text: TextSpan(
@@ -116,7 +117,7 @@ class WelcomeScreen extends StatelessWidget {
                           style: Theme.of(context).textTheme.bodyMedium
                               ?.copyWith(color: AppColors.grey10),
                         ),
-      
+
                         TextSpan(
                           text: AppTextStrings.termsOfService,
                           style: Theme.of(context).textTheme.bodyMedium
@@ -128,7 +129,7 @@ class WelcomeScreen extends StatelessWidget {
                           style: Theme.of(context).textTheme.bodyMedium
                               ?.copyWith(color: AppColors.grey10),
                         ),
-      
+
                         TextSpan(
                           text: AppTextStrings.privacyPolicy,
                           style: Theme.of(context).textTheme.bodyMedium

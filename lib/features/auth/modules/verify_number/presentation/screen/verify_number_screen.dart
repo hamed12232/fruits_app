@@ -15,6 +15,7 @@ class VerifyNumberScreen extends StatelessWidget {
   static const routeName = '/verify-number';
 
   @override
+  @override
   Widget build(BuildContext context) {
     final TextTheme textTheme = Theme.of(context).textTheme;
     return Scaffold(

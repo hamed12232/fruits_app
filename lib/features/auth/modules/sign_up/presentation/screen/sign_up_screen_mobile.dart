@@ -22,6 +22,7 @@ class _SignUpScreenMobileState extends State<SignUpScreenMobile> {
   final TextEditingController fullNameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   @override
+  @override
   Widget build(BuildContext context) {
     final TextTheme textTheme = Theme.of(context).textTheme;
     return Scaffold(
@@ -86,7 +87,6 @@ class _SignUpScreenMobileState extends State<SignUpScreenMobile> {
                     ),
                   ),
                   VerticalSpace(height: AppHeight.h7),
-
                   CustomPhoneNumber(),
 
                   CustomAttributeWithTextField(

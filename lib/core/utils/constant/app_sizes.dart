@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppSizes {
+  static double get sp7 => kIsWeb ? 7 : 7.sp;
   static double get sp14 => kIsWeb ? 14 : 14.sp;
   static double get sp15 => kIsWeb ? 15 : 15.sp;
   static double get sp16 => kIsWeb ? 16 : 16.sp;

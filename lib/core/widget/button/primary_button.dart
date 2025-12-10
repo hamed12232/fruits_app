@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:fruits_app/core/utils/constant/app_colors.dart';
 import 'package:fruits_app/core/utils/constant/app_height.dart';
 import 'package:fruits_app/core/utils/constant/app_radius.dart';
-import 'package:fruits_app/core/utils/constant/app_sizes.dart';
 import 'package:fruits_app/core/utils/constant/app_width.dart';
 
 class PrimaryButton extends StatelessWidget {
@@ -11,10 +10,12 @@ class PrimaryButton extends StatelessWidget {
   final Color color;
   final Color textColor;
   final Color borderColor;
+  final double fontSize;
   const PrimaryButton({
     super.key,
     required this.label,
     required this.onPressed,
+    this.fontSize = 16,
     this.color = AppColors.primaryGreen,
     this.width,
     this.height,
@@ -42,7 +43,7 @@ class PrimaryButton extends StatelessWidget {
           label,
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
             color: textColor,
-            fontSize: AppSizes.sp16,
+            fontSize: fontSize,
             fontWeight: FontWeight.w600,
           ),
         ),

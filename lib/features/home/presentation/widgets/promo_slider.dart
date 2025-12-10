@@ -7,7 +7,8 @@ import 'package:fruits_app/core/utils/constant/app_width.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class PromoSlider extends StatefulWidget {
-  const PromoSlider({super.key});
+  final double? height;
+  const PromoSlider({super.key, this.height});
 
   @override
   State<PromoSlider> createState() => _PromoSliderState();
@@ -28,7 +29,7 @@ class _PromoSliderState extends State<PromoSlider>
       children: [
         CarouselSlider(
           options: CarouselOptions(
-            height: AppHeight.h130,
+            height: widget.height ?? AppHeight.h130,
             onPageChanged: (index, reason) {
               setState(() {
                 _index = index;
@@ -52,7 +53,7 @@ class _PromoSliderState extends State<PromoSlider>
             count: 4,
             size: const Size(49, 7),
             effect: WormEffect(
-              activeDotColor:  AppColors.primaryGreen,
+              activeDotColor: AppColors.primaryGreen,
               dotColor: AppColors.lightGray,
               dotWidth: AppWidth.w8,
               dotHeight: AppHeight.h8,

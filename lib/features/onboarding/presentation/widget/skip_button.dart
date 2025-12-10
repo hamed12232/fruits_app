@@ -7,8 +7,9 @@ import 'package:fruits_app/core/utils/constant/app_text_strings.dart';
 import 'package:fruits_app/core/utils/constant/app_width.dart';
 
 class SkipButton extends StatelessWidget {
-  const SkipButton({super.key, required this.onPressed});
+  const SkipButton({super.key, required this.onPressed, this.fontSize});
   final void Function() onPressed;
+  final double? fontSize;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +26,7 @@ class SkipButton extends StatelessWidget {
                 AppTextStrings.skip,
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                   color: AppColors.darkGray,
-                  fontSize: AppSizes.sp15,
+                  fontSize: fontSize ?? AppSizes.sp15,
                   fontWeight: FontWeight.w500,
                 ),
               ),

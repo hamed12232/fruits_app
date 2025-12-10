@@ -12,11 +12,13 @@ class CheckoutOrdersDetails extends StatelessWidget {
     required this.items,
     required this.subtotal,
     required this.shipping,
+    this.fontSize,
   });
 
   final int items;
   final double subtotal;
   final double shipping;
+  final double? fontSize;
 
   @override
   Widget build(BuildContext context) {
@@ -33,41 +35,39 @@ class CheckoutOrdersDetails extends StatelessWidget {
             children: [
               Text(
                 'Total Items',
-                style: AppTextTheme.lightTextTheme.headlineMedium
-                    ?.copyWith(
-                      fontSize: AppSizes.sp16,
-                      color: AppColors.light2Gray,
-                      fontWeight: FontWeight.w400,
-                    ),
+                style: AppTextTheme.lightTextTheme.headlineMedium?.copyWith(
+                  fontSize:fontSize?? AppSizes.sp16,
+                  color: AppColors.light2Gray,
+                  fontWeight: FontWeight.w400,
+                ),
               ),
               Text(
                 '$items Items in cart',
-                style: AppTextTheme.lightTextTheme.headlineLarge
-                    ?.copyWith(
-                      fontSize: AppSizes.sp16,
-                      color: AppColors.light2Gray,
-                      fontWeight: FontWeight.bold,
-                    ),
+                style: AppTextTheme.lightTextTheme.headlineLarge?.copyWith(
+                  fontSize:fontSize?? AppSizes.sp16,
+                  color: AppColors.light2Gray,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ],
           ),
           SizedBox(height: AppHeight.h12),
-          BasketCostRow(
-            label: 'Subtotal',
-            amount: subtotal,
-            isBold: false,
+          BasketCostRow(label: 'Subtotal', amount: subtotal, isBold: false,
+          fontSize: fontSize,
           ),
           SizedBox(height: AppHeight.h12),
           BasketCostRow(
             label: 'Shipping Charges',
             amount: shipping,
             isBold: false,
+            fontSize: fontSize,
           ),
           SizedBox(height: AppHeight.h12),
           Divider(color: AppColors.lightGray, thickness: 1.5),
           SizedBox(height: AppHeight.h12),
           BasketCostRow(
             label: 'Bag Total',
+            fontSize: fontSize,
             amount: subtotal + shipping,
             isBold: true,
           ),
@@ -76,4 +76,3 @@ class CheckoutOrdersDetails extends StatelessWidget {
     );
   }
 }
-

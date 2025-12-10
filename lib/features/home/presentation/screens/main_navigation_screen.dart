@@ -60,10 +60,22 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final isLandscape =
+        MediaQuery.of(context).orientation == Orientation.landscape;
+    final navBarHeight = isLandscape ? AppHeight.h87 : AppHeight.h68;
+    final navFontSize = isLandscape ? AppSizes.sp17 : AppSizes.sp15;
+    final iconSide = isLandscape ? AppWidth.w40 : AppWidth.w31;
+    final navPadding = EdgeInsets.only(
+      left: isLandscape ? AppWidth.w16 : AppWidth.w11,
+      right: isLandscape ? AppWidth.w16 : AppWidth.w11,
+      top: isLandscape ? AppHeight.h12 : AppHeight.h8,
+      bottom: isLandscape ? AppHeight.h12 : AppHeight.h8,
+    );
+
     return SafeArea(
       child: Scaffold(
         bottomNavigationBar: SizedBox(
-          height: AppHeight.h68,
+          height: navBarHeight,
           child: ClipRRect(
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(AppBorderRadius.r20),
@@ -80,7 +92,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
               tabBorderRadius: AppSizes.r30,
               textStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
                 color: AppColors.primaryGreen,
-                fontSize: AppSizes.sp15,
+                fontSize: navFontSize,
                 fontWeight: FontWeight.bold,
               ),
               tabActiveBorder: Border.all(
@@ -91,12 +103,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
               tabBackgroundColor: AppColors.white,
               color: AppColors.white,
               activeColor: AppColors.primaryGreen,
-              padding: EdgeInsets.only(
-                left: AppWidth.w11,
-                right: AppWidth.w11,
-                top: AppHeight.h8,
-                bottom: AppHeight.h8,
-              ),
+              padding: navPadding,
               tabs: [
                 GButton(
                   leading: Image.asset(
@@ -104,10 +111,12 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
                     color: index == 0
                         ? AppColors.primaryGreen
                         : AppColors.white,
-                    width: AppWidth.w31,
-                    height: AppHeight.h30,
+                  height: isLandscape?null:25,
+                  width: isLandscape?null:25,
+                  
                   ),
                   icon: Icons.home,
+                  iconSize: iconSide,
                   iconColor: AppColors.primaryGreen,
                   text: 'Home',
                 ),
@@ -117,10 +126,12 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
                     color: index == 1
                         ? AppColors.primaryGreen
                         : AppColors.white,
-                    width: AppWidth.w31,
-                    height: AppHeight.h30,
+                          height: isLandscape?null:25,
+                  width: isLandscape?null:25,
+                  
                   ),
                   icon: Icons.home,
+                  iconSize: iconSide,
                   text: 'Orders',
                 ),
                 GButton(
@@ -129,10 +140,12 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
                     color: index == 2
                         ? AppColors.primaryGreen
                         : AppColors.white,
-                    width: AppWidth.w31,
-                    height: AppHeight.h30,
+                          height: isLandscape?null:25,
+                  width: isLandscape?null:25,
+                  
                   ),
                   icon: Icons.home,
+                  iconSize: iconSide,
                   text: 'Basket',
                 ),
                 GButton(
@@ -141,10 +154,12 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
                     color: index == 3
                         ? AppColors.primaryGreen
                         : AppColors.white,
-                    width: AppWidth.w31,
-                    height: AppHeight.h30,
+                          height: isLandscape?null:25,
+                  width: isLandscape?null:25,
+                  
                   ),
                   icon: Icons.home,
+                  iconSize: iconSide,
                   text: 'Favorite',
                 ),
                 GButton(
@@ -153,10 +168,12 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
                     color: index == 4
                         ? AppColors.primaryGreen
                         : AppColors.white,
-                    width: AppWidth.w31,
-                    height: AppHeight.h30,
+                          height: isLandscape?null:25,
+                  width: isLandscape?null:25,
+                
                   ),
                   icon: Icons.home,
+                  iconSize: iconSide,
                   text: 'More',
                 ),
               ],

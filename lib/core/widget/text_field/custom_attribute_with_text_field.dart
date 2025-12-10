@@ -11,12 +11,14 @@ class CustomAttributeWithTextField extends StatelessWidget {
     required this.fullNameController,
     required this.attributeName,
     required this.hintText,
+      this.fontSize,
   });
 
   final TextEditingController fullNameController;
 
   final String attributeName;
   final String hintText;
+  final double? fontSize;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +31,7 @@ class CustomAttributeWithTextField extends StatelessWidget {
               text: attributeName,
 
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                fontSize: AppSizes.sp14,
+                fontSize: fontSize ?? AppSizes.sp14,
                 color: AppColors.titleOfTextField,
               ),
 
@@ -48,6 +50,7 @@ class CustomAttributeWithTextField extends StatelessWidget {
           heigh: AppHeight.h52,
           controller: fullNameController,
           hintText: hintText,
+          fontSize: fontSize ?? AppSizes.sp12,
         ),
       ],
     );

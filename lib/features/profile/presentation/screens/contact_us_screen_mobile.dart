@@ -36,7 +36,11 @@ class ContactUsScreenMobile extends StatelessWidget {
               ),
             ),
             VerticalSpace(height: AppHeight.h8),
-            CustomInputField(hintText: '', heigh: AppHeight.h53),
+            CustomInputField(
+              hintText: '',
+              heigh: AppHeight.h53,
+              fontSize: AppSizes.sp14,
+            ),
             VerticalSpace(height: AppHeight.h20),
             Align(
               alignment: Alignment.centerLeft,
@@ -64,12 +68,17 @@ class ContactUsScreenMobile extends StatelessWidget {
               ),
             ),
             VerticalSpace(height: AppHeight.h8),
-            CustomInputField(hintText: '', heigh: AppHeight.h140, maxLines: 5),
+            CustomInputField(
+              hintText: '',
+              heigh: AppHeight.h140,
+              maxLines: 5,
+              fontSize: AppSizes.sp14,
+            ),
             VerticalSpace(height: AppHeight.h30),
-          
+
             PrimaryButton(label: AppTextStrings.submit, onPressed: () {}),
             VerticalSpace(height: AppHeight.h30),
-              Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset(

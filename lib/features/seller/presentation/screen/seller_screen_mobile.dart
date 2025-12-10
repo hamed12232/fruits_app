@@ -29,6 +29,9 @@ class SellerScreenMobile extends StatelessWidget {
           ),
         ),
         centerTitle: true,
+        scrolledUnderElevation: 0,
+        automaticallyImplyLeading: false,
+
         title: Text(
           AppTextStrings.fruitMarket,
           style: AppTextTheme.lightTextTheme.headlineLarge?.copyWith(

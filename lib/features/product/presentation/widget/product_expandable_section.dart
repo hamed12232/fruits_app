@@ -10,12 +10,14 @@ class ProductExpandableSection extends StatefulWidget {
   final String title;
   final List<Map<String, String>> options;
   final bool isInitiallyExpanded;
+  final double? fontSize;
 
   const ProductExpandableSection({
     super.key,
     required this.title,
     required this.options,
     this.isInitiallyExpanded = false,
+    this.fontSize,
   });
 
   @override
@@ -65,7 +67,7 @@ class _ProductExpandableSectionState extends State<ProductExpandableSection> {
                   Text(
                     widget.title,
                     style: AppTextTheme.lightTextTheme.labelMedium?.copyWith(
-                      fontSize: AppSizes.sp19,
+                      fontSize:widget.fontSize?? AppSizes.sp19,
                       fontWeight: FontWeight.bold,
                       color: AppColors.black,
                     ),
@@ -97,6 +99,7 @@ class _ProductExpandableSectionState extends State<ProductExpandableSection> {
                     label: option['label']!,
                     price: option['price']!,
                     isSelected: _selectedIndex == index,
+                    fontSize: widget.fontSize,
                     onTap: () {
                       setState(() {
                         _selectedIndex = index;

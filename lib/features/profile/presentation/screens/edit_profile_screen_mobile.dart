@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:fruits_app/core/style/spacing/vertical_space.dart';
 import 'package:fruits_app/core/utils/constant/app_colors.dart';
 import 'package:fruits_app/core/utils/constant/app_height.dart';
-import 'package:fruits_app/core/utils/constant/app_images_strings.dart';
 import 'package:fruits_app/core/utils/constant/app_sizes.dart';
 import 'package:fruits_app/core/utils/constant/app_text_strings.dart';
 import 'package:fruits_app/core/utils/constant/app_width.dart';
@@ -48,9 +47,9 @@ class _EditProfileScreenMobileState extends State<EditProfileScreenMobile> {
                     border: Border.all(color: AppColors.primaryGreen, width: 1),
                   ),
                   child: Center(
-                    child: Image.asset(
-                      AppImagesStrings.user,
-                      width: AppSizes.sp40,
+                    child: Icon(
+                      Icons.person,
+                      size: AppSizes.sp40,
                       color: AppColors.greyTextColor,
                     ),
                   ),
@@ -79,6 +78,7 @@ class _EditProfileScreenMobileState extends State<EditProfileScreenMobile> {
               controller: _fullNameController,
               hintText: AppTextStrings.fullName,
               heigh: AppHeight.h53,
+              fontSize: AppSizes.sp14,
             ),
             VerticalSpace(height: AppHeight.h16),
             CustomPhoneNumber(),
@@ -88,6 +88,7 @@ class _EditProfileScreenMobileState extends State<EditProfileScreenMobile> {
               hintText: AppTextStrings.password,
               heigh: AppHeight.h53,
               isPassword: true,
+              fontSize: AppSizes.sp14,
             ),
             VerticalSpace(height: AppHeight.h40),
             PrimaryButton(label: AppTextStrings.submit, onPressed: () {}),

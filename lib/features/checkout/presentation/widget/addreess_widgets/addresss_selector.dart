@@ -31,7 +31,7 @@ class _AddressSelectorState extends State<AddressSelector> {
       builder: (context) => AddAddressDialog(
         onSave: (label, name, phone, address) {
           setState(() {
-            if(label.isEmpty && name.isEmpty && phone.isEmpty ){
+            if (label.isEmpty && name.isEmpty && phone.isEmpty) {
               return;
             }
             addresses.add(
@@ -63,48 +63,50 @@ class _AddressSelectorState extends State<AddressSelector> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Select Delivery Address',
-            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-              color: AppColors.black,
-              fontWeight: FontWeight.bold,
-              fontSize: 18,
-            ),
-          ),
-          const SizedBox(height: 24),
-          InkWell(
-            onTap: _showAddAddressDialog,
-            borderRadius: BorderRadius.circular(12),
-            child: Container(
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                border: Border.all(color: Colors.grey.shade300),
-                borderRadius: BorderRadius.circular(12),
+      padding: const EdgeInsets.all(5.0),
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Select Delivery Address',
+              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                color: AppColors.black,
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Add New Address',
-                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                      color: AppColors.black,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 16,
+            ),
+            const SizedBox(height: 24),
+            InkWell(
+              onTap: _showAddAddressDialog,
+              borderRadius: BorderRadius.circular(12),
+              child: Container(
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  border: Border.all(color: Colors.grey.shade300),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Add New Address',
+                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                        color: AppColors.black,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 16,
+                      ),
                     ),
-                  ),
-                  Icon(Icons.add, color: AppColors.darkGray, size: 28),
-                ],
+                    Icon(Icons.add, color: AppColors.darkGray, size: 28),
+                  ],
+                ),
               ),
             ),
-          ),
-          const SizedBox(height: 16),
-          Expanded(
-            child: ListView.builder(
+            const SizedBox(height: 16),
+            ListView.builder(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
               itemCount: addresses.length,
               itemBuilder: (context, index) {
                 final address = addresses[index];
@@ -118,8 +120,8 @@ class _AddressSelectorState extends State<AddressSelector> {
                 );
               },
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_app/core/widget/failure/failure.dart';
 import 'package:fruits_app/core/widget/success/success_operation.dart';
-import 'package:fruits_app/features/auth/modules/otp_verification/presentation/screen/otp_verification_screen.dart';
+import 'package:fruits_app/features/auth/modules/otp_verification/presentation/screen/otp_verification_screen_adaptive.dart';
 import 'package:fruits_app/features/auth/modules/sign_in/presentation/screen/sign_in_screen_adaptive.dart';
 import 'package:fruits_app/features/auth/modules/sign_up/presentation/screen/sign_up_screen_adaptive.dart';
-import 'package:fruits_app/features/auth/modules/verify_number/presentation/screen/verify_number_screen.dart';
-import 'package:fruits_app/features/auth/modules/welcome/presentation/screen/welcome_screen.dart';
+import 'package:fruits_app/features/auth/modules/verify_number/presentation/screen/verify_number_screen_adaptive.dart';
+import 'package:fruits_app/features/auth/modules/welcome/presentation/screen/welcome_screen_adaptive.dart';
 import 'package:fruits_app/features/basket/presentation/screen/basket_screen.dart';
 import 'package:fruits_app/features/checkout/presentation/screen/checkout_main_screen.dart';
 import 'package:fruits_app/features/checkout/presentation/screen/checkout_screen.dart';
+import 'package:fruits_app/features/checkout/presentation/widget/successfully_view.dart';
 import 'package:fruits_app/features/favourite/presentation/screen/favorite_screen.dart';
 import 'package:fruits_app/features/home/presentation/screens/home_screen.dart';
 import 'package:fruits_app/features/home/presentation/screens/main_navigation_screen.dart';
@@ -34,7 +35,7 @@ class AppRouteManager {
         widget = const OnboardingScreen();
         break;
       case AppRoutesName.welcome:
-        widget = const WelcomeScreen();
+        widget = const WelcomeScreenAdaptive();
         break;
       case AppRoutesName.signUP:
         widget = const SignUpScreenAdaptive();
@@ -43,10 +44,10 @@ class AppRouteManager {
         widget = const SignInScreenAdaptive();
         break;
       case AppRoutesName.verifyNumber:
-        widget = const VerifyNumberScreen();
+        widget = const VerifyNumberScreenAdaptive();
         break;
       case AppRoutesName.otpVerification:
-        widget = const OtpVerificationScreen();
+        widget = const OtpVerificationScreenAdaptive();
         break;
       case AppRoutesName.navigationScreen:
         final initialIndex = settings.arguments as int? ?? 0;
@@ -72,6 +73,9 @@ class AppRouteManager {
         break;
       case AppRoutesName.success:
         widget = const SuccessOperation();
+        break;
+      case AppRoutesName.successview:
+        widget = const SuccessfullyView();
         break;
       case AppRoutesName.failure:
         widget = const FailureOperation();
@@ -118,6 +122,7 @@ class AppRoutesName {
   static const String checkout = '/checkout';
   static const String checkoutMain = '/checkout_main';
   static const String success = '/success_operation';
+  static const String successview = '/success_view';
   static const String failure = '/failure_operation';
   static const String orders = '/orders-screen';
   static const String orderTracking = '/order-tracking';

@@ -13,7 +13,10 @@ class SellerInfoCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-      return Container(
+    final isLandscape =
+        MediaQuery.of(context).orientation == Orientation.landscape;
+
+    return Container(
       margin: EdgeInsets.symmetric(horizontal: AppWidth.w16),
       padding: EdgeInsets.all(AppWidth.w16),
       decoration: BoxDecoration(
@@ -35,27 +38,25 @@ class SellerInfoCard extends StatelessWidget {
             children: [
               // Company Logo (Circular)
               Container(
-                width: AppWidth.w80,
-                height: AppHeight.h80,
+                width: isLandscape ? AppWidth.w100 : AppWidth.w80,
+                height: isLandscape ? AppHeight.h140 : AppHeight.h80,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: AppColors.cardBackground,
                 ),
-                child: ClipOval(
-                  child: Image.asset(
-                    AppImagesStrings.companyLogo,
-                    fit: BoxFit.cover,
-                    errorBuilder: (context, error, stackTrace) {
-                      return Container(
-                        color: AppColors.cardBackground,
-                        child: Icon(
-                          Icons.store,
-                          size: AppWidth.w40,
-                          color: AppColors.primaryGreen,
-                        ),
-                      );
-                    },
-                  ),
+                child: Image.asset(
+                  AppImagesStrings.companyLogo,
+                  fit: isLandscape ? BoxFit.fitHeight : BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) {
+                    return Container(
+                      color: AppColors.cardBackground,
+                      child: Icon(
+                        Icons.store,
+                        size: AppWidth.w40,
+                        color: AppColors.primaryGreen,
+                      ),
+                    );
+                  },
                 ),
               ),
               SizedBox(width: AppWidth.w16),
@@ -134,15 +135,15 @@ class SellerInfoCard extends StatelessWidget {
           Positioned(
             top: 0,
             right: 0,
-            child: Image.asset(AppImagesStrings.badge,
-            width: AppWidth.w22,
-            height: AppHeight.h22,
-            fit: BoxFit.cover,
-            )
+            child: Image.asset(
+              AppImagesStrings.badge,
+              width: isLandscape ? AppWidth.w100 : AppWidth.w22,
+              height: isLandscape ? AppHeight.h100 : AppHeight.h22,
+              fit: isLandscape ? BoxFit.fitHeight : BoxFit.cover,
+            ),
           ),
         ],
       ),
     );
-  
   }
 }
