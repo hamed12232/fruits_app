@@ -7,7 +7,7 @@ import 'package:fruits_app/core/utils/constant/app_images_strings.dart';
 import 'package:fruits_app/core/utils/constant/app_sizes.dart';
 import 'package:fruits_app/core/utils/constant/app_text_strings.dart';
 import 'package:fruits_app/core/utils/constant/app_width.dart';
-import 'package:fruits_app/features/auth/modules/sign_in/presentation/screen/sign_in_screen.dart';
+import 'package:fruits_app/features/auth/modules/sign_in/presentation/screen/sign_in_screen_adaptive.dart';
 import 'package:fruits_app/features/auth/modules/verify_number/presentation/screen/verify_number_screen.dart';
 import 'package:fruits_app/features/auth/modules/welcome/presentation/widget/auth_button.dart';
 
@@ -99,7 +99,7 @@ class WelcomeScreen extends StatelessWidget {
                             ..onTap = () {
                               Navigator.of(
                                 context,
-                              ).pushNamed(SignInScreen.routeName);
+                              ).pushNamed(SignInScreenAdaptive.routeName);
                             },
                         ),
                       ],

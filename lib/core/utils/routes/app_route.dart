@@ -19,6 +19,7 @@ import 'package:fruits_app/features/orders/presentation/screen/orders_screen.dar
 import 'package:fruits_app/features/product/presentation/screen/product_screen.dart';
 import 'package:fruits_app/features/profile/presentation/screens/contact_us_screen.dart';
 import 'package:fruits_app/features/profile/presentation/screens/edit_profile_screen.dart';
+import 'package:fruits_app/features/profile/presentation/screens/notification_test_screen.dart';
 import 'package:fruits_app/features/profile/presentation/screens/profile_screen.dart';
 import 'package:fruits_app/features/profile/presentation/screens/terms_and_conditions_screen.dart';
 import 'package:fruits_app/features/seller/presentation/screen/seller_screen.dart';
@@ -101,6 +102,9 @@ class AppRouteManager {
       case AppRoutesName.favorite:
         widget = const FavoriteScreen();
         break;
+      case AppRoutesName.notificationTest:
+        widget = const NotificationTestScreen();
+        break;
       default:
         widget = const Placeholder();
     }
@@ -133,4 +137,6 @@ class AppRoutesName {
   static const String contactUs = '/contact-us';
   static const String termsAndConditions = '/terms-and-conditions';
   static const String favorite = '/favorite';
+  static const String notificationTest = '/notification-test';
+  static const String navigationTest = '/navigation-test';
 }

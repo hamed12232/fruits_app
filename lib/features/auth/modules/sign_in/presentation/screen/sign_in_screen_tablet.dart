@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_app/core/style/spacing/vertical_space.dart';
 import 'package:fruits_app/core/utils/constant/app_colors.dart';
 import 'package:fruits_app/core/utils/constant/app_height.dart';
@@ -10,9 +11,10 @@ import 'package:fruits_app/core/widget/adaptive_layout/simple_adaptive_screen.da
 import 'package:fruits_app/core/widget/button/primary_button.dart';
 import 'package:fruits_app/core/widget/text_field/custom_attribute_with_text_field.dart';
 import 'package:fruits_app/core/widget/text_field/custom_phone_number_field.dart';
-import 'package:fruits_app/features/auth/modules/sign_up/presentation/screen/sign_up_screen.dart';
+import 'package:fruits_app/features/auth/modules/sign_in/presentation/cubit/login_cubit.dart';
+import 'package:fruits_app/features/auth/modules/sign_in/presentation/cubit/login_state.dart';
+import 'package:fruits_app/features/auth/modules/sign_up/presentation/screen/sign_up_screen_adaptive.dart';
 import 'package:fruits_app/features/auth/modules/verify_number/presentation/screen/verify_number_screen.dart';
-import 'package:fruits_app/features/home/presentation/screens/main_navigation_screen.dart';
 
 class SignInScreenTablet extends StatefulWidget {
   const SignInScreenTablet({super.key});
@@ -24,133 +26,161 @@ class SignInScreenTablet extends StatefulWidget {
 class _SignInScreenTabletState extends State<SignInScreenTablet> {
   final TextEditingController phoneNumberController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  String _fullPhoneNumber = '';
 
   @override
   Widget build(BuildContext context) {
     final TextTheme textTheme = Theme.of(context).textTheme;
-    return Scaffold(
-      body: SimpleAdaptiveScreen(
-        maxWidth: 500,
-        padding: EdgeInsets.zero,
-        child: SingleChildScrollView(
-          child: SafeArea(
-            child: Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: AppWidth.w42,
-                vertical: AppHeight.h47,
-              ),
-              child: Column(
-                children: [
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: IconButton(
-                      icon: const Icon(
-                        Icons.arrow_back_ios,
-                        color: AppColors.black,
+    return SimpleAdaptiveScreen(
+      maxWidth: 500,
+      padding: EdgeInsets.zero,
+      child: SingleChildScrollView(
+        child: SafeArea(
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: AppWidth.w42,
+              vertical: AppHeight.h47,
+            ),
+            child: Column(
+              children: [
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: IconButton(
+                    icon: const Icon(
+                      Icons.arrow_back_ios,
+                      color: AppColors.black,
+                    ),
+                    onPressed: () => Navigator.of(context).pop(),
+                  ),
+                ),
+                VerticalSpace(height: AppHeight.h62),
+                Text(
+                  AppTextStrings.fruitMarket,
+                  style: textTheme.headlineLarge?.copyWith(
+                    color: AppColors.primaryGreen,
+                    fontSize: AppSizes.sp42,
+                  ),
+                ),
+                VerticalSpace(height: AppHeight.h21),
+                Text(
+                  AppTextStrings.loginToWikala,
+                  style: textTheme.displayLarge,
+                ),
+                VerticalSpace(height: AppHeight.h30),
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: Text.rich(
+                    TextSpan(
+                      text: AppTextStrings.phoneNumber,
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        fontSize: AppSizes.sp14,
+                        color: AppColors.titleOfTextField,
                       ),
-                      onPressed: () => Navigator.of(context).pop(),
-                    ),
-                  ),
-                  VerticalSpace(height: AppHeight.h62),
-                  Text(
-                    AppTextStrings.fruitMarket,
-                    style: textTheme.headlineLarge?.copyWith(
-                      color: AppColors.primaryGreen,
-                      fontSize: AppSizes.sp42,
-                    ),
-                  ),
-                  VerticalSpace(height: AppHeight.h21),
-                  Text(
-                    AppTextStrings.loginToWikala,
-                    style: textTheme.displayLarge,
-                  ),
-                  VerticalSpace(height: AppHeight.h30),
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: Text.rich(
-                      TextSpan(
-                        text: AppTextStrings.phoneNumber,
-                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          fontSize: AppSizes.sp14,
-                          color: AppColors.titleOfTextField,
+                      children: [
+                        const TextSpan(
+                          text: ' *',
+                          style: TextStyle(color: Colors.red),
                         ),
-                        children: [
-                          const TextSpan(
-                            text: ' *',
-                            style: TextStyle(color: Colors.red),
-                          ),
-                        ],
-                      ),
+                      ],
                     ),
                   ),
-                  VerticalSpace(height: AppHeight.h7),
-                  CustomPhoneNumber(),
+                ),
+                VerticalSpace(height: AppHeight.h7),
+                CustomPhoneNumber(
+                  controller: phoneNumberController,
+                  onChanged: (phone) {
+                    _fullPhoneNumber = phone.completeNumber;
+                  },
+                ),
 
-                  CustomAttributeWithTextField(
-                    fullNameController: passwordController,
-                    attributeName: AppTextStrings.password,
-                    hintText: AppTextStrings.password,
-                  ),
-                  VerticalSpace(height: AppHeight.h21),
-                  Align(
-                    alignment: Alignment.topRight,
-                    child: GestureDetector(
-                      onTap: () {
-                        Navigator.pushNamed(
-                          context,
-                          VerifyNumberScreen.routeName,
-                        );
-                      },
-                      child: Text(
-                        AppTextStrings.forgotPassword,
-                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          color: AppColors.darkBlue,
-                          decoration: TextDecoration.underline,
-                        ),
-                      ),
-                    ),
-                  ),
-                  VerticalSpace(height: AppHeight.h21),
-                  PrimaryButton(
-                    label: AppTextStrings.login,
-                    onPressed: () {
+                CustomAttributeWithTextField(
+                  fullNameController: passwordController,
+                  attributeName: AppTextStrings.password,
+                  hintText: AppTextStrings.password,
+                ),
+                VerticalSpace(height: AppHeight.h21),
+                Align(
+                  alignment: Alignment.topRight,
+                  child: GestureDetector(
+                    onTap: () {
                       Navigator.pushNamed(
                         context,
-                        MainNavigationScreen.routeName,
+                        VerifyNumberScreen.routeName,
                       );
                     },
-                    height: AppHeight.h52,
-                    width: double.infinity,
-                  ),
-                  VerticalSpace(height: AppHeight.h41),
-                  Center(
-                    child: RichText(
-                      text: TextSpan(
-                        children: [
-                          TextSpan(
-                            text: AppTextStrings.dontHaveAnAccount,
-                            style: Theme.of(context).textTheme.bodyMedium,
-                          ),
-                          TextSpan(
-                            text: AppTextStrings.signUp,
-                            style: Theme.of(context).textTheme.bodyMedium
-                                ?.copyWith(
-                                  color: AppColors.darkBlue,
-                                  decoration: TextDecoration.underline,
-                                ),
-                            recognizer: TapGestureRecognizer()
-                              ..onTap = () {
-                                Navigator.of(
-                                  context,
-                                ).pushNamed(SignUpScreen.routeName);
-                              },
-                          ),
-                        ],
+                    child: Text(
+                      AppTextStrings.forgotPassword,
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        color: AppColors.darkBlue,
+                        decoration: TextDecoration.underline,
                       ),
                     ),
                   ),
-                ],
-              ),
+                ),
+                VerticalSpace(height: AppHeight.h21),
+                BlocBuilder<LoginCubit, LoginState>(
+                  builder: (context, state) {
+                    final isLoading = state is LoginLoading;
+                    return PrimaryButton(
+                      label: isLoading ? 'Loading...' : AppTextStrings.login,
+                      onPressed: isLoading
+                          ? () {}
+                          : () {
+                              final phone = _fullPhoneNumber.isNotEmpty
+                                  ? _fullPhoneNumber
+                                  : phoneNumberController.text;
+                              final password = passwordController.text;
+
+                              if (phone.isEmpty || password.isEmpty) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    content: Text(
+                                      'Please enter phone and password',
+                                    ),
+                                    backgroundColor: Colors.orange,
+                                  ),
+                                );
+                                return;
+                              }
+
+                              context.read<LoginCubit>().login(
+                                phoneEmail: phone,
+                                password: password,
+                              );
+                            },
+                      height: AppHeight.h52,
+                      width: double.infinity,
+                    );
+                  },
+                ),
+                VerticalSpace(height: AppHeight.h41),
+                Center(
+                  child: RichText(
+                    text: TextSpan(
+                      children: [
+                        TextSpan(
+                          text: AppTextStrings.dontHaveAnAccount,
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        ),
+                        TextSpan(
+                          text: AppTextStrings.signUp,
+                          style: Theme.of(context).textTheme.bodyMedium
+                              ?.copyWith(
+                                color: AppColors.darkBlue,
+                                decoration: TextDecoration.underline,
+                              ),
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () {
+                              Navigator.of(
+                                context,
+                              ).pushNamed(SignUpScreenAdaptive.routeName);
+                            },
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ),

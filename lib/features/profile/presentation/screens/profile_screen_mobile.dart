@@ -110,6 +110,13 @@ class ProfileScreenMobile extends StatelessWidget {
                 Navigator.pushNamed(context, AppRoutesName.termsAndConditions);
               },
             ),
+            ProfileMenuItem(
+              title: 'Test Notifications',
+              iconPath: AppImagesStrings.languages, // Reusing an icon for now
+              onTap: () {
+                Navigator.pushNamed(context, AppRoutesName.notificationTest);
+              },
+            ),
             VerticalSpace(height: AppHeight.h30),
             PrimaryButton(label: AppTextStrings.login, onPressed: () {}),
             VerticalSpace(height: AppHeight.h30),

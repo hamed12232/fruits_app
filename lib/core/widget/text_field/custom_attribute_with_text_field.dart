@@ -11,7 +11,8 @@ class CustomAttributeWithTextField extends StatelessWidget {
     required this.fullNameController,
     required this.attributeName,
     required this.hintText,
-      this.fontSize,
+    this.fontSize,
+    this.keyboardType,
   });
 
   final TextEditingController fullNameController;
@@ -19,6 +20,7 @@ class CustomAttributeWithTextField extends StatelessWidget {
   final String attributeName;
   final String hintText;
   final double? fontSize;
+  final TextInputType? keyboardType;
 
   @override
   Widget build(BuildContext context) {
@@ -51,6 +53,7 @@ class CustomAttributeWithTextField extends StatelessWidget {
           controller: fullNameController,
           hintText: hintText,
           fontSize: fontSize ?? AppSizes.sp12,
+          keyboardType: keyboardType,
         ),
       ],
     );

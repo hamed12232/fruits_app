@@ -5,7 +5,7 @@ import 'package:fruits_app/core/utils/constant/app_text_strings.dart';
 import 'package:fruits_app/core/widget/button/primary_button.dart';
 import 'package:fruits_app/core/widget/text_field/custom_attribute_with_text_field.dart';
 import 'package:fruits_app/core/widget/text_field/custom_phone_number_field.dart';
-import 'package:fruits_app/features/auth/modules/sign_up/presentation/screen/sign_up_screen.dart';
+import 'package:fruits_app/features/auth/modules/sign_up/presentation/screen/sign_up_screen_adaptive.dart';
 import 'package:fruits_app/features/auth/modules/verify_number/presentation/screen/verify_number_screen.dart';
 import 'package:fruits_app/features/home/presentation/screens/main_navigation_screen.dart';
 
@@ -164,7 +164,7 @@ class _SignInScreenDesktopState extends State<SignInScreenDesktop> {
                                       ..onTap = () {
                                         Navigator.of(
                                           context,
-                                        ).pushNamed(SignUpScreen.routeName);
+                                        ).pushNamed(SignUpScreenAdaptive.routeName);
                                       },
                                   ),
                                 ],

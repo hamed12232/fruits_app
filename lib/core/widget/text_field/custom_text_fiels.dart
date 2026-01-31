@@ -8,6 +8,7 @@ class CustomInputField extends StatelessWidget {
   final double heigh;
   final int? maxLines;
   final double fontSize;
+  final TextInputType? keyboardType;
 
   const CustomInputField({
     super.key,
@@ -18,6 +19,7 @@ class CustomInputField extends StatelessWidget {
     this.validator,
     required this.heigh,
     this.maxLines = 1,
+    this.keyboardType,
   });
 
   @override
@@ -25,6 +27,7 @@ class CustomInputField extends StatelessWidget {
     return SizedBox(
       height: heigh,
       child: TextFormField(
+        keyboardType: keyboardType,
         maxLines: maxLines,
         obscureText: isPassword,
         controller: controller,

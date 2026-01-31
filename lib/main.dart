@@ -1,9 +1,24 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fruits_app/core/services/one_signal_services.dart';
 import 'package:fruits_app/core/utils/routes/app_route.dart';
+import 'package:fruits_app/core/utils/Di/service_locator.dart';
 import 'package:fruits_app/core/utils/theme/app_theme.dart';
+import 'package:fruits_app/firebase_options.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  // FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
+  // await NotificationService.initializeNotification();
+  await OneSignalService.init();
+  // String? token = await NotificationService.getFCMToken();
+  // log('FCM Token: ${token ?? "Not available"}');
+
+  // Initialize dependency injection
+  await initServiceLocator();
+
   await ScreenUtil.ensureScreenSize();
   runApp(const MyApp());
 }
