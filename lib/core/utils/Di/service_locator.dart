@@ -9,13 +9,19 @@ import 'package:fruits_app/features/auth/modules/sign_in/presentation/cubit/logi
 import 'package:fruits_app/features/auth/modules/sign_up/presentation/cubit/register_cubit.dart';
 import 'package:fruits_app/features/auth/modules/verify_number/presentation/cubit/forget_password_cubit.dart';
 import 'package:fruits_app/features/basket/presentation/cubit/cart_cubit.dart';
+import 'package:fruits_app/features/checkout/presentation/cubit/checkout_cubit.dart';
 import 'package:fruits_app/features/favourite/presentation/cubit/favorite_cubit.dart';
+import 'package:fruits_app/features/orders/data/data_source/order_local_data_source.dart';
+import 'package:fruits_app/features/orders/data/repository/order_repository_impl.dart';
+import 'package:fruits_app/features/orders/domain/repository/order_repository.dart';
+import 'package:fruits_app/features/orders/presentation/cubit/order_cubit.dart';
 import 'package:fruits_app/features/product/data/data_source/product_remote_data_source.dart';
 import 'package:fruits_app/features/product/data/repository/product_repository_impl.dart';
 import 'package:fruits_app/features/product/domain/repository/product_repository.dart';
 import 'package:fruits_app/features/product/domain/use_cases/get_products_use_case.dart';
 import 'package:fruits_app/features/product/presentation/cubit/product_cubit.dart';
 import 'package:get_it/get_it.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 /// Service locator instance
 final sl = GetIt.instance;
@@ -59,4 +65,18 @@ Future<void> initServiceLocator() async {
 
   // Favorite Feature
   sl.registerLazySingleton(() => FavoriteCubit());
+
+  // Order Feature
+  final sharedPreferences = await SharedPreferences.getInstance();
+  sl.registerLazySingleton(() => sharedPreferences);
+  sl.registerLazySingleton<OrderLocalDataSource>(
+    () => OrderLocalDataSourceImpl(sharedPreferences: sl()),
+  );
+  sl.registerLazySingleton<OrderRepository>(
+    () => OrderRepositoryImpl(orderLocalDataSource: sl()),
+  );
+  sl.registerFactory(() => OrderCubit(orderRepository: sl()));
+
+  // Checkout Feature
+  sl.registerFactory(() => CheckoutCubit(orderRepository: sl()));
 }

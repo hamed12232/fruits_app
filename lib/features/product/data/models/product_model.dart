@@ -22,4 +22,31 @@ class ProductModel extends ProductEntity {
       quantity: json['quantity'] as int? ?? 0,
     );
   }
+
+  factory ProductModel.fromMap(Map<String, dynamic> map) =>
+      ProductModel.fromJson(map);
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'name': name,
+      'name_en': nameEn,
+      'details': details,
+      'details_en': detailsEn,
+      'price': price,
+      'quantity': quantity,
+    };
+  }
+
+  factory ProductModel.fromEntity(ProductEntity entity) {
+    return ProductModel(
+      id: entity.id,
+      name: entity.name,
+      nameEn: entity.nameEn,
+      details: entity.details,
+      detailsEn: entity.detailsEn,
+      price: entity.price,
+      quantity: entity.quantity,
+    );
+  }
 }

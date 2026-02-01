@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_app/core/utils/constant/app_colors.dart';
 import 'package:fruits_app/core/utils/constant/app_sizes.dart';
 import 'package:fruits_app/core/utils/constant/app_text_strings.dart';
@@ -6,9 +7,14 @@ import 'package:fruits_app/core/utils/constant/app_width.dart';
 import 'package:fruits_app/core/utils/theme/custom_theme/text_theme.dart';
 import 'package:fruits_app/core/widget/button/primary_button.dart';
 import 'package:fruits_app/core/widget/success/success_operation.dart';
+import 'package:fruits_app/features/basket/presentation/cubit/cart_cubit.dart';
+import 'package:fruits_app/features/basket/presentation/cubit/cart_state.dart';
+import 'package:fruits_app/features/checkout/presentation/cubit/checkout_cubit.dart';
+import 'package:fruits_app/features/checkout/presentation/cubit/checkout_state.dart';
 import 'package:fruits_app/features/checkout/presentation/screen/checkout_payment_screen.dart';
 import 'package:fruits_app/features/checkout/presentation/screen/checkout_screen.dart';
 import 'package:fruits_app/features/checkout/presentation/widget/successfully_view.dart';
+import 'package:fruits_app/features/orders/presentation/cubit/order_cubit.dart';
 
 class CheckoutMainScreen extends StatefulWidget {
   const CheckoutMainScreen({super.key});
@@ -59,44 +65,71 @@ class _CheckoutMainScreenState extends State<CheckoutMainScreen> {
     final isLandscape =
         MediaQuery.of(context).orientation == Orientation.landscape;
 
-    return Scaffold(
-      appBar: AppBar(
-        bottom: PreferredSize(
-          preferredSize: Size.fromHeight(1),
-          child: Container(height: 1, color: Colors.black.withOpacity(0.1)),
-        ),
-        backgroundColor: AppColors.white,
-        leading: IconButton(
-          onPressed: () =>
-              currentIndex == 0 ? Navigator.pop(context) : goBack(),
-          icon: Icon(
-            Icons.arrow_back_ios_new,
-            color: AppColors.black,
-            size: AppWidth.w24,
+    return BlocListener<CheckoutCubit, CheckoutState>(
+      listener: (context, state) {
+        if (state is CheckoutSuccess) {
+          Navigator.pushNamed(
+            context,
+            isLandscape
+                ? SuccessfullyView.routeName
+                : SuccessOperation.routeName,
+          );
+          // Also fetch orders to update history
+          context.read<OrderCubit>().fetchOrders();
+          // Optionally clear cart
+        } else if (state is CheckoutError) {
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text(state.message)));
+        }
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          bottom: PreferredSize(
+            preferredSize: Size.fromHeight(1),
+            child: Container(height: 1, color: Colors.black.withOpacity(0.1)),
+          ),
+          backgroundColor: AppColors.white,
+          leading: IconButton(
+            onPressed: () =>
+                currentIndex == 0 ? Navigator.pop(context) : goBack(),
+            icon: Icon(
+              Icons.arrow_back_ios_new,
+              color: AppColors.black,
+              size: AppWidth.w24,
+            ),
+          ),
+          centerTitle: true,
+          title: Text(
+            AppTextStrings.checkout,
+            style: AppTextTheme.lightTextTheme.headlineLarge?.copyWith(
+              color: AppColors.primaryGreen,
+              fontSize: AppSizes.sp24,
+            ),
           ),
         ),
-        centerTitle: true,
-        title: Text(
-          AppTextStrings.checkout,
-          style: AppTextTheme.lightTextTheme.headlineLarge?.copyWith(
-            color: AppColors.primaryGreen,
-            fontSize: AppSizes.sp24,
+        body: isLandscape ? _buildLandscapeBody() : _buildPortraitBody(),
+        bottomNavigationBar: Padding(
+          padding: const EdgeInsets.all(30.0),
+          child: PrimaryButton(
+            label: currentIndex == steps.length - 1
+                ? "Place Order"
+                : "Continue",
+            width: double.infinity,
+            onPressed: () {
+              if (currentIndex == steps.length - 1) {
+                final cartState = context.read<CartCubit>().state;
+                if (cartState is CartLoaded) {
+                  context.read<CheckoutCubit>().placeOrder(
+                    items: cartState.items,
+                    totalPrice: cartState.total.toDouble(),
+                  );
+                }
+              } else {
+                goNext();
+              }
+            },
           ),
-        ),
-      ),
-      body: isLandscape ? _buildLandscapeBody() : _buildPortraitBody(),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(30.0),
-        child: PrimaryButton(
-          label: currentIndex == steps.length - 1 ? "Place Order" : "Continue",
-          width: double.infinity,
-          onPressed: () {
-            if (currentIndex == steps.length - 1) {
-              Navigator.pushNamed(context,isLandscape? SuccessfullyView.routeName: SuccessOperation.routeName);
-            } else {
-              goNext();
-            }
-          },
         ),
       ),
     );
@@ -115,9 +148,7 @@ class _CheckoutMainScreenState extends State<CheckoutMainScreen> {
 
   Widget _buildLandscapeBody() {
     return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 30
-      ),
+      padding: const EdgeInsets.symmetric(horizontal: 30),
       child: PageView(
         controller: _pageController,
         physics: NeverScrollableScrollPhysics(),

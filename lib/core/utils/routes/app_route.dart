@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fruits_app/core/utils/Di/service_locator.dart';
 import 'package:fruits_app/core/widget/failure/failure.dart';
 import 'package:fruits_app/core/widget/success/success_operation.dart';
 import 'package:fruits_app/features/auth/modules/otp_verification/presentation/screen/otp_verification_screen_adaptive.dart';
@@ -7,6 +9,7 @@ import 'package:fruits_app/features/auth/modules/sign_up/presentation/screen/sig
 import 'package:fruits_app/features/auth/modules/verify_number/presentation/screen/verify_number_screen_adaptive.dart';
 import 'package:fruits_app/features/auth/modules/welcome/presentation/screen/welcome_screen_adaptive.dart';
 import 'package:fruits_app/features/basket/presentation/screen/basket_screen.dart';
+import 'package:fruits_app/features/checkout/presentation/cubit/checkout_cubit.dart';
 import 'package:fruits_app/features/checkout/presentation/screen/checkout_main_screen.dart';
 import 'package:fruits_app/features/checkout/presentation/screen/checkout_screen.dart';
 import 'package:fruits_app/features/checkout/presentation/widget/successfully_view.dart';
@@ -63,15 +66,21 @@ class AppRouteManager {
       case AppRoutesName.product:
         widget = const ProductScreen();
         break;
-    
+
       case AppRoutesName.basket:
         widget = const BasketScreen();
         break;
       case AppRoutesName.checkout:
-        widget = const CheckoutScreen();
+        widget = BlocProvider(
+          create: (context) => sl<CheckoutCubit>(),
+          child: const CheckoutScreen(),
+        );
         break;
       case AppRoutesName.checkoutMain:
-        widget = const CheckoutMainScreen();
+        widget = BlocProvider(
+          create: (context) => sl<CheckoutCubit>(),
+          child: const CheckoutMainScreen(),
+        );
         break;
       case AppRoutesName.success:
         widget = const SuccessOperation();
