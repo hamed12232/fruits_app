@@ -7,6 +7,7 @@ import 'package:fruits_app/core/utils/Di/service_locator.dart';
 import 'package:fruits_app/core/utils/routes/app_route.dart';
 import 'package:fruits_app/core/utils/theme/app_theme.dart';
 import 'package:fruits_app/features/basket/presentation/cubit/cart_cubit.dart';
+import 'package:fruits_app/features/favourite/presentation/cubit/favorite_cubit.dart';
 import 'package:fruits_app/firebase_options.dart';
 
 void main() async {
@@ -35,8 +36,11 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (_, child) {
-        return BlocProvider(
-          create: (_) => sl<CartCubit>(),
+        return MultiBlocProvider(
+          providers: [
+            BlocProvider(create: (_) => sl<CartCubit>()),
+            BlocProvider(create: (_) => sl<FavoriteCubit>()),
+          ],
           child: MaterialApp(
             debugShowCheckedModeBanner: false,
             theme: AppTheme.lightTheme,

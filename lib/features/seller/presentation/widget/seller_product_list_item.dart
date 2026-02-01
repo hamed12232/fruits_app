@@ -230,7 +230,7 @@ class SellerProductListItem extends StatelessWidget {
               top: AppHeight.h8,
               right: AppWidth.w8,
               child: InkWell(
-                onTap: () {},
+                onTap: onDelete,
                 child: Container(
                   padding: EdgeInsets.all(AppWidth.w4),
                   decoration: BoxDecoration(

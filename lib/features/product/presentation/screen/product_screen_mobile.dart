@@ -9,6 +9,8 @@ import 'package:fruits_app/core/utils/constant/app_sizes.dart';
 import 'package:fruits_app/core/utils/constant/app_width.dart';
 import 'package:fruits_app/core/utils/theme/custom_theme/text_theme.dart';
 import 'package:fruits_app/features/basket/presentation/cubit/cart_cubit.dart';
+import 'package:fruits_app/features/favourite/presentation/cubit/favorite_cubit.dart';
+import 'package:fruits_app/features/favourite/presentation/cubit/favorite_state.dart';
 import 'package:fruits_app/features/product/domain/entities/product_entity.dart';
 import 'package:fruits_app/features/product/presentation/widget/product_add_to_cart_button.dart';
 import 'package:fruits_app/features/product/presentation/widget/product_details_section.dart';
@@ -45,13 +47,24 @@ class ProductScreenMobile extends StatelessWidget {
           ),
         ),
         actions: [
-          Image.asset(
-            AppImagesStrings.favoriteIcon,
-            width: AppWidth.w32,
-            height: AppHeight.h32,
-            fit: BoxFit.cover,
-            color: AppColors.black,
+          BlocBuilder<FavoriteCubit, FavoriteState>(
+            builder: (context, state) {
+              final isFavorite = context.read<FavoriteCubit>().isFavorite(
+                product,
+              );
+              return GestureDetector(
+                onTap: () {
+                  context.read<FavoriteCubit>().toggleFavorite(product);
+                },
+                child: Icon(
+                  isFavorite ? Icons.favorite : Icons.favorite_border,
+                  color: isFavorite ? Colors.red : AppColors.black,
+                  size: AppWidth.w32,
+                ),
+              );
+            },
           ),
+          SizedBox(width: AppWidth.w16),
           IconButton(
             onPressed: () {},
             icon: Icon(

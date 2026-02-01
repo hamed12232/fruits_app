@@ -9,6 +9,7 @@ import 'package:fruits_app/features/auth/modules/sign_in/presentation/cubit/logi
 import 'package:fruits_app/features/auth/modules/sign_up/presentation/cubit/register_cubit.dart';
 import 'package:fruits_app/features/auth/modules/verify_number/presentation/cubit/forget_password_cubit.dart';
 import 'package:fruits_app/features/basket/presentation/cubit/cart_cubit.dart';
+import 'package:fruits_app/features/favourite/presentation/cubit/favorite_cubit.dart';
 import 'package:fruits_app/features/product/data/data_source/product_remote_data_source.dart';
 import 'package:fruits_app/features/product/data/repository/product_repository_impl.dart';
 import 'package:fruits_app/features/product/domain/repository/product_repository.dart';
@@ -55,4 +56,7 @@ Future<void> initServiceLocator() async {
 
   // Basket Feature
   sl.registerLazySingleton(() => CartCubit());
+
+  // Favorite Feature
+  sl.registerLazySingleton(() => FavoriteCubit());
 }
