@@ -6,6 +6,7 @@ class ApiConstance {
   static const String fruitsLogin = "/login";
   static const String fruitsRegister = "/register";
   static const String fruitsForgetPassword = "/forget_pass_user";
+  static const String fruitsProducts = "/product/get/ar";
 }
 
 class ApiKeys {

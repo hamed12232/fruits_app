@@ -8,7 +8,6 @@ import 'package:fruits_app/core/utils/constant/app_sizes.dart';
 import 'package:fruits_app/core/utils/constant/app_width.dart';
 import 'package:fruits_app/core/utils/theme/custom_theme/text_theme.dart';
 import 'package:fruits_app/features/basket/presentation/widget/counter_widget.dart';
-import 'package:fruits_app/features/product/presentation/screen/product_screen.dart';
 
 class SellerProductListItem extends StatelessWidget {
   final String productName;
@@ -19,6 +18,11 @@ class SellerProductListItem extends StatelessWidget {
   final bool isBasket;
   final bool isFavorite;
   final String? storeName;
+  final VoidCallback? onTap;
+  final VoidCallback? onDelete;
+  final VoidCallback? onIncrement;
+  final VoidCallback? onDecrement;
+  final int quantity;
 
   const SellerProductListItem({
     super.key,
@@ -30,12 +34,17 @@ class SellerProductListItem extends StatelessWidget {
     this.isBasket = false,
     this.isFavorite = false,
     this.storeName,
+    this.onTap,
+    this.onDelete,
+    this.onIncrement,
+    this.onDecrement,
+    this.quantity = 1,
   });
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => Navigator.pushNamed(context, ProductScreen.routeName),
+      onTap: onTap,
       child: Stack(
         children: [
           Container(
@@ -189,7 +198,7 @@ class SellerProductListItem extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       IconButton(
-                        onPressed: () {},
+                        onPressed: onDelete,
                         icon: Icon(
                           Icons.delete_forever_rounded,
                           color: AppColors.black,
@@ -197,7 +206,11 @@ class SellerProductListItem extends StatelessWidget {
                         ),
                       ),
                       VerticalSpace(height: AppHeight.h40),
-                      CounterWidget(),
+                      CounterWidget(
+                        count: quantity,
+                        onIncrement: onIncrement ?? () {},
+                        onDecrement: onDecrement ?? () {},
+                      ),
                     ],
                   )
                 else if (!isFavorite)

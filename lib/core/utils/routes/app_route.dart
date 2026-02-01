@@ -63,6 +63,7 @@ class AppRouteManager {
       case AppRoutesName.product:
         widget = const ProductScreen();
         break;
+    
       case AppRoutesName.basket:
         widget = const BasketScreen();
         break;
@@ -122,6 +123,7 @@ class AppRoutesName {
   static const String otpVerification = '/otp-verification';
   static const String seller = '/seller';
   static const String product = '/product';
+  static const String products = '/products';
   static const String basket = '/basket';
   static const String checkout = '/checkout';
   static const String checkoutMain = '/checkout_main';

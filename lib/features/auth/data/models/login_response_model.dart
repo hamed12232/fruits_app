@@ -11,9 +11,9 @@ class LoginResponseModel {
   factory LoginResponseModel.fromJson(Map<String, dynamic> json) {
     return LoginResponseModel(
       success: json['success'] as bool? ?? json['status'] as bool? ?? false,
-      token: json['token'] as String? ?? '',
-      user: json['user'] != null
-          ? UserModel.fromJson(json['user'] as Map<String, dynamic>)
+      token: json['data']['token'] as String? ?? '',
+      user: json['data'] != null
+          ? UserModel.fromJson(json['data'] as Map<String, dynamic>)
           : null,
     );
   }

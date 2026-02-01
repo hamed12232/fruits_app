@@ -19,6 +19,10 @@ class SellerProductListItemLandscape extends StatelessWidget {
   final bool isBasket;
   final bool isFavorite;
   final String? storeName;
+  final VoidCallback? onDelete;
+  final VoidCallback? onIncrement;
+  final VoidCallback? onDecrement;
+  final int quantity;
 
   const SellerProductListItemLandscape({
     super.key,
@@ -30,6 +34,10 @@ class SellerProductListItemLandscape extends StatelessWidget {
     this.isBasket = false,
     this.isFavorite = false,
     this.storeName,
+    this.onDelete,
+    this.onIncrement,
+    this.onDecrement,
+    this.quantity = 1,
   });
 
   @override
@@ -185,7 +193,7 @@ class SellerProductListItemLandscape extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       IconButton(
-                        onPressed: () {},
+                        onPressed: onDelete,
                         icon: Icon(
                           Icons.delete_forever_rounded,
                           color: AppColors.black,
@@ -193,7 +201,11 @@ class SellerProductListItemLandscape extends StatelessWidget {
                         ),
                       ),
                       VerticalSpace(height: AppHeight.h40),
-                      CounterWidget(),
+                      CounterWidget(
+                        count: quantity,
+                        onIncrement: onIncrement ?? () {},
+                        onDecrement: onDecrement ?? () {},
+                      ),
                     ],
                   )
                 else if (!isFavorite)

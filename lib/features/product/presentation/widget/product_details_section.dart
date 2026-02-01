@@ -42,17 +42,19 @@ class ProductDetailsSection extends StatelessWidget {
               fontWeight: FontWeight.w400,
             ),
           ),
-        
+
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                productName,
-                style: AppTextTheme.lightTextTheme.labelMedium?.copyWith(
-                  fontSize: fontSize ?? AppSizes.sp24,
-                  fontWeight: FontWeight.bold,
-                  color: AppColors.black,
+              Expanded(
+                child: Text(
+                  productName,
+                  style: AppTextTheme.lightTextTheme.labelMedium?.copyWith(
+                    fontSize: fontSize ?? AppSizes.sp24,
+                    fontWeight: FontWeight.bold,
+                    color: AppColors.black,
+                  ),
                 ),
               ),
               Column(
@@ -62,7 +64,7 @@ class ProductDetailsSection extends StatelessWidget {
                     'Price',
                     style: AppTextTheme.lightTextTheme.headlineMedium?.copyWith(
                       color: AppColors.greyTextColor,
-                      fontSize:fontSize?? AppSizes.sp14,
+                      fontSize: fontSize ?? AppSizes.sp14,
                       fontWeight: FontWeight.w400,
                     ),
                   ),
@@ -71,22 +73,24 @@ class ProductDetailsSection extends StatelessWidget {
                     children: [
                       Text(
                         currentPrice,
-                        style: AppTextTheme.lightTextTheme.labelMedium?.copyWith(
-                          fontSize:fontSize?? AppSizes.sp16,
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.black,
-                        ),
+                        style: AppTextTheme.lightTextTheme.labelMedium
+                            ?.copyWith(
+                              fontSize: fontSize ?? AppSizes.sp16,
+                              fontWeight: FontWeight.bold,
+                              color: AppColors.black,
+                            ),
                       ),
                       if (originalPrice != null) ...[
                         SizedBox(width: AppWidth.w8),
                         Text(
                           originalPrice!,
-                          style: AppTextTheme.lightTextTheme.labelMedium?.copyWith(
-                            fontSize:fontSize?? AppSizes.sp14,
-                            color: AppColors.upToTenPercentOff,
-                            decoration: TextDecoration.lineThrough,
-                            fontWeight: FontWeight.w400,
-                          ),
+                          style: AppTextTheme.lightTextTheme.labelMedium
+                              ?.copyWith(
+                                fontSize: fontSize ?? AppSizes.sp14,
+                                color: AppColors.upToTenPercentOff,
+                                decoration: TextDecoration.lineThrough,
+                                fontWeight: FontWeight.w400,
+                              ),
                         ),
                       ],
                     ],
@@ -110,7 +114,7 @@ class ProductDetailsSection extends StatelessWidget {
           Text(
             'Sell Per : $sellPer',
             style: AppTextTheme.lightTextTheme.headlineMedium?.copyWith(
-              fontSize:fontSize?? AppSizes.sp14,
+              fontSize: fontSize ?? AppSizes.sp14,
               color: AppColors.greyTextColor,
               fontWeight: FontWeight.w400,
             ),
@@ -120,4 +124,3 @@ class ProductDetailsSection extends StatelessWidget {
     );
   }
 }
-

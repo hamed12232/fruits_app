@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_app/core/style/spacing/vertical_space.dart';
 import 'package:fruits_app/core/utils/constant/app_height.dart';
 import 'package:fruits_app/core/utils/constant/app_images_strings.dart';
 import 'package:fruits_app/core/utils/constant/app_sizes.dart';
 import 'package:fruits_app/core/utils/theme/custom_theme/text_theme.dart';
+import 'package:fruits_app/features/product/presentation/cubit/product_cubit.dart';
+import 'package:fruits_app/features/product/presentation/cubit/product_state.dart';
+import 'package:fruits_app/features/product/presentation/screen/product_screen.dart';
 import 'package:fruits_app/features/seller/presentation/widget/seller_product_list_item.dart';
 
 class SellerProductsSection extends StatelessWidget {
@@ -28,25 +32,39 @@ class SellerProductsSection extends StatelessWidget {
           ],
         ),
         VerticalSpace(height: AppHeight.h12),
-        SellerProductListItem(
-          productName: 'Product name',
-          currentPrice: '12.00 KD',
-          originalPrice: '14.00 KD',
-          hasDiscount: true,
-        ),
-        VerticalSpace(height: AppHeight.h12),
-        SellerProductListItem(
-          productName: 'Product name',
-          currentPrice: null,
-          priceText: 'Price Upon Selection',
-          hasDiscount: true,
-        ),
-        VerticalSpace(height: AppHeight.h12),
-        SellerProductListItem(
-          productName: 'Product name',
-          currentPrice: '12.00 KD',
-          originalPrice: '14.00 KD',
-          hasDiscount: true,
+        BlocBuilder<ProductCubit, ProductState>(
+          builder: (context, state) {
+            if (state is ProductLoading) {
+              return const Center(child: CircularProgressIndicator());
+            } else if (state is ProductError) {
+              return Text(state.message);
+            } else if (state is ProductLoaded) {
+              return Column(
+                children: state.products
+                    .map(
+                      (product) => Column(
+                        children: [
+                          SellerProductListItem(
+                            onTap: () {
+                              Navigator.of(context).pushNamed(
+                                ProductScreen.routeName,
+                                arguments: product,
+                              );
+                            },
+                            productName: product.nameEn,
+                            currentPrice: '${product.price} KD',
+                            originalPrice: null,
+                            hasDiscount: false,
+                          ),
+                          VerticalSpace(height: AppHeight.h12),
+                        ],
+                      ),
+                    )
+                    .toList(),
+              );
+            }
+            return const SizedBox.shrink();
+          },
         ),
       ],
     );

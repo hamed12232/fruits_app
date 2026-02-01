@@ -1,10 +1,12 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fruits_app/core/services/one_signal_services.dart';
-import 'package:fruits_app/core/utils/routes/app_route.dart';
 import 'package:fruits_app/core/utils/Di/service_locator.dart';
+import 'package:fruits_app/core/utils/routes/app_route.dart';
 import 'package:fruits_app/core/utils/theme/app_theme.dart';
+import 'package:fruits_app/features/basket/presentation/cubit/cart_cubit.dart';
 import 'package:fruits_app/firebase_options.dart';
 
 void main() async {
@@ -33,11 +35,14 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (_, child) {
-        return MaterialApp(
-          debugShowCheckedModeBanner: false,
-          theme: AppTheme.lightTheme,
-          onGenerateRoute: AppRouteManager.onGenerateRoute,
-          home: child,
+        return BlocProvider(
+          create: (_) => sl<CartCubit>(),
+          child: MaterialApp(
+            debugShowCheckedModeBanner: false,
+            theme: AppTheme.lightTheme,
+            onGenerateRoute: AppRouteManager.onGenerateRoute,
+            home: child,
+          ),
         );
       },
     );

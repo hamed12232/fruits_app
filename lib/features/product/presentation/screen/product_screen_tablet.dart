@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_app/core/style/spacing/vertical_space.dart';
 import 'package:fruits_app/core/utils/constant/app_colors.dart';
 import 'package:fruits_app/core/utils/constant/app_height.dart';
@@ -7,13 +8,15 @@ import 'package:fruits_app/core/utils/constant/app_images_strings.dart';
 import 'package:fruits_app/core/utils/constant/app_sizes.dart';
 import 'package:fruits_app/core/utils/constant/app_width.dart';
 import 'package:fruits_app/core/utils/theme/custom_theme/text_theme.dart';
+import 'package:fruits_app/features/basket/presentation/cubit/cart_cubit.dart';
+import 'package:fruits_app/features/product/domain/entities/product_entity.dart';
 import 'package:fruits_app/features/product/presentation/widget/product_add_to_cart_button.dart';
 import 'package:fruits_app/features/product/presentation/widget/product_details_section.dart';
-import 'package:fruits_app/features/product/presentation/widget/product_expandable_section.dart';
 import 'package:fruits_app/features/product/presentation/widget/product_image_card.dart';
 
 class ProductScreenTablet extends StatelessWidget {
-  const ProductScreenTablet({super.key});
+  final ProductEntity product;
+  const ProductScreenTablet({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +38,7 @@ class ProductScreenTablet extends StatelessWidget {
         ),
         centerTitle: true,
         title: Text(
-          'Product Name',
+          product.nameEn,
           style: AppTextTheme.lightTextTheme.headlineLarge?.copyWith(
             color: AppColors.primaryGreen,
             fontSize: AppSizes.sp24,
@@ -69,38 +72,20 @@ class ProductScreenTablet extends StatelessWidget {
                   VerticalSpace(height: AppHeight.h16),
                   ProductImageCard(
                     imagePath: AppImagesStrings.product,
-                    hasDiscount: true,
-                    discountText: '10% Off Discount',
+                    hasDiscount: false, // Update as needed
+                    discountText: '',
                   ),
                   VerticalSpace(height: AppHeight.h16),
                   ProductDetailsSection(
-                    categoryName: 'Category Name',
-                    productName: 'Product name',
-                    currentPrice: 'KD12.00',
-                    originalPrice: 'KD14.00',
-                    description:
-                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                    sellPer: 'Kartoon',
+                    categoryName: 'Fresh Fruits',
+                    productName: product.nameEn,
+                    currentPrice: '${product.price} KD',
+                    originalPrice: null,
+                    description: product.detailsEn,
+                    sellPer: '${product.quantity} Unit',
                   ),
                   VerticalSpace(height: AppHeight.h16),
-                  ProductExpandableSection(
-                    title: 'Select weight',
-                    options: [
-                      {'label': '50 Gram', 'price': '4.00 KD'},
-                      {'label': '1 Kg', 'price': '6.25 KD'},
-                      {'label': '2 Kg', 'price': '12.00 KD'},
-                    ],
-                    isInitiallyExpanded: false,
-                  ),
-                  VerticalSpace(height: AppHeight.h12),
-                  ProductExpandableSection(
-                    title: 'Select Addons',
-                    options: [
-                      {'label': '50 Gram', 'price': '4.00 KD'},
-                      {'label': '1 Kg', 'price': '6.25 KD'},
-                    ],
-                    isInitiallyExpanded: true,
-                  ),
+                  // Removed hardcoded expandable
                   VerticalSpace(height: AppHeight.h16),
                 ],
               ),
@@ -108,7 +93,17 @@ class ProductScreenTablet extends StatelessWidget {
           ),
           Align(
             alignment: Alignment.bottomRight,
-            child: ProductAddToCartButton(onPressed: () {}),
+            child: ProductAddToCartButton(
+              onPressed: () {
+                context.read<CartCubit>().addToCart(product);
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text('${product.nameEn} added to cart'),
+                    duration: const Duration(seconds: 1),
+                  ),
+                );
+              },
+            ),
           ),
         ],
       ),

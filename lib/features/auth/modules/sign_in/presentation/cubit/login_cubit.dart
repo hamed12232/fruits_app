@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_app/features/auth/domain/use_cases/login_use_case.dart';
 import 'package:fruits_app/features/auth/modules/sign_in/presentation/cubit/login_state.dart';
@@ -26,7 +28,7 @@ class LoginCubit extends Cubit<LoginState> {
         // Save token to shared preferences
         final prefs = await SharedPreferences.getInstance();
         await prefs.setString('auth_token', response.token);
-
+        log(response.token);
         emit(LoginSuccess(response: response));
       } else {
         emit(LoginError(message: 'Login failed'));
